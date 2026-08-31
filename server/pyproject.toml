@@ -1,14 +1,16 @@
 [project]
 name = "server"
 version = "0.1.0"
-description = "Add your description here"
+description = "A simple tool for learning"
 readme = "README.md"
 authors = [
-    { name = "24f3004979", email = "madhavprapanna@gmail.com" }
+    { name = "Madhav Rimal", email = "madhavprapanna@gmail.com" }
 ]
 requires-python = ">=3.14"
 dependencies = [
+    "fastapi>=0.141.1",
     "networkx>=3.6.1",
+    "uvicorn[standard]>=0.52.4",
 ]
 
 [project.scripts]
@@ -17,3 +19,10 @@ server = "server:main"
 [build-system]
 requires = ["uv_build>=0.12.3,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+]

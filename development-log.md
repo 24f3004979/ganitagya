@@ -15,3 +15,13 @@ Daily work log, project trace and progress tracks milestones and discussion topi
 - dedicated model training pipeline with information from above designed data pipeline could benifit research into makng discriminative modeling for such questions
 
 - Must require foundational data flow structure
+
+[31-9-2026]
+
+I am complicating things before it have started, thinking about initial design in good but things are geting over complicated then the scale i am really ment to be handeled, Thus i am going to make final concreet documentation and action plan for the whole project into one shot
+    Making sepration about core must required features
+    inhancements
+    core logic flow for the application
+    All must requirements for the Initial Project rollup
+
+- Documenting concreet documentation as final decision for the project working state
