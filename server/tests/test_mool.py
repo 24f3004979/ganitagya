@@ -17,12 +17,6 @@ topics = [
         "Simplification"
         ]
 
-def visualize(): 
-    nx.draw(g, with_labels=True)
-    plt.show()
-
-
-
 def test_mool_root_addition():
     '''
     Testing Concept addition node
@@ -39,7 +33,7 @@ def test_cycle_dependency():
     Testing cyclic dependency fall back and response behaviour
     '''
     g.add_dependency('Arithmatic', 'Order of Operation')
-    visualize()
+    g.draw()
 
     with pytest.raises(DependencyClash):
         g.add_dependency('Order of Operation', 'Arithmatic')
@@ -51,7 +45,8 @@ def test_load_dependency():
             'Arithmatic'
             ]
     g.add_dependencies(dependency, 'Simplification')
-    visualize()
+    g.add_dependency('Simplification', 'Expression')
+    g.draw()
 
 def test_upgrade():
     topic = g.upgrade_concept('Order of Operation')
@@ -65,7 +60,7 @@ def test_downgrade():
 
 # Downgrade exception load
 def test_exc_upgrading():
-    t = g.upgrade_concept('Simplification')
+    t = g.upgrade_concept('Expression')
     assert t == []
 
 def test_exc_downgrade():
