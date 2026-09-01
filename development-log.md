@@ -25,3 +25,13 @@ I am complicating things before it have started, thinking about initial design i
     All must requirements for the Initial Project rollup
 
 - Documenting concreet documentation as final decision for the project working state
+
+[01-09-2026]
+
++ Initiated basic working root node first primitive version
++ Curating foundational mechanism for siddhi question module service
+    This requires curated question generator
+    for question generator we would need question template
+   
++ Siddhi engine would be into question template generator system which would gnerate the question
+    With subsequent supporting question flow into repository
