@@ -1,4 +1,5 @@
 from server.service import ConceptGraph
+from server.service import build_root_concept_graph
 import matplotlib.pyplot as plt
 import networkx as nx
 import pytest
@@ -66,3 +67,10 @@ def test_exc_upgrading():
 def test_exc_downgrade():
     t = g.downgrade_concept('Arithmatic')
     assert t == []
+
+def test_root_concept_node_load():
+    print(f"Loading root concept graph")
+    root_graph = build_root_concept_graph()
+    root_graph.draw()
+    assert len(root_graph) == 5
+
