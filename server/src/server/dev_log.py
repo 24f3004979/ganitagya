@@ -7,10 +7,12 @@ logging.basicConfig(
     filemode='a',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
+    datefmt='%Y-%m-%d %H:%M:%S',
+    force=True,
 )
 
 log = logging.getLogger(__file__)
 
-log.info('Application started 🚀')
+log.info('\t +u+ \t')
+
 

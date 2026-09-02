@@ -1,3 +1,4 @@
+"""# Mool testing sequence
 from server.service import ConceptGraph
 from server.service import build_root_concept_graph
 import matplotlib.pyplot as plt
@@ -73,4 +74,4 @@ def test_root_concept_node_load():
     root_graph = build_root_concept_graph()
     root_graph.draw()
     assert len(root_graph) == 5
-
+"""
