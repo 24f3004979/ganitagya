@@ -6,15 +6,15 @@ def test_generator_sequence():
     t = QuestionTemplate(
             question_text='generate',
             topic="Arithmatic",
-            variables="x", # listing needed
-            lower_bound=1,
+            variables=["x", "4x", "4y"], # listing needed
+            lower_bound=-10,
             upper_bound=10,
-            operations="+"
+            operations="+ - / *"
             )
     p = Prashna(t)
-    generated_question = p.generate(length=2)
+    generated_question = p.generate(length=10, groups=2)
 
     log.info(f'Siddhi Question generator output : {generated_question}')
-    assert type(generated_question) == int
+    assert type(generated_question) == str
 
 

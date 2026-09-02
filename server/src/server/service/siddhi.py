@@ -22,13 +22,13 @@ class QuestionTemplate:
     '''
     question_text:str
     topic:str
-    variables:str  # spaced variables injection required
+    variables:list[str]  # spaced variables injection required
     lower_bound:int
     upper_bound:int
     operations : str  # spaced operation element
 
 
-# QuestionTemplate Object
+# Question generator unit
 class Prashna:
     '''
     Storing template for given question type
@@ -38,7 +38,7 @@ class Prashna:
     def __init__(self, template:QuestionTemplate):
         self.template = template
 
-    def generate(self,grouping=0, length=2):
+    def generate(self,groups=0, length=2):
         '''
         question generator module
 
@@ -49,8 +49,24 @@ class Prashna:
         template = self.template
         start = template.lower_bound
         end  = template.upper_bound
-        length = length # Length for expression
         operations = template.operations
+        
+        # random operation fetch
+        operator = lambda: operations if (len(operations) == 1) else rnd.choice(operations.split(' '))
+
+        # Operation Injection Function
+        def inject_operator(string_nums):
+            final_expression = ''
+
+            for i, element in enumerate(string_nums):
+                if i == len(string_nums) -1:
+                    final_expression = final_expression + element
+                else:
+                    final_expression = final_expression + element + operator()
+            log.info(f"Generated expression load : {final_expression}")
+
+            return final_expression 
+
 
         # Length must be stricly into a constraiined range due to complexity of choosing list
         numbers = rnd.choices(range(start, end), k=length)
@@ -65,22 +81,25 @@ class Prashna:
                 element = str(_)
             string_nums.append(element)
         
-        if len(template.variables) == 1:
-            string_nums.append(template.variables)  # variable listing into randomized range
+        if len(template.variables) >= 1:
+            string_nums.extend(template.variables)  # variable listing into randomized range
 
         # Shuffle variable position
         rnd.shuffle(string_nums)
+        log.info(f'Length inspection about core string num : {len(string_nums)}')
 
-        operator = lambda: operations if (len(operations) == 1) else rnd.choice(operations.split(' '))  # Returning operator for given expression buildup
+        # Randomized conditional grouping
+        grouped_element = []
+        if (groups > 0):
+            for i in range(0, len(string_nums), groups):
+                group_member = string_nums[i:i+groups]
+                if len(group_member) < groups:
+                    break
+                element = f'({inject_operator(group_member)})'
+                grouped_element.append(element)
 
-        # Building final question expression with variables
-        final_expression = ''
-        log.info(f'Final Expression building list : {string_nums}')
-        for i, element in enumerate(string_nums):
-            if i == len(string_nums) -1:
-                final_expression = final_expression + element
-            else:
-                final_expression = final_expression + element + operator()
-        log.info(f"Generated expression load : {final_expression}")
-        return final_expression
-                
+            # grouping final expression | Indentation fix issue with making it return at end
+            return inject_operator(grouped_element)
+        elif groups > 0:
+            log.warning(f"grouping number terminated")
+        return inject_operator(string_nums)  # If without grouping

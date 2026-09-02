@@ -115,3 +115,490 @@
 2026-09-02 18:36:20 - INFO - Final Expression building list : ['4', '7', 'x']
 2026-09-02 18:36:20 - INFO - Generated expression load : 4+7+x
 2026-09-02 18:36:20 - INFO - Siddhi Question generator output : 4+7+x
+2026-09-02 18:40:17 - INFO - /t +u+ /t
+2026-09-02 18:40:18 - INFO - Final Expression building list : ['0', 'x', '(-5)']
+2026-09-02 18:40:18 - INFO - Generated expression load : 0+x+(-5)
+2026-09-02 18:40:18 - INFO - Siddhi Question generator output : 0+x+(-5)
+2026-09-02 18:41:30 - INFO - /t +u+ /t
+2026-09-02 18:41:31 - INFO - Final Expression building list : ['9', 'x', '(-5)']
+2026-09-02 18:41:31 - INFO - Generated expression load : 9+x+(-5)
+2026-09-02 18:41:31 - INFO - Siddhi Question generator output : 9+x+(-5)
+2026-09-02 18:41:35 - INFO - /t +u+ /t
+2026-09-02 18:41:35 - INFO - Final Expression building list : ['x', '(-4)', '(-8)']
+2026-09-02 18:41:35 - INFO - Generated expression load : x+(-4)+(-8)
+2026-09-02 18:41:35 - INFO - Siddhi Question generator output : x+(-4)+(-8)
+2026-09-02 18:41:39 - INFO - /t +u+ /t
+2026-09-02 18:41:40 - INFO - Final Expression building list : ['x', '(-6)', '(-10)']
+2026-09-02 18:41:40 - INFO - Generated expression load : x+(-6)+(-10)
+2026-09-02 18:41:40 - INFO - Siddhi Question generator output : x+(-6)+(-10)
+2026-09-02 18:41:43 - INFO - /t +u+ /t
+2026-09-02 18:41:44 - INFO - Final Expression building list : ['6', 'x', '(-3)']
+2026-09-02 18:41:44 - INFO - Generated expression load : 6+x+(-3)
+2026-09-02 18:41:44 - INFO - Siddhi Question generator output : 6+x+(-3)
+2026-09-02 18:41:48 - INFO - /t +u+ /t
+2026-09-02 18:41:48 - INFO - Final Expression building list : ['0', '7', 'x']
+2026-09-02 18:41:48 - INFO - Generated expression load : 0+7+x
+2026-09-02 18:41:48 - INFO - Siddhi Question generator output : 0+7+x
+2026-09-02 18:41:52 - INFO - /t +u+ /t
+2026-09-02 18:41:52 - INFO - Final Expression building list : ['(-7)', 'x', '(-3)']
+2026-09-02 18:41:52 - INFO - Generated expression load : (-7)+x+(-3)
+2026-09-02 18:41:52 - INFO - Siddhi Question generator output : (-7)+x+(-3)
+2026-09-02 18:41:56 - INFO - /t +u+ /t
+2026-09-02 18:41:57 - INFO - Final Expression building list : ['x', '0', '(-10)']
+2026-09-02 18:41:57 - INFO - Generated expression load : x+0+(-10)
+2026-09-02 18:41:57 - INFO - Siddhi Question generator output : x+0+(-10)
+2026-09-02 18:42:00 - INFO - /t +u+ /t
+2026-09-02 18:42:01 - INFO - Final Expression building list : ['(-2)', 'x', '(-9)']
+2026-09-02 18:42:01 - INFO - Generated expression load : (-2)+x+(-9)
+2026-09-02 18:42:01 - INFO - Siddhi Question generator output : (-2)+x+(-9)
+2026-09-02 18:42:04 - INFO - /t +u+ /t
+2026-09-02 18:42:05 - INFO - Final Expression building list : ['(-4)', '3', 'x']
+2026-09-02 18:42:05 - INFO - Generated expression load : (-4)+3+x
+2026-09-02 18:42:05 - INFO - Siddhi Question generator output : (-4)+3+x
+2026-09-02 18:42:09 - INFO - /t +u+ /t
+2026-09-02 18:42:09 - INFO - Final Expression building list : ['3', 'x', '0']
+2026-09-02 18:42:09 - INFO - Generated expression load : 3+x+0
+2026-09-02 18:42:09 - INFO - Siddhi Question generator output : 3+x+0
+2026-09-02 18:42:55 - INFO - /t +u+ /t
+2026-09-02 18:42:55 - INFO - Final Expression building list : ['8', 'x', '(-6)']
+2026-09-02 18:42:55 - INFO - Generated expression load : 8+x+(-6)
+2026-09-02 18:42:55 - INFO - Siddhi Question generator output : 8+x+(-6)
+2026-09-02 18:42:59 - INFO - /t +u+ /t
+2026-09-02 18:43:00 - INFO - Final Expression building list : ['(-8)', 'x', '(-9)']
+2026-09-02 18:43:00 - INFO - Generated expression load : (-8)+x+(-9)
+2026-09-02 18:43:00 - INFO - Siddhi Question generator output : (-8)+x+(-9)
+2026-09-02 18:43:03 - INFO - /t +u+ /t
+2026-09-02 18:43:04 - INFO - Final Expression building list : ['(-5)', '(-2)', 'x']
+2026-09-02 18:43:04 - INFO - Generated expression load : (-5)+(-2)+x
+2026-09-02 18:43:04 - INFO - Siddhi Question generator output : (-5)+(-2)+x
+2026-09-02 18:43:08 - INFO - /t +u+ /t
+2026-09-02 18:43:08 - INFO - Final Expression building list : ['6', '(-3)', 'x']
+2026-09-02 18:43:08 - INFO - Generated expression load : 6+(-3)+x
+2026-09-02 18:43:08 - INFO - Siddhi Question generator output : 6+(-3)+x
+2026-09-02 18:43:12 - INFO - /t +u+ /t
+2026-09-02 18:43:12 - INFO - Final Expression building list : ['(-4)', 'x', '(-4)']
+2026-09-02 18:43:12 - INFO - Generated expression load : (-4)+x+(-4)
+2026-09-02 18:43:12 - INFO - Siddhi Question generator output : (-4)+x+(-4)
+2026-09-02 18:43:16 - INFO - /t +u+ /t
+2026-09-02 18:43:17 - INFO - Final Expression building list : ['x', '2', '5']
+2026-09-02 18:43:17 - INFO - Generated expression load : x+2+5
+2026-09-02 18:43:17 - INFO - Siddhi Question generator output : x+2+5
+2026-09-02 18:43:20 - INFO - /t +u+ /t
+2026-09-02 18:43:21 - INFO - Final Expression building list : ['(-7)', 'x', '7']
+2026-09-02 18:43:21 - INFO - Generated expression load : (-7)+x+7
+2026-09-02 18:43:21 - INFO - Siddhi Question generator output : (-7)+x+7
+2026-09-02 18:43:25 - INFO - /t +u+ /t
+2026-09-02 18:43:25 - INFO - Final Expression building list : ['x', '4', '9']
+2026-09-02 18:43:25 - INFO - Generated expression load : x+4+9
+2026-09-02 18:43:25 - INFO - Siddhi Question generator output : x+4+9
+2026-09-02 18:43:29 - INFO - /t +u+ /t
+2026-09-02 18:43:29 - INFO - Final Expression building list : ['x', '3', '(-8)']
+2026-09-02 18:43:29 - INFO - Generated expression load : x+3+(-8)
+2026-09-02 18:43:29 - INFO - Siddhi Question generator output : x+3+(-8)
+2026-09-02 18:43:33 - INFO - /t +u+ /t
+2026-09-02 18:43:34 - INFO - Final Expression building list : ['x', '(-4)', '1']
+2026-09-02 18:43:34 - INFO - Generated expression load : x-(-4)-1
+2026-09-02 18:43:34 - INFO - Siddhi Question generator output : x-(-4)-1
+2026-09-02 18:43:37 - INFO - /t +u+ /t
+2026-09-02 18:43:38 - INFO - Final Expression building list : ['(-10)', 'x', '(-10)']
+2026-09-02 18:43:38 - INFO - Generated expression load : (-10)+x/(-10)
+2026-09-02 18:43:38 - INFO - Siddhi Question generator output : (-10)+x/(-10)
+2026-09-02 18:43:42 - INFO - /t +u+ /t
+2026-09-02 18:43:42 - INFO - Final Expression building list : ['7', 'x', '2']
+2026-09-02 18:43:42 - INFO - Generated expression load : 7/x+2
+2026-09-02 18:43:42 - INFO - Siddhi Question generator output : 7/x+2
+2026-09-02 18:43:46 - INFO - /t +u+ /t
+2026-09-02 18:43:47 - INFO - Final Expression building list : ['(-1)', '(-7)', 'x']
+2026-09-02 18:43:47 - INFO - Generated expression load : (-1)-(-7)/x
+2026-09-02 18:43:47 - INFO - Siddhi Question generator output : (-1)-(-7)/x
+2026-09-02 18:43:50 - INFO - /t +u+ /t
+2026-09-02 18:43:51 - INFO - Final Expression building list : ['(-5)', '(-5)', 'x']
+2026-09-02 18:43:51 - INFO - Generated expression load : (-5)+(-5)-x
+2026-09-02 18:43:51 - INFO - Siddhi Question generator output : (-5)+(-5)-x
+2026-09-02 18:43:55 - INFO - /t +u+ /t
+2026-09-02 18:43:55 - INFO - Final Expression building list : ['(-2)', 'x', '8']
+2026-09-02 18:43:55 - INFO - Generated expression load : (-2)+x/8
+2026-09-02 18:43:55 - INFO - Siddhi Question generator output : (-2)+x/8
+2026-09-02 18:43:59 - INFO - /t +u+ /t
+2026-09-02 18:43:59 - INFO - Final Expression building list : ['x', '(-10)', '1']
+2026-09-02 18:43:59 - INFO - Generated expression load : x*(-10)+1
+2026-09-02 18:43:59 - INFO - Siddhi Question generator output : x*(-10)+1
+2026-09-02 18:44:03 - INFO - /t +u+ /t
+2026-09-02 18:44:04 - INFO - Final Expression building list : ['x', '6', '(-7)']
+2026-09-02 18:44:04 - INFO - Generated expression load : x*6*(-7)
+2026-09-02 18:44:04 - INFO - Siddhi Question generator output : x*6*(-7)
+2026-09-02 18:44:07 - INFO - /t +u+ /t
+2026-09-02 18:44:08 - INFO - Final Expression building list : ['5', '(-6)', 'x']
+2026-09-02 18:44:08 - INFO - Generated expression load : 5-(-6)-x
+2026-09-02 18:44:08 - INFO - Siddhi Question generator output : 5-(-6)-x
+2026-09-02 18:44:12 - INFO - /t +u+ /t
+2026-09-02 18:44:12 - INFO - Final Expression building list : ['x', '(-9)', '(-3)']
+2026-09-02 18:44:12 - INFO - Generated expression load : x-(-9)/(-3)
+2026-09-02 18:44:12 - INFO - Siddhi Question generator output : x-(-9)/(-3)
+2026-09-02 18:44:16 - INFO - /t +u+ /t
+2026-09-02 18:44:16 - INFO - Final Expression building list : ['9', '8', 'x']
+2026-09-02 18:44:16 - INFO - Generated expression load : 9-8-x
+2026-09-02 18:44:16 - INFO - Siddhi Question generator output : 9-8-x
+2026-09-02 18:44:20 - INFO - /t +u+ /t
+2026-09-02 18:44:21 - INFO - Final Expression building list : ['5', 'x', '(-8)']
+2026-09-02 18:44:21 - INFO - Generated expression load : 5*x+(-8)
+2026-09-02 18:44:21 - INFO - Siddhi Question generator output : 5*x+(-8)
+2026-09-02 18:44:24 - INFO - /t +u+ /t
+2026-09-02 18:44:25 - INFO - Final Expression building list : ['x', '(-1)', '4']
+2026-09-02 18:44:25 - INFO - Generated expression load : x/(-1)*4
+2026-09-02 18:44:25 - INFO - Siddhi Question generator output : x/(-1)*4
+2026-09-02 18:44:29 - INFO - /t +u+ /t
+2026-09-02 18:44:29 - INFO - Final Expression building list : ['x', '7', '0']
+2026-09-02 18:44:29 - INFO - Generated expression load : x+7-0
+2026-09-02 18:44:29 - INFO - Siddhi Question generator output : x+7-0
+2026-09-02 18:44:33 - INFO - /t +u+ /t
+2026-09-02 18:44:34 - INFO - Final Expression building list : ['(-8)', 'x', '6']
+2026-09-02 18:44:34 - INFO - Generated expression load : (-8)/x/6
+2026-09-02 18:44:34 - INFO - Siddhi Question generator output : (-8)/x/6
+2026-09-02 18:44:37 - INFO - /t +u+ /t
+2026-09-02 18:44:38 - INFO - Final Expression building list : ['(-3)', 'x', '2']
+2026-09-02 18:44:38 - INFO - Generated expression load : (-3)+x*2
+2026-09-02 18:44:38 - INFO - Siddhi Question generator output : (-3)+x*2
+2026-09-02 18:44:41 - INFO - /t +u+ /t
+2026-09-02 18:44:42 - INFO - Final Expression building list : ['8', 'x', '4']
+2026-09-02 18:44:42 - INFO - Generated expression load : 8*x*4
+2026-09-02 18:44:42 - INFO - Siddhi Question generator output : 8*x*4
+2026-09-02 18:44:46 - INFO - /t +u+ /t
+2026-09-02 18:44:46 - INFO - Final Expression building list : ['8', 'x', '(-9)']
+2026-09-02 18:44:46 - INFO - Generated expression load : 8+x/(-9)
+2026-09-02 18:44:46 - INFO - Siddhi Question generator output : 8+x/(-9)
+2026-09-02 18:44:50 - INFO - /t +u+ /t
+2026-09-02 18:44:51 - INFO - Final Expression building list : ['1', '(-10)', 'x']
+2026-09-02 18:44:51 - INFO - Generated expression load : 1/(-10)*x
+2026-09-02 18:44:51 - INFO - Siddhi Question generator output : 1/(-10)*x
+2026-09-02 18:44:54 - INFO - /t +u+ /t
+2026-09-02 18:44:55 - INFO - Final Expression building list : ['6', 'x', '(-9)']
+2026-09-02 18:44:55 - INFO - Generated expression load : 6-x-(-9)
+2026-09-02 18:44:55 - INFO - Siddhi Question generator output : 6-x-(-9)
+2026-09-02 18:44:59 - INFO - /t +u+ /t
+2026-09-02 18:44:59 - INFO - Final Expression building list : ['6', '3', 'x']
+2026-09-02 18:44:59 - INFO - Generated expression load : 6+3+x
+2026-09-02 18:44:59 - INFO - Siddhi Question generator output : 6+3+x
+2026-09-02 18:45:03 - INFO - /t +u+ /t
+2026-09-02 18:45:04 - INFO - Final Expression building list : ['x', '0', '6']
+2026-09-02 18:45:04 - INFO - Generated expression load : x*0*6
+2026-09-02 18:45:04 - INFO - Siddhi Question generator output : x*0*6
+2026-09-02 18:45:07 - INFO - /t +u+ /t
+2026-09-02 18:45:08 - INFO - Final Expression building list : ['0', 'x', '(-4)']
+2026-09-02 18:45:08 - INFO - Generated expression load : 0-x-(-4)
+2026-09-02 18:45:08 - INFO - Siddhi Question generator output : 0-x-(-4)
+2026-09-02 18:45:11 - INFO - /t +u+ /t
+2026-09-02 18:45:12 - INFO - Final Expression building list : ['5', 'x', '5']
+2026-09-02 18:45:12 - INFO - Generated expression load : 5*x-5
+2026-09-02 18:45:12 - INFO - Siddhi Question generator output : 5*x-5
+2026-09-02 18:45:16 - INFO - /t +u+ /t
+2026-09-02 18:45:16 - INFO - Final Expression building list : ['(-2)', '(-6)', 'x']
+2026-09-02 18:45:16 - INFO - Generated expression load : (-2)/(-6)-x
+2026-09-02 18:45:16 - INFO - Siddhi Question generator output : (-2)/(-6)-x
+2026-09-02 18:45:20 - INFO - /t +u+ /t
+2026-09-02 18:45:21 - INFO - Final Expression building list : ['(-6)', 'x', '3']
+2026-09-02 18:45:21 - INFO - Generated expression load : (-6)*x-3
+2026-09-02 18:45:21 - INFO - Siddhi Question generator output : (-6)*x-3
+2026-09-02 18:45:24 - INFO - /t +u+ /t
+2026-09-02 18:45:25 - INFO - Final Expression building list : ['x', '(-7)', '(-3)']
+2026-09-02 18:45:25 - INFO - Generated expression load : x+(-7)*(-3)
+2026-09-02 18:45:25 - INFO - Siddhi Question generator output : x+(-7)*(-3)
+2026-09-02 18:45:29 - INFO - /t +u+ /t
+2026-09-02 18:45:29 - INFO - Final Expression building list : ['9', 'x', '(-8)']
+2026-09-02 18:45:29 - INFO - Generated expression load : 9/x*(-8)
+2026-09-02 18:45:29 - INFO - Siddhi Question generator output : 9/x*(-8)
+2026-09-02 18:45:33 - INFO - /t +u+ /t
+2026-09-02 18:45:34 - INFO - Final Expression building list : ['x', '8', '7']
+2026-09-02 18:45:34 - INFO - Generated expression load : x/8-7
+2026-09-02 18:45:34 - INFO - Siddhi Question generator output : x/8-7
+2026-09-02 18:45:37 - INFO - /t +u+ /t
+2026-09-02 18:45:38 - INFO - Final Expression building list : ['(-9)', 'x', '8']
+2026-09-02 18:45:38 - INFO - Generated expression load : (-9)+x/8
+2026-09-02 18:45:38 - INFO - Siddhi Question generator output : (-9)+x/8
+2026-09-02 18:45:42 - INFO - /t +u+ /t
+2026-09-02 18:45:42 - INFO - Final Expression building list : ['(-8)', 'x', '1']
+2026-09-02 18:45:42 - INFO - Generated expression load : (-8)*x+1
+2026-09-02 18:45:42 - INFO - Siddhi Question generator output : (-8)*x+1
+2026-09-02 18:45:46 - INFO - /t +u+ /t
+2026-09-02 18:45:47 - INFO - Final Expression building list : ['(-8)', '7', 'x']
+2026-09-02 18:45:47 - INFO - Generated expression load : (-8)/7+x
+2026-09-02 18:45:47 - INFO - Siddhi Question generator output : (-8)/7+x
+2026-09-02 18:45:50 - INFO - /t +u+ /t
+2026-09-02 18:45:51 - INFO - Final Expression building list : ['x', '(-8)', '(-8)']
+2026-09-02 18:45:51 - INFO - Generated expression load : x/(-8)-(-8)
+2026-09-02 18:45:51 - INFO - Siddhi Question generator output : x/(-8)-(-8)
+2026-09-02 18:45:55 - INFO - /t +u+ /t
+2026-09-02 18:45:55 - INFO - Final Expression building list : ['x', '6', '9']
+2026-09-02 18:45:55 - INFO - Generated expression load : x/6*9
+2026-09-02 18:45:55 - INFO - Siddhi Question generator output : x/6*9
+2026-09-02 18:45:59 - INFO - /t +u+ /t
+2026-09-02 18:45:59 - INFO - Final Expression building list : ['5', '(-3)', 'x']
+2026-09-02 18:45:59 - INFO - Generated expression load : 5/(-3)*x
+2026-09-02 18:45:59 - INFO - Siddhi Question generator output : 5/(-3)*x
+2026-09-02 18:46:03 - INFO - /t +u+ /t
+2026-09-02 18:46:04 - INFO - Final Expression building list : ['1', 'x', '(-7)']
+2026-09-02 18:46:04 - INFO - Generated expression load : 1/x/(-7)
+2026-09-02 18:46:04 - INFO - Siddhi Question generator output : 1/x/(-7)
+2026-09-02 18:46:07 - INFO - /t +u+ /t
+2026-09-02 18:46:08 - INFO - Final Expression building list : ['4', 'x', '7']
+2026-09-02 18:46:08 - INFO - Generated expression load : 4/x*7
+2026-09-02 18:46:08 - INFO - Siddhi Question generator output : 4/x*7
+2026-09-02 18:46:12 - INFO - /t +u+ /t
+2026-09-02 18:46:12 - INFO - Final Expression building list : ['9', '(-2)', 'x']
+2026-09-02 18:46:12 - INFO - Generated expression load : 9/(-2)*x
+2026-09-02 18:46:12 - INFO - Siddhi Question generator output : 9/(-2)*x
+2026-09-02 18:46:16 - INFO - /t +u+ /t
+2026-09-02 18:46:17 - INFO - Final Expression building list : ['x', '9', '2']
+2026-09-02 18:46:17 - INFO - Generated expression load : x+9+2
+2026-09-02 18:46:17 - INFO - Siddhi Question generator output : x+9+2
+2026-09-02 18:46:20 - INFO - /t +u+ /t
+2026-09-02 18:46:21 - INFO - Final Expression building list : ['(-8)', '(-5)', 'x']
+2026-09-02 18:46:21 - INFO - Generated expression load : (-8)/(-5)+x
+2026-09-02 18:46:21 - INFO - Siddhi Question generator output : (-8)/(-5)+x
+2026-09-02 18:46:24 - INFO - /t +u+ /t
+2026-09-02 18:46:25 - INFO - Final Expression building list : ['x', '1', '7']
+2026-09-02 18:46:25 - INFO - Generated expression load : x*1-7
+2026-09-02 18:46:25 - INFO - Siddhi Question generator output : x*1-7
+2026-09-02 18:46:29 - INFO - /t +u+ /t
+2026-09-02 18:46:29 - INFO - Final Expression building list : ['(-7)', '1', 'x']
+2026-09-02 18:46:29 - INFO - Generated expression load : (-7)*1-x
+2026-09-02 18:46:29 - INFO - Siddhi Question generator output : (-7)*1-x
+2026-09-02 18:46:33 - INFO - /t +u+ /t
+2026-09-02 18:46:34 - INFO - Final Expression building list : ['(-6)', '(-2)', 'x']
+2026-09-02 18:46:34 - INFO - Generated expression load : (-6)/(-2)-x
+2026-09-02 18:46:34 - INFO - Siddhi Question generator output : (-6)/(-2)-x
+2026-09-02 18:46:37 - INFO - /t +u+ /t
+2026-09-02 18:46:38 - INFO - Final Expression building list : ['(-1)', '(-9)', 'x']
+2026-09-02 18:46:38 - INFO - Generated expression load : (-1)+(-9)+x
+2026-09-02 18:46:38 - INFO - Siddhi Question generator output : (-1)+(-9)+x
+2026-09-02 18:46:42 - INFO - /t +u+ /t
+2026-09-02 18:46:42 - INFO - Final Expression building list : ['3', 'x', '6']
+2026-09-02 18:46:42 - INFO - Generated expression load : 3-x*6
+2026-09-02 18:46:42 - INFO - Siddhi Question generator output : 3-x*6
+2026-09-02 18:46:46 - INFO - /t +u+ /t
+2026-09-02 18:46:46 - INFO - Final Expression building list : ['(-7)', '1', 'x']
+2026-09-02 18:46:46 - INFO - Generated expression load : (-7)/1*x
+2026-09-02 18:46:46 - INFO - Siddhi Question generator output : (-7)/1*x
+2026-09-02 18:46:50 - INFO - /t +u+ /t
+2026-09-02 18:46:51 - INFO - Final Expression building list : ['(-3)', 'x', '(-1)']
+2026-09-02 18:46:51 - INFO - Generated expression load : (-3)+x/(-1)
+2026-09-02 18:46:51 - INFO - Siddhi Question generator output : (-3)+x/(-1)
+2026-09-02 18:46:54 - INFO - /t +u+ /t
+2026-09-02 18:46:55 - INFO - Final Expression building list : ['5', '6', 'x']
+2026-09-02 18:46:55 - INFO - Generated expression load : 5/6/x
+2026-09-02 18:46:55 - INFO - Siddhi Question generator output : 5/6/x
+2026-09-02 18:46:59 - INFO - /t +u+ /t
+2026-09-02 18:46:59 - INFO - Final Expression building list : ['5', 'x', '(-6)']
+2026-09-02 18:46:59 - INFO - Generated expression load : 5-x/(-6)
+2026-09-02 18:46:59 - INFO - Siddhi Question generator output : 5-x/(-6)
+2026-09-02 18:47:03 - INFO - /t +u+ /t
+2026-09-02 18:47:04 - INFO - Final Expression building list : ['x', '(-3)', '1']
+2026-09-02 18:47:04 - INFO - Generated expression load : x-(-3)*1
+2026-09-02 18:47:04 - INFO - Siddhi Question generator output : x-(-3)*1
+2026-09-02 18:47:07 - INFO - /t +u+ /t
+2026-09-02 18:47:08 - INFO - Final Expression building list : ['(-10)', 'x', '(-2)']
+2026-09-02 18:47:08 - INFO - Generated expression load : (-10)*x/(-2)
+2026-09-02 18:47:08 - INFO - Siddhi Question generator output : (-10)*x/(-2)
+2026-09-02 18:47:11 - INFO - /t +u+ /t
+2026-09-02 18:47:12 - INFO - Final Expression building list : ['2', '0', 'x']
+2026-09-02 18:47:12 - INFO - Generated expression load : 2-0+x
+2026-09-02 18:47:12 - INFO - Siddhi Question generator output : 2-0+x
+2026-09-02 18:47:16 - INFO - /t +u+ /t
+2026-09-02 18:47:16 - INFO - Final Expression building list : ['4', '1', 'x']
+2026-09-02 18:47:16 - INFO - Generated expression load : 4-1-x
+2026-09-02 18:47:16 - INFO - Siddhi Question generator output : 4-1-x
+2026-09-02 18:47:20 - INFO - /t +u+ /t
+2026-09-02 18:47:20 - INFO - Final Expression building list : ['x', '(-10)', '(-8)']
+2026-09-02 18:47:20 - INFO - Generated expression load : x-(-10)/(-8)
+2026-09-02 18:47:20 - INFO - Siddhi Question generator output : x-(-10)/(-8)
+2026-09-02 18:47:24 - INFO - /t +u+ /t
+2026-09-02 18:47:25 - INFO - Final Expression building list : ['6', '1', 'x']
+2026-09-02 18:47:25 - INFO - Generated expression load : 6*1/x
+2026-09-02 18:47:25 - INFO - Siddhi Question generator output : 6*1/x
+2026-09-02 18:47:28 - INFO - /t +u+ /t
+2026-09-02 18:47:29 - INFO - Final Expression building list : ['(-1)', 'x', '(-10)']
+2026-09-02 18:47:29 - INFO - Generated expression load : (-1)-x+(-10)
+2026-09-02 18:47:29 - INFO - Siddhi Question generator output : (-1)-x+(-10)
+2026-09-02 18:47:33 - INFO - /t +u+ /t
+2026-09-02 18:47:33 - INFO - Final Expression building list : ['(-4)', '8', 'x']
+2026-09-02 18:47:33 - INFO - Generated expression load : (-4)/8-x
+2026-09-02 18:47:33 - INFO - Siddhi Question generator output : (-4)/8-x
+2026-09-02 18:47:37 - INFO - /t +u+ /t
+2026-09-02 18:47:37 - INFO - Final Expression building list : ['9', 'x', '(-9)']
+2026-09-02 18:47:37 - INFO - Generated expression load : 9*x-(-9)
+2026-09-02 18:47:37 - INFO - Siddhi Question generator output : 9*x-(-9)
+2026-09-02 18:47:41 - INFO - /t +u+ /t
+2026-09-02 18:47:41 - INFO - Final Expression building list : ['(-8)', 'x', '(-7)']
+2026-09-02 18:47:41 - INFO - Generated expression load : (-8)/x+(-7)
+2026-09-02 18:47:41 - INFO - Siddhi Question generator output : (-8)/x+(-7)
+2026-09-02 18:47:45 - INFO - /t +u+ /t
+2026-09-02 18:47:46 - INFO - Final Expression building list : ['0', '(-7)', 'x']
+2026-09-02 18:47:46 - INFO - Generated expression load : 0-(-7)-x
+2026-09-02 18:47:46 - INFO - Siddhi Question generator output : 0-(-7)-x
+2026-09-02 18:47:49 - INFO - /t +u+ /t
+2026-09-02 18:47:50 - INFO - Final Expression building list : ['5', '5', 'x']
+2026-09-02 18:47:50 - INFO - Generated expression load : 5+5+x
+2026-09-02 18:47:50 - INFO - Siddhi Question generator output : 5+5+x
+2026-09-02 18:47:54 - INFO - /t +u+ /t
+2026-09-02 18:47:54 - INFO - Final Expression building list : ['(-6)', 'x', '(-8)']
+2026-09-02 18:47:54 - INFO - Generated expression load : (-6)/x-(-8)
+2026-09-02 18:47:54 - INFO - Siddhi Question generator output : (-6)/x-(-8)
+2026-09-02 18:47:58 - INFO - /t +u+ /t
+2026-09-02 18:47:59 - INFO - Final Expression building list : ['x', '0', '0']
+2026-09-02 18:47:59 - INFO - Generated expression load : x*0*0
+2026-09-02 18:47:59 - INFO - Siddhi Question generator output : x*0*0
+2026-09-02 18:48:02 - INFO - /t +u+ /t
+2026-09-02 18:48:03 - INFO - Final Expression building list : ['3', 'x', '(-8)']
+2026-09-02 18:48:03 - INFO - Generated expression load : 3-x+(-8)
+2026-09-02 18:48:03 - INFO - Siddhi Question generator output : 3-x+(-8)
+2026-09-02 18:48:06 - INFO - /t +u+ /t
+2026-09-02 18:48:07 - INFO - Final Expression building list : ['9', '1', 'x']
+2026-09-02 18:48:07 - INFO - Generated expression load : 9+1+x
+2026-09-02 18:48:07 - INFO - Siddhi Question generator output : 9+1+x
+2026-09-02 18:48:11 - INFO - /t +u+ /t
+2026-09-02 18:48:11 - INFO - Final Expression building list : ['x', '4', '(-2)']
+2026-09-02 18:48:11 - INFO - Generated expression load : x*4+(-2)
+2026-09-02 18:48:11 - INFO - Siddhi Question generator output : x*4+(-2)
+2026-09-02 18:48:15 - INFO - /t +u+ /t
+2026-09-02 18:48:15 - INFO - Final Expression building list : ['x', '(-9)', '4']
+2026-09-02 18:48:15 - INFO - Generated expression load : x*(-9)*4
+2026-09-02 18:48:15 - INFO - Siddhi Question generator output : x*(-9)*4
+2026-09-02 18:48:19 - INFO - /t +u+ /t
+2026-09-02 18:48:20 - INFO - Final Expression building list : ['(-3)', 'x', '(-1)']
+2026-09-02 18:48:20 - INFO - Generated expression load : (-3)-x+(-1)
+2026-09-02 18:48:20 - INFO - Siddhi Question generator output : (-3)-x+(-1)
+2026-09-02 18:48:23 - INFO - /t +u+ /t
+2026-09-02 18:48:24 - INFO - Final Expression building list : ['(-4)', '2', 'x']
+2026-09-02 18:48:24 - INFO - Generated expression load : (-4)/2*x
+2026-09-02 18:48:24 - INFO - Siddhi Question generator output : (-4)/2*x
+2026-09-02 18:48:27 - INFO - /t +u+ /t
+2026-09-02 18:48:28 - INFO - Final Expression building list : ['x', '5', '(-10)']
+2026-09-02 18:48:28 - INFO - Generated expression load : x+5/(-10)
+2026-09-02 18:48:28 - INFO - Siddhi Question generator output : x+5/(-10)
+2026-09-02 18:48:32 - INFO - /t +u+ /t
+2026-09-02 18:48:32 - INFO - Final Expression building list : ['(-1)', 'x', '(-3)']
+2026-09-02 18:48:32 - INFO - Generated expression load : (-1)*x*(-3)
+2026-09-02 18:48:32 - INFO - Siddhi Question generator output : (-1)*x*(-3)
+2026-09-02 18:48:36 - INFO - /t +u+ /t
+2026-09-02 18:48:36 - INFO - Final Expression building list : ['(-4)', 'x', '4']
+2026-09-02 18:48:36 - INFO - Generated expression load : (-4)*x/4
+2026-09-02 18:48:36 - INFO - Siddhi Question generator output : (-4)*x/4
+2026-09-02 18:48:40 - INFO - /t +u+ /t
+2026-09-02 18:48:41 - INFO - Final Expression building list : ['x', '8', '(-9)']
+2026-09-02 18:48:41 - INFO - Generated expression load : x*8*(-9)
+2026-09-02 18:48:41 - INFO - Siddhi Question generator output : x*8*(-9)
+2026-09-02 18:48:45 - INFO - /t +u+ /t
+2026-09-02 18:48:45 - INFO - Final Expression building list : ['4', '(-3)', 'x']
+2026-09-02 18:48:45 - INFO - Generated expression load : 4*(-3)/x
+2026-09-02 18:48:45 - INFO - Siddhi Question generator output : 4*(-3)/x
+2026-09-02 18:48:49 - INFO - /t +u+ /t
+2026-09-02 18:48:50 - INFO - Final Expression building list : ['(-1)', '(-6)', 'x']
+2026-09-02 18:48:50 - INFO - Generated expression load : (-1)+(-6)+x
+2026-09-02 18:48:50 - INFO - Siddhi Question generator output : (-1)+(-6)+x
+2026-09-02 18:48:53 - INFO - /t +u+ /t
+2026-09-02 18:48:54 - INFO - Final Expression building list : ['x', '3', '(-8)']
+2026-09-02 18:48:54 - INFO - Generated expression load : x-3+(-8)
+2026-09-02 18:48:54 - INFO - Siddhi Question generator output : x-3+(-8)
+2026-09-02 18:48:58 - INFO - /t +u+ /t
+2026-09-02 18:48:58 - INFO - Final Expression building list : ['x', '(-4)', '(-7)']
+2026-09-02 18:48:58 - INFO - Generated expression load : x/(-4)-(-7)
+2026-09-02 18:48:58 - INFO - Siddhi Question generator output : x/(-4)-(-7)
+2026-09-02 18:49:02 - INFO - /t +u+ /t
+2026-09-02 18:49:02 - INFO - Final Expression building list : ['8', 'x', '(-8)']
+2026-09-02 18:49:02 - INFO - Generated expression load : 8*x/(-8)
+2026-09-02 18:49:02 - INFO - Siddhi Question generator output : 8*x/(-8)
+2026-09-02 18:49:06 - INFO - /t +u+ /t
+2026-09-02 18:49:07 - INFO - Final Expression building list : ['7', '(-2)', 'x']
+2026-09-02 18:49:07 - INFO - Generated expression load : 7+(-2)+x
+2026-09-02 18:49:07 - INFO - Siddhi Question generator output : 7+(-2)+x
+2026-09-02 18:49:10 - INFO - /t +u+ /t
+2026-09-02 18:49:11 - INFO - Final Expression building list : ['x', '6', '(-4)']
+2026-09-02 18:49:11 - INFO - Generated expression load : x+6*(-4)
+2026-09-02 18:49:11 - INFO - Siddhi Question generator output : x+6*(-4)
+2026-09-02 18:49:14 - INFO - /t +u+ /t
+2026-09-02 18:49:15 - INFO - Final Expression building list : ['2', '3', 'x']
+2026-09-02 18:49:15 - INFO - Generated expression load : 2*3/x
+2026-09-02 18:49:15 - INFO - Siddhi Question generator output : 2*3/x
+2026-09-02 18:49:18 - INFO - /t +u+ /t
+2026-09-02 18:49:19 - INFO - Final Expression building list : ['(-8)', 'x', '(-5)']
+2026-09-02 18:49:19 - INFO - Generated expression load : (-8)*x*(-5)
+2026-09-02 18:49:19 - INFO - Siddhi Question generator output : (-8)*x*(-5)
+2026-09-02 18:49:23 - INFO - /t +u+ /t
+2026-09-02 18:49:23 - INFO - Final Expression building list : ['x', '9', '2']
+2026-09-02 18:49:23 - INFO - Generated expression load : x*9+2
+2026-09-02 18:49:23 - INFO - Siddhi Question generator output : x*9+2
+2026-09-02 18:49:27 - INFO - /t +u+ /t
+2026-09-02 18:49:27 - INFO - Final Expression building list : ['x', '(-9)', '4']
+2026-09-02 18:49:27 - INFO - Generated expression load : x*(-9)/4
+2026-09-02 18:49:27 - INFO - Siddhi Question generator output : x*(-9)/4
+2026-09-02 18:49:31 - INFO - /t +u+ /t
+2026-09-02 18:49:32 - INFO - Final Expression building list : ['(-9)', 'x', '3']
+2026-09-02 18:49:32 - INFO - Generated expression load : (-9)-x*3
+2026-09-02 18:49:32 - INFO - Siddhi Question generator output : (-9)-x*3
+2026-09-02 18:49:35 - INFO - /t +u+ /t
+2026-09-02 18:49:36 - INFO - Final Expression building list : ['(-4)', '(-9)', 'x']
+2026-09-02 18:49:36 - INFO - Generated expression load : (-4)+(-9)+x
+2026-09-02 18:49:36 - INFO - Siddhi Question generator output : (-4)+(-9)+x
+2026-09-02 18:49:39 - INFO - /t +u+ /t
+2026-09-02 18:49:40 - INFO - Final Expression building list : ['4', '2', 'x']
+2026-09-02 18:49:40 - INFO - Generated expression load : 4-2*x
+2026-09-02 18:49:40 - INFO - Siddhi Question generator output : 4-2*x
+2026-09-02 18:49:43 - INFO - /t +u+ /t
+2026-09-02 18:49:44 - INFO - Final Expression building list : ['6', '4', 'x']
+2026-09-02 18:49:44 - INFO - Generated expression load : 6*4+x
+2026-09-02 18:49:44 - INFO - Siddhi Question generator output : 6*4+x
+2026-09-02 18:49:48 - INFO - /t +u+ /t
+2026-09-02 18:49:48 - INFO - Final Expression building list : ['1', '(-7)', 'x']
+2026-09-02 18:49:48 - INFO - Generated expression load : 1*(-7)*x
+2026-09-02 18:49:48 - INFO - Siddhi Question generator output : 1*(-7)*x
+2026-09-02 18:49:52 - INFO - /t +u+ /t
+2026-09-02 18:49:52 - INFO - Final Expression building list : ['x', '(-3)', '6']
+2026-09-02 18:49:52 - INFO - Generated expression load : x/(-3)/6
+2026-09-02 18:49:52 - INFO - Siddhi Question generator output : x/(-3)/6
+2026-09-02 18:49:56 - INFO - /t +u+ /t
+2026-09-02 18:49:57 - INFO - Final Expression building list : ['(-2)', '(-2)', 'x']
+2026-09-02 18:49:57 - INFO - Generated expression load : (-2)*(-2)+x
+2026-09-02 18:49:57 - INFO - Siddhi Question generator output : (-2)*(-2)+x
+2026-09-02 19:20:27 - INFO - /t +u+ /t
+2026-09-02 19:20:28 - INFO - Final Expression building list : ['(-10)', ['x'], '4']
+2026-09-02 19:21:26 - INFO - /t +u+ /t
+2026-09-02 19:21:26 - INFO - Final Expression building list : ['0', 'x', '(-10)']
+2026-09-02 19:21:26 - INFO - Generated expression load : 0-x/(-10)
+2026-09-02 19:21:26 - INFO - Siddhi Question generator output : 0-x/(-10)
+2026-09-02 19:22:08 - INFO - /t +u+ /t
+2026-09-02 19:22:09 - INFO - Final Expression building list : ['4y', '4x', '(-6)', '7', 'x']
+2026-09-02 19:22:09 - INFO - Generated expression load : 4y+4x-(-6)*7+x
+2026-09-02 19:22:09 - INFO - Siddhi Question generator output : 4y+4x-(-6)*7+x
+2026-09-02 19:43:50 - INFO - /t +u+ /t
+2026-09-02 19:45:56 - INFO - /t +u+ /t
+2026-09-02 19:45:57 - INFO - Generated expression load : 7/2
+2026-09-02 19:45:57 - INFO - Generated expression load : (7/2)
+2026-09-02 19:45:57 - INFO - Siddhi Question generator output : (7/2)
+2026-09-02 19:47:53 - INFO - /t +u+ /t
+2026-09-02 19:47:54 - INFO - Generated expression load : 0/4y
+2026-09-02 19:47:54 - INFO - Generated expression load : (0/4y)
+2026-09-02 19:47:54 - INFO - Siddhi Question generator output : (0/4y)
+2026-09-02 20:07:52 - INFO - /t +u+ /t
+2026-09-02 20:07:53 - INFO - Generated expression load : (-3)-8
+2026-09-02 20:07:53 - INFO - Generated expression load : ((-3)-8)
+2026-09-02 20:07:53 - INFO - Siddhi Question generator output : ((-3)-8)
+2026-09-02 22:33:40 - INFO - /t +u+ /t
+2026-09-02 22:33:41 - INFO - Generated expression load : (-5)-4x
+2026-09-02 22:33:41 - INFO - Generated expression load : ((-5)-4x)
+2026-09-02 22:33:41 - INFO - Siddhi Question generator output : ((-5)-4x)
+2026-09-02 22:34:29 - INFO - /t +u+ /t
+2026-09-02 22:34:42 - INFO - /t +u+ /t
+2026-09-02 22:34:42 - INFO - Length inspection about core string num : 13
+2026-09-02 22:34:42 - INFO - Generated expression load : (-8)+x
+2026-09-02 22:34:42 - INFO - Generated expression load : ((-8)+x)
+2026-09-02 22:34:42 - INFO - Siddhi Question generator output : ((-8)+x)
+2026-09-02 22:35:51 - INFO - /t +u+ /t
+2026-09-02 22:35:51 - INFO - Length inspection about core string num : 13
+2026-09-02 22:35:51 - INFO - Generated expression load : (-4)/6
+2026-09-02 22:35:51 - INFO - Generated expression load : 1*1
+2026-09-02 22:35:51 - INFO - Generated expression load : 4y/(-8)
+2026-09-02 22:35:51 - INFO - Generated expression load : x/(-6)
+2026-09-02 22:35:51 - INFO - Generated expression load : 9*4x
+2026-09-02 22:35:51 - INFO - Generated expression load : 3/(-7)
+2026-09-02 22:35:51 - INFO - Generated expression load : ((-4)/6)/(1*1)*(4y/(-8))+(x/(-6))*(9*4x)/(3/(-7))
+2026-09-02 22:35:51 - INFO - Siddhi Question generator output : ((-4)/6)/(1*1)*(4y/(-8))+(x/(-6))*(9*4x)/(3/(-7))

@@ -13,6 +13,6 @@ logging.basicConfig(
 
 log = logging.getLogger(__file__)
 
-log.info('\t +u+ \t')
+log.info('/t +u+ /t')
 
 
