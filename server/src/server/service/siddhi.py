@@ -44,6 +44,8 @@ class Prashna:
 
         + primitive version for generating question with given labels
         + Level based complexity switching is enhacement version with this unit
+
+        tested for generating questions with variables and grouping
         '''
         # Foundational variables for the core working
         template = self.template
@@ -63,8 +65,6 @@ class Prashna:
                     final_expression = final_expression + element
                 else:
                     final_expression = final_expression + element + operator()
-            log.info(f"Generated expression load : {final_expression}")
-
             return final_expression 
 
 
@@ -86,7 +86,6 @@ class Prashna:
 
         # Shuffle variable position
         rnd.shuffle(string_nums)
-        log.info(f'Length inspection about core string num : {len(string_nums)}')
 
         # Randomized conditional grouping
         grouped_element = []
@@ -102,4 +101,7 @@ class Prashna:
             return inject_operator(grouped_element)
         elif groups > 0:
             log.warning(f"grouping number terminated")
-        return inject_operator(string_nums)  # If without grouping
+        response = inject_operator(string_nums)
+        log.info(f'Reponse for : {template} : {response}')
+        return  response
+

@@ -33,5 +33,12 @@ I am complicating things before it have started, thinking about initial design i
     This requires curated question generator
     for question generator we would need question template
    
-+ Siddhi engine would be into question template generator system which would gnerate the question
-    With subsequent supporting question flow into repository
+[02-09-2026]
++ Siddhi Question template initiated
++ Prashna - Question generator with template engine working *tested
++ Prashna is completly working unit with inbuilt prashna generators making questions for all range with template render
+
+We need now curated quiz handler backend service unit
+    Handling generators,  response based topic node traversal and taking the question state into percistency
+    We can have both levels one adaptive to user shot | other straight curated 10 questions for given topic range
+
