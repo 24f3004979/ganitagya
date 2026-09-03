@@ -1,9 +1,8 @@
 from server.service.prashna import QuestionTemplate
-
 '''
-Loading Template for listing out question moduler
+Upgrade required
+Make it into self loading engine which loads from config file
 '''
-
 TEMPLATES: list[QuestionTemplate] = [
     QuestionTemplate(
         question_text="Evaluate the following expression:",

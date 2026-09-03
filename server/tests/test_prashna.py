@@ -1,5 +1,5 @@
 from server.dev_log import *
-from server.service.siddhi import *
+from server.service.prashna import *
 from .templates.siddhi_template import *
 import random 
 
@@ -9,5 +9,4 @@ def test_generator_sequence():
     p = Prashna(t)
     generated_question = p.generate(length=10, groups=2)
     assert type(generated_question) == str
-
 
