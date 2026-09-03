@@ -1,7 +1,7 @@
 # Development Log book
 Daily work log, project trace and progress tracks milestones and discussion topics during development, documenting build with simple documentation way.
 
-[30-9-2026]
+[30-8-2026]
 - Siddhi core data flow research
     As i kept into discussion about core data flow and expectation of module
     Some real hard problems
@@ -16,7 +16,7 @@ Daily work log, project trace and progress tracks milestones and discussion topi
 
 - Must require foundational data flow structure
 
-[31-9-2026]
+[31-8-2026]
 
 I am complicating things before it have started, thinking about initial design in good but things are geting over complicated then the scale i am really ment to be handeled, Thus i am going to make final concreet documentation and action plan for the whole project into one shot
     Making sepration about core must required features
@@ -42,3 +42,8 @@ We need now curated quiz handler backend service unit
     Handling generators,  response based topic node traversal and taking the question state into percistency
     We can have both levels one adaptive to user shot | other straight curated 10 questions for given topic range
 
++ Made foundational quiz handle object with 3 simple rules for topic update
+    Making simple handle for question generation
++ Siddhi engine would only work to generate question
+    separate quiz handle specified to generating questions tracking status and updates would be created along with global student handler obeject for student response handling unit
++ Engine Due for tommorow 
