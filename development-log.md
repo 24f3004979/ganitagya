@@ -41,9 +41,15 @@ I am complicating things before it have started, thinking about initial design i
 We need now curated quiz handler backend service unit
     Handling generators,  response based topic node traversal and taking the question state into percistency
     We can have both levels one adaptive to user shot | other straight curated 10 questions for given topic range
-
+[03-09-2026]
 + Made foundational quiz handle object with 3 simple rules for topic update
     Making simple handle for question generation
 + Siddhi engine would only work to generate question
     separate quiz handle specified to generating questions tracking status and updates would be created along with global student handler obeject for student response handling unit
 + Engine Due for tommorow 
+
+[04-09-2006]
++ research about chintan module
++ designing core chintan workflow
+chintan is going to be a numerical and graphical disection tool for student to explore topics and enjoy mathematics , a critical and flag ship compoenent of this build
+

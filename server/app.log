@@ -1705,3 +1705,95 @@
 2026-09-04 09:51:57 - INFO - Target Node : Expression is leaf node with no branches
 2026-09-04 09:51:57 - INFO - Target Node :Arithmatic is super parent root
 2026-09-04 09:51:57 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=1, upper_bound=20, operations='+ -') : (9+6)+(18-6)-(2-12)-(7-7)+(1-3)
+2026-09-04 21:53:37 - INFO - /t +u+ /t
+2026-09-04 21:53:37 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-19, upper_bound=30, operations='+ -') : (2)+(x)+(28)
+2026-09-04 21:53:37 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-39, upper_bound=50, operations='+ -') : ((-8))+(x)-((-31))
+2026-09-04 21:53:37 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-19, upper_bound=40, operations='+ -') : (19)+(9)
+2026-09-04 21:53:37 - INFO - Target Node :Basic Arithmetic is super parent root
+2026-09-04 21:53:37 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-39, upper_bound=60, operations='+ -') : (31)-((-30))
+2026-09-04 21:53:37 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-99, upper_bound=120, operations='+ -') : ((-94)+(-39)+49)+((-51)+41+62)
+2026-09-04 21:53:37 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-159, upper_bound=180, operations='+ -') : ((-65)+83-135)-((-17)+(-7)+78)
+2026-09-04 21:53:38 - INFO - Topic upgrade listing : ['Simplification']
+2026-09-04 21:53:38 - INFO - testing : ['Order of Operation', 'Variables', 'Arithmatic'] <- response from downgradig concept
+2026-09-04 21:53:38 - INFO - Target Node : Expression is leaf node with no branches
+2026-09-04 21:53:38 - INFO - Target Node :Arithmatic is super parent root
+2026-09-04 21:53:38 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=1, upper_bound=20, operations='+ -') : (9+6)+(18-6)-(2-12)-(7-7)+(1-3)
+2026-09-04 21:54:13 - INFO - /t +u+ /t
+2026-09-04 21:54:13 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-19, upper_bound=30, operations='+ -') : (2)+(x)+(28)
+2026-09-04 21:54:13 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-39, upper_bound=50, operations='+ -') : ((-8))+(x)-((-31))
+2026-09-04 21:54:13 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-19, upper_bound=40, operations='+ -') : (19)+(9)
+2026-09-04 21:54:13 - INFO - Target Node :Basic Arithmetic is super parent root
+2026-09-04 21:54:13 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-39, upper_bound=60, operations='+ -') : (31)-((-30))
+2026-09-04 21:54:13 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-99, upper_bound=120, operations='+ -') : ((-94)+(-39)+49)+((-51)+41+62)
+2026-09-04 21:54:13 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-159, upper_bound=180, operations='+ -') : ((-65)+83-135)-((-17)+(-7)+78)
+2026-09-04 21:54:13 - INFO - Topic upgrade listing : ['Simplification']
+2026-09-04 21:54:13 - INFO - testing : ['Order of Operation', 'Variables', 'Arithmatic'] <- response from downgradig concept
+2026-09-04 21:54:13 - INFO - Target Node : Expression is leaf node with no branches
+2026-09-04 21:54:13 - INFO - Target Node :Arithmatic is super parent root
+2026-09-04 21:54:14 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=1, upper_bound=20, operations='+ -') : (9+6)+(18-6)-(2-12)-(7-7)+(1-3)
+2026-09-04 21:55:22 - INFO - /t +u+ /t
+2026-09-04 21:55:23 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-19, upper_bound=30, operations='+ -') : (2)+(x)+(28)
+2026-09-04 21:55:23 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-39, upper_bound=50, operations='+ -') : ((-8))+(x)-((-31))
+2026-09-04 21:55:23 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-19, upper_bound=40, operations='+ -') : (19)+(9)
+2026-09-04 21:55:23 - INFO - Target Node :Basic Arithmetic is super parent root
+2026-09-04 21:55:23 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-39, upper_bound=60, operations='+ -') : (31)-((-30))
+2026-09-04 21:55:23 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-99, upper_bound=120, operations='+ -') : ((-94)+(-39)+49)+((-51)+41+62)
+2026-09-04 21:55:23 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-159, upper_bound=180, operations='+ -') : ((-65)+83-135)-((-17)+(-7)+78)
+2026-09-04 21:55:23 - INFO - Topic upgrade listing : ['Simplification']
+2026-09-04 21:55:23 - INFO - testing : ['Order of Operation', 'Variables', 'Arithmatic'] <- response from downgradig concept
+2026-09-04 21:55:23 - INFO - Target Node : Expression is leaf node with no branches
+2026-09-04 21:55:23 - INFO - Target Node :Arithmatic is super parent root
+2026-09-04 21:55:23 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=1, upper_bound=20, operations='+ -') : (9+6)+(18-6)-(2-12)-(7-7)+(1-3)
+2026-09-04 21:55:50 - INFO - /t +u+ /t
+2026-09-04 21:55:50 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-19, upper_bound=30, operations='+ -') : (2)+(x)+(28)
+2026-09-04 21:55:50 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-39, upper_bound=50, operations='+ -') : ((-8))+(x)-((-31))
+2026-09-04 21:55:50 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-19, upper_bound=40, operations='+ -') : (19)+(9)
+2026-09-04 21:55:50 - INFO - Target Node :Basic Arithmetic is super parent root
+2026-09-04 21:55:50 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-39, upper_bound=60, operations='+ -') : (31)-((-30))
+2026-09-04 21:55:50 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-99, upper_bound=120, operations='+ -') : ((-94)+(-39)+49)+((-51)+41+62)
+2026-09-04 21:55:50 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-159, upper_bound=180, operations='+ -') : ((-65)+83-135)-((-17)+(-7)+78)
+2026-09-04 21:55:50 - INFO - Topic upgrade listing : ['Simplification']
+2026-09-04 21:55:50 - INFO - testing : ['Order of Operation', 'Variables', 'Arithmatic'] <- response from downgradig concept
+2026-09-04 21:55:50 - INFO - Target Node : Expression is leaf node with no branches
+2026-09-04 21:55:50 - INFO - Target Node :Arithmatic is super parent root
+2026-09-04 21:55:50 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=1, upper_bound=20, operations='+ -') : (9+6)+(18-6)-(2-12)-(7-7)+(1-3)
+2026-09-04 21:57:33 - INFO - /t +u+ /t
+2026-09-04 21:57:33 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-19, upper_bound=30, operations='+ -') : (2)+(x)+(28)
+2026-09-04 21:57:33 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-39, upper_bound=50, operations='+ -') : ((-8))+(x)-((-31))
+2026-09-04 21:57:33 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-19, upper_bound=40, operations='+ -') : (19)+(9)
+2026-09-04 21:57:33 - INFO - Target Node :Basic Arithmetic is super parent root
+2026-09-04 21:57:33 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-39, upper_bound=60, operations='+ -') : (31)-((-30))
+2026-09-04 21:57:33 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-99, upper_bound=120, operations='+ -') : ((-94)+(-39)+49)+((-51)+41+62)
+2026-09-04 21:57:33 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-159, upper_bound=180, operations='+ -') : ((-65)+83-135)-((-17)+(-7)+78)
+2026-09-04 21:57:34 - INFO - Topic upgrade listing : ['Simplification']
+2026-09-04 21:57:34 - INFO - testing : ['Order of Operation', 'Variables', 'Arithmatic'] <- response from downgradig concept
+2026-09-04 21:57:34 - INFO - Target Node : Expression is leaf node with no branches
+2026-09-04 21:57:34 - INFO - Target Node :Arithmatic is super parent root
+2026-09-04 21:57:34 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=1, upper_bound=20, operations='+ -') : (9+6)+(18-6)-(2-12)-(7-7)+(1-3)
+2026-09-04 21:58:33 - INFO - /t +u+ /t
+2026-09-04 21:58:33 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-19, upper_bound=30, operations='+ -') : (2)+(x)+(28)
+2026-09-04 21:58:33 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-39, upper_bound=50, operations='+ -') : ((-8))+(x)-((-31))
+2026-09-04 21:58:33 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-19, upper_bound=40, operations='+ -') : (19)+(9)
+2026-09-04 21:58:33 - INFO - Target Node :Basic Arithmetic is super parent root
+2026-09-04 21:58:33 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-39, upper_bound=60, operations='+ -') : (31)-((-30))
+2026-09-04 21:58:33 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-99, upper_bound=120, operations='+ -') : ((-94)+(-39)+49)+((-51)+41+62)
+2026-09-04 21:58:33 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-159, upper_bound=180, operations='+ -') : ((-65)+83-135)-((-17)+(-7)+78)
+2026-09-04 21:58:33 - INFO - Topic upgrade listing : ['Simplification']
+2026-09-04 21:58:33 - INFO - testing : ['Order of Operation', 'Variables', 'Arithmatic'] <- response from downgradig concept
+2026-09-04 21:58:33 - INFO - Target Node : Expression is leaf node with no branches
+2026-09-04 21:58:33 - INFO - Target Node :Arithmatic is super parent root
+2026-09-04 21:58:33 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=1, upper_bound=20, operations='+ -') : (9+6)+(18-6)-(2-12)-(7-7)+(1-3)
+2026-09-04 21:59:35 - INFO - /t +u+ /t
+2026-09-04 21:59:35 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-19, upper_bound=30, operations='+ -') : (2)+(x)+(28)
+2026-09-04 21:59:35 - INFO - Reponse for : QuestionTemplate(question_text='Simplify the expression by combining the given variable with the numbers:', topic='Variable', variables=['x'], lower_bound=-39, upper_bound=50, operations='+ -') : ((-8))+(x)-((-31))
+2026-09-04 21:59:35 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-19, upper_bound=40, operations='+ -') : (19)+(9)
+2026-09-04 21:59:35 - INFO - Target Node :Basic Arithmetic is super parent root
+2026-09-04 21:59:35 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-39, upper_bound=60, operations='+ -') : (31)-((-30))
+2026-09-04 21:59:35 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-99, upper_bound=120, operations='+ -') : ((-94)+(-39)+49)+((-51)+41+62)
+2026-09-04 21:59:35 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=-159, upper_bound=180, operations='+ -') : ((-65)+83-135)-((-17)+(-7)+78)
+2026-09-04 21:59:36 - WARNING - Action Terminated for making cycle condition at root node
+2026-09-04 21:59:36 - INFO - Topic upgrade listing : ['Simplification']
+2026-09-04 21:59:36 - INFO - testing : ['Order of Operation', 'Variables', 'Arithmatic'] <- response from downgradig concept
+2026-09-04 21:59:36 - INFO - Target Node : Expression is leaf node with no branches
+2026-09-04 21:59:36 - INFO - Target Node :Arithmatic is super parent root
+2026-09-04 21:59:36 - INFO - Reponse for : QuestionTemplate(question_text='Evaluate the following expression:', topic='Basic Arithmetic', variables=[], lower_bound=1, upper_bound=20, operations='+ -') : (9+6)+(18-6)-(2-12)-(7-7)+(1-3)

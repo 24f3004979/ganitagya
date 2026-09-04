@@ -13,6 +13,8 @@ class SiddhiEngine:
     Generates question for the target topic
         - Fetch topic template
         - Initiate generator with incremental difficulty counter
+
+    TIP : If student bounce back with consiqutive right questions then take level to started topic
     '''
     def __init__(self, target_topic):
         self.target_topic = target_topic
