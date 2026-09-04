@@ -1,9 +1,11 @@
 from server.service.prashna import QuestionTemplate
+
 '''
 Upgrade required
 Make it into self loading engine which loads from config file
 '''
-TEMPLATES: list[QuestionTemplate] = [
+
+_TEMPLATE_LIST: list[QuestionTemplate] = [
     QuestionTemplate(
         question_text="Evaluate the following expression:",
         topic="Basic Arithmetic",
@@ -45,3 +47,10 @@ TEMPLATES: list[QuestionTemplate] = [
         operations="+ -",
     ),
 ]
+
+# Keyed by topic name so SiddhiEngine (and anything else doing
+# TEMPLATES[target_topic]) can look templates up by the same topic
+# strings used throughout the concept graph.
+TEMPLATES: dict[str, QuestionTemplate] = {
+    template.topic: template for template in _TEMPLATE_LIST
+}

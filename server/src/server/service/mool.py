@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 from server.exceptions import DependencyClash
 from server.dev_log import log
 
-
 class ConceptGraph(DiGraph):
     '''
     Root concept graph for root information flow
@@ -74,13 +73,13 @@ class ConceptGraph(DiGraph):
             font_size=16,  # Node label font size
             font_weight="bold",  # Font weight
             font_color="black",  # Font color
-            edge_color="gray",  # Color of the lines
+            edge_color="blue",  # Color of the lines
             width=5,  # Line width of the edges
             arrowsize=10,  # Size of direction arrows (for DiGraph)
             connectionstyle="arc3,rad=0",  # Slightly curve the edges
         )
 
         plt.title("Concept Graph", fontsize=16)
-        plt.show()
+        # plt.show() | tinker for testing
 
 
