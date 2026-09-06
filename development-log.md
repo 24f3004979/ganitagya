@@ -53,3 +53,16 @@ We need now curated quiz handler backend service unit
 + designing core chintan workflow
 chintan is going to be a numerical and graphical disection tool for student to explore topics and enjoy mathematics , a critical and flag ship compoenent of this build
 
+
+[05-09-2006]
++ chill day
+
+[06-09-2006]
+Project directions
++ heading for package and application stage of wraping with data base
+    Need to design the data base layer
+    wrapping with dedicated unit for managing users
+    tracking user annd there activity along with user information tracking 
+
++ Question handler states with DB connection flow needs to be designed
+with first priority about making chintan core Module

@@ -1,5 +1,11 @@
-# Vue 3 + TypeScript + Vite
+# Ganitaya Interface Documentation
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Interface contains chintan dedicated client side component for interactive interface
+rest components are wrapper using backend api for their work.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+1. Siddhi Interface
+2. Chintan Engine
+3. Wrapper Interface unit
+
++ Student Dashboard
++ Mool-student-knowledge graphing unit
