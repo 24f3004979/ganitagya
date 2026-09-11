@@ -1,16 +1,35 @@
-/*
 
-Expression Parsing unit
-
-Constrcuts dependency tree for mathematical expression
-  Iterates with spliting expression with operation into halfs
-
-  appending dependency with elements for their sub expression
-
-  used for explanation in numerical unit of chaitanya
-*/ 
-
+// Operation List
 const operators:string[] = ["+", "-", "*", "/"];
+
+// head no parent with leaf with no child
+type ExpressionNode = {
+  left_element:string;
+  right_element:string;
+  operation:string;
+
+  // Graphing element
+  parent:ExpressionNode | null;
+  child:ExpressionGraph | null; 
+}
+
+const Elements : string[]; // listing all element
+
+// Making Graph object for simple traversal of ExpressionNode 
+class Graph{
+  // Over riding and over loading features for making graph work
+  const Elements:string[];
+  const graph_dictionary: Record<string, string[]>;
+
+  constructor(head_element:string){
+    this.head_element = this.add_node(head_element)
+  }
+
+  initiate_node(element:string){
+    self.graph_dictionary[element] = []; // initiate node
+  }
+
+}
 
 class ExpressionGraph{
   expression:string;
@@ -37,6 +56,11 @@ class ExpressionGraph{
       }
     }
     return expression
+  }
+
+  initiate_graph(){
+    console.log("Initiating graph")
+
   }
 }
 
