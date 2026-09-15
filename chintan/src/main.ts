@@ -55,8 +55,7 @@ class ExpressionEngine{
     }
   }
   parse(){
-    // Iterate with operation order listing and embed components with each layer
-
+    // Iterate the operation sequence and update the expression with components
   }
 }
 
