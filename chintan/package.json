@@ -1,7 +1,7 @@
 {
   "name": "chintan",
   "version": "1.0.0",
-  "description": "",
+  "description": "Chintan Module with Numerical Engine for parsing functions and expressions",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
