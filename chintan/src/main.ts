@@ -7,6 +7,7 @@ class ExpressionEngine{
     // Operation Order
     const exp:string = expression;
     let operation_order:string[] = [];
+    // changing priority with brackets based grouping
     const priority_listing:string[] = ["/,*", "+,-"];
 
     for (let elem of priority_listing){

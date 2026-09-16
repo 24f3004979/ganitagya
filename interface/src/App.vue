@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {ref, onMounted} from 'vue'
+import {ref, onMounted} from 'vue';
 
-const message = ref('loading ...')
-const error = ref(null)
+const message = ref('loading ...');
+const error = ref(null);
 
 onMounted(async() => {
   try{
@@ -11,17 +11,14 @@ onMounted(async() => {
     const data = await res.json()
     message.value = `Message from Backend System : ${data["message"]}`
   }catch (e) {
-    error.value = e.message
+    error.value = e.message;
   }
 }
-)
+);
 
 </script>
 
 <template>
-  <div>
-    <h1> Ganitagya Scafholding structured </h1>
-    <p v-if="error" > Error : {{ error }} </p>
-    <p v-else> {{ message }} </p>
-    </div>
+  Loading template engine for chaitanya
 </template>
+

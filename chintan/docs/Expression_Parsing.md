@@ -10,9 +10,12 @@ Parsing Expression with precedence through left to right, where we take division
 
 ## Implementation Logic
 
-1. Iterate expression from left to right
-2. components extraction
-    + Groups with brackets for priority
-    + Occurence based bundels of operation component
-        List into component listing
-        with each component based on occurence
+1. Build operation order sequence
+2. Make components wrappers with operation sequence
+3. Final component dictionary along with component listing
+
+## Presentation layer
+
+Simple working front-end interaction unit for interacting with numbers based expressions.
+
+Main render screen with event driven focus
