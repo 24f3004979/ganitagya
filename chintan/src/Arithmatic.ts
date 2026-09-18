@@ -1,4 +1,4 @@
-class ExpressionEngine{
+export class ExpressionEngine{
   expression:string;
 
   constructor(expression:string){
