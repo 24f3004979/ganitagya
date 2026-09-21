@@ -60,7 +60,7 @@ class SiddhiEngine:
         return self.bulk_generate(quantity, self.level)
 
 
-        # Generate question with same level
+    # Generate question with same level
     def generate(self, level=1):
         '''
         Just Makes the question with given level details
