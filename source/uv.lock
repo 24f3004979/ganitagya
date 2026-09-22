@@ -759,6 +759,7 @@ dependencies = [
     { name = "matplotlib" },
     { name = "networkx" },
     { name = "psycopg2-binary" },
+    { name = "python-dotenv" },
     { name = "sqlmodel" },
     { name = "uvicorn", extra = ["standard"] },
 ]
@@ -777,6 +778,7 @@ requires-dist = [
     { name = "matplotlib", specifier = ">=3.11.1" },
     { name = "networkx", specifier = ">=3.6.1" },
     { name = "psycopg2-binary", specifier = ">=2.9.13" },
+    { name = "python-dotenv", specifier = ">=1.2.3" },
     { name = "sqlmodel", specifier = ">=0.0.42" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.52.4" },
 ]

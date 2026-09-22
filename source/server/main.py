@@ -3,6 +3,7 @@ MAIN FILE
 Central script for building the application up
 '''
 from fastapi import FastAPI
+from server.database import *
 from fastapi.middleware.cors import CORSMiddleware
 
 from server.dev_log import log
