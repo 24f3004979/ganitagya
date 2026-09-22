@@ -7,15 +7,14 @@ from enum import Enum
 
 class UserRole(str, Enum):
     ADMIN = "admin"
-    EDITOR = "editor"
+    STUDENT = "student"
     VIEWER = "viewer"
 
-class User(SQLModel):
+class User(SQLModel, table=True):
     '''
     Foundational User Model information
     End point for initiating DB model creation
     '''
-    email:str = Field(unique=True, index=True, nullable=False)
+    email:str = Field(unique=True, index=True, nullable=False, primary_key=True)
     password:str = Field(nullable=False)
     role:UserRole = Field(nullable=False)
-

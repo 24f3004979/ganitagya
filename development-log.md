@@ -48,16 +48,16 @@ We need now curated quiz handler backend service unit
     separate quiz handle specified to generating questions tracking status and updates would be created along with global student handler obeject for student response handling unit
 + Engine Due for tommorow 
 
-[04-09-2006]
+[04-09-2026]
 + research about chintan module
 + designing core chintan workflow
 chintan is going to be a numerical and graphical disection tool for student to explore topics and enjoy mathematics , a critical and flag ship compoenent of this build
 
 
-[05-09-2006]
+[05-09-2026]
 + chill day
 
-[06-09-2006]
+[06-09-2026]
 Project directions
 + heading for package and application stage of wraping with data base
     Need to design the data base layer
@@ -66,3 +66,20 @@ Project directions
 
 + Question handler states with DB connection flow needs to be designed
 with first priority about making chintan core Module
+
+[07-09-2026] - [22-09-2026]
+Exams and other operations ran along with interface design spent time post exam effect :)
+
+[22-09-2026]
++ Attempt for making data base connections for foundational directions to wrap up application build
+    Os level error - with post gress we have to log into from same user profile to get making that connection working
+    fixing command sudo -i -u postgres psql
+    user change from terminal to be able to make connection with required data base root :)
+
+    connection command
+    psql -U postgres -h localhost -W
+
+    we need to enter console for specific data base to see information about that my_fastapi_db
+    log into through connecting to that db through above postgresql terminal cli
+
++ Made working data base connection setup, Now we can wrap around with flow of making the storage for information through whole trip
