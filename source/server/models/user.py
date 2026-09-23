@@ -5,10 +5,6 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import Column
 from enum import Enum
 
-class UserRole(str, Enum):
-    ADMIN = "admin"
-    STUDENT = "student"
-    VIEWER = "viewer"
 
 class User(SQLModel, table=True):
     '''
@@ -17,4 +13,4 @@ class User(SQLModel, table=True):
     '''
     email:str = Field(unique=True, index=True, nullable=False, primary_key=True)
     password:str = Field(nullable=False)
-    role:UserRole = Field(nullable=False)
+    role:str = Field(nullable=False)

@@ -1,14 +1,29 @@
 from server.models.user import *
 from server.database import *
 from sqlmodel import select
+import bcrypt
 
 # Warning : with simple module import with wild card may lead to non-required code clash - Needs to be cleaned to insure this wont create problem
+    
+def hash_password(plain_password: str) -> str:
+    password_bytes = plain_password.encode('utf-8')
+    salt = bcrypt.gensalt(rounds=12)
+    hashed_bytes = bcrypt.hashpw(password_bytes, salt)
+    return hashed_bytes.decode('utf-8')
+
+
+def verify_password(plain_password: str, stored_hash: str) -> bool:
+    password_bytes = plain_password.encode('utf-8')
+    hash_bytes = stored_hash.encode('utf-8')
+    
+    return bcrypt.checkpw(password_bytes, hash_bytes)
+
 
 def admin_creation():
     admin = User(
-        email="studjng",
+        email="Admina",
         password="1234",
-        role=UserRole.ADMIN
+        role="admin"
     )
     # Making transaction to data base through made object
     for _ in get_session():
@@ -31,12 +46,33 @@ def get_user():
 # Registration core service function
 def register_user(information:dict):
     '''
-    Registration Service
-    1. check for existing user | revert
-    2. hash password
-    3. Add to Db | return status code 0, 1:failed
-
-    -- Make simple me end point for detecting user information at front end servers
+    input: information {
+        email : str,
+        password : str,
+        role : str
+    }
     '''
-    pass
+    email = information["email"]
+    statement = select(User).where(User.email == email)
+    for _ in get_session():
+        session = _
+        search = session.exec(statement).first()
+        if (email == search):
+            session.rollback()
+
+            return Exception("User Exists with this name")
+        new_user = User(
+                email = email,
+                password = hash_password(information["password"]),
+                role = information["role"]
+                )
+        try:
+            session.add(new_user)
+            session.commit()
+            print("User created")
+            return True
+        except Exception as e:
+             raise Exception(f"Exception raised during user creation : {e}")
+
+
 

@@ -22,20 +22,20 @@ app.add_middleware(
 )
 
 log.info('Fast Api app created')
+SQLModel.metadata.drop_all(engine)  # reset data base
 Initiate_database() # Initiates all required models
 log.info("Data Base started")
 
 admin_creation()
 print(f"Admin Created")
 
-# Dummy function for testing data base setup test fetch
-get_user()
 
 # Root routing
 @app.get("/")
 def root():
     return "Hello Fast API setup"
 
+# reset Db
 
 # Server Made with Uvicorn
 def main():
