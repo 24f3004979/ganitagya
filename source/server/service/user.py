@@ -3,6 +3,7 @@ from server.database import *
 from sqlmodel import select
 import bcrypt
 from server.exceptions import UserExists
+from server.dev_log import *
 
 # Cant import Userregistration schema due to circular error flow
 
@@ -55,9 +56,9 @@ def register_user(information:dict):
     for _ in get_session():
         session = _
         search = session.exec(statement).first()
-        if (email == search):
-            session.rollback()
 
+        if search is not None:
+            log.info(f"Terminating Duplicate registration request with information : {information}")
             raise UserExists
 
         new_user = User(
@@ -68,7 +69,7 @@ def register_user(information:dict):
         try:
             session.add(new_user)
             session.commit()
-            print("User created")
+            print("User creation completed")
             return True
         except Exception as e:
              raise Exception(f"Exception raised during user creation : {e}")
