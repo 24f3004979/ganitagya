@@ -2,6 +2,7 @@ from server.models.user import *
 from server.database import *
 from sqlmodel import select
 import bcrypt
+from server.exceptions import UserExists
 
 # Warning : with simple module import with wild card may lead to non-required code clash - Needs to be cleaned to insure this wont create problem
     
@@ -33,16 +34,15 @@ def admin_creation():
     print('User Created')
 
 # End point testing code
-def get_user():
+def get_users():
     statement = select(User)
     for session in get_session():
         result = session.exec(statement)
         users = result.all()  # All users listing
         for _ in users:
             print(f"User : {_}")
+        return users
         
-
-
 # Registration core service function
 def register_user(information:dict):
     '''
@@ -60,7 +60,8 @@ def register_user(information:dict):
         if (email == search):
             session.rollback()
 
-            return Exception("User Exists with this name")
+            raise UserExists
+
         new_user = User(
                 email = email,
                 password = hash_password(information["password"]),
