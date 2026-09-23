@@ -14,6 +14,7 @@ dependencies = [
     "matplotlib>=3.11.1",
     "networkx>=3.6.1",
     "psycopg2-binary>=2.9.13",
+    "pydantic[email]>=2.13.5",
     "python-dotenv>=1.2.3",
     "sqlmodel>=0.0.42",
     "uvicorn[standard]>=0.52.4",

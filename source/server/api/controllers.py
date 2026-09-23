@@ -1,7 +1,9 @@
 from server.service.user import register_user
 from server.dev_log import *
 from fastapi.responses import JSONResponse
-from fastapi import status
+# from fastapi import status # Status code response to front end endpoint
+from server.exceptions import UserExists
+from server.schema.user_endpoint import UserRegisterInput
 
 '''
 Controller Units
@@ -15,7 +17,7 @@ used with routes directly for serving through front end part of the application
 def Registration(information):
     log.info(f'Registration Initiated : {information}')
     try:
-        if register_user(information):
+        if register_user(information:UserRegisterInput):
             return {"message" : "Registration completed", "status": 200}
     except UserExists as e:
         return {"message" : "Registration Failed", "status" : 404}

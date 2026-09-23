@@ -4,6 +4,8 @@ from sqlmodel import select
 import bcrypt
 from server.exceptions import UserExists
 
+# Cant import Userregistration schema due to circular error flow
+
 # Warning : with simple module import with wild card may lead to non-required code clash - Needs to be cleaned to insure this wont create problem
     
 def hash_password(plain_password: str) -> str:
@@ -46,11 +48,7 @@ def get_users():
 # Registration core service function
 def register_user(information:dict):
     '''
-    input: information {
-        email : str,
-        password : str,
-        role : str
-    }
+    information : Defined schema with pydantic
     '''
     email = information["email"]
     statement = select(User).where(User.email == email)
@@ -65,7 +63,7 @@ def register_user(information:dict):
         new_user = User(
                 email = email,
                 password = hash_password(information["password"]),
-                role = information["role"]
+                role = "student"
                 )
         try:
             session.add(new_user)
