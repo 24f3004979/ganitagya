@@ -15,7 +15,7 @@ def  health():
 def register(user_information:UserRegisterInput):
     return Registration(user_information)
 
-@router.post("/login")
+@router.post("/login")  # FIX: Not working with this application
 async def authentication(form_data: Request):
     '''
     Making simple extraction way with request object form

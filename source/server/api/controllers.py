@@ -6,14 +6,15 @@ from server.exceptions import UserExists
 from server.schema.user_endpoint import UserRegisterInput
 
 '''
-Controller Units
-Working as simple data processor layer between services and working end point api to handle responses generation
+Controller Functions
+Front end facing layer for backend service functions
 
-Final service layer wrapper with response grids
-used with routes directly for serving through front end part of the application
+Targeted Elements
+1. Registration [Working]
+2. Login [Broken]
+3. Siddhi - Dedicated Controllers required [ abstract wrapper functions]
 '''
 
-# Simple registration end point
 def Registration(information:UserRegisterInput):
     log.info(f'Registration Initiated : {information}')
     try:
