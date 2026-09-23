@@ -74,5 +74,16 @@ def register_user(information:dict):
         except Exception as e:
              raise Exception(f"Exception raised during user creation : {e}")
 
-
-
+def verify_user(information:dict):
+    email = information["email"]
+    statement = select(User).where(User.email == email)
+    for _ in get_session():
+        session = _
+        user = session.exec(statement).first()
+        if user:
+            password = information["password"]
+            hashed_password = user.password
+            verification = verify_password(password, hashed_password)
+            if verification:
+                return True, user.role
+        return False
