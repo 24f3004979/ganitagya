@@ -15,7 +15,9 @@ dependencies = [
     "networkx>=3.6.1",
     "psycopg2-binary>=2.9.13",
     "pydantic[email]>=2.13.5",
+    "pyjwt>=2.14.0",
     "python-dotenv>=1.2.3",
+    "python-multipart>=0.0.32",
     "sqlmodel>=0.0.42",
     "uvicorn[standard]>=0.52.4",
 ]

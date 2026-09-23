@@ -23,8 +23,21 @@ def Registration(information:UserRegisterInput):
                 "password": information.password,
                 "role" : "student"
                 }
-        if register_user(info_load):
-            return {"message" : "Registration completed", "status": 200}
+        register_user(info_load)
+        return {"message" : "Registration completed", "status": 200}
     except UserExists as e:
         return {"message" : "Registration Failed", "status" : 404}
 
+
+def Login(form_data: dict):
+    '''
+    Check for existence of user
+    verify password
+    provide token
+    '''
+    log.info('Login initiated')
+    verification_status = verify_user(form_data)
+    if verification_status:
+        token = create_access_token(email)
+        return token
+    return False

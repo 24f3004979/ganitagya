@@ -1,6 +1,8 @@
-from fastapi import APIRouter, status
+from typing import Annotated
+from fastapi import APIRouter, status, Depends, Request
 from server.api.controllers import Registration
 from server.schema.user_endpoint import UserRegisterInput
+
 
 router = APIRouter()
 
@@ -13,4 +15,14 @@ def  health():
 def register(user_information:UserRegisterInput):
     return Registration(user_information)
 
+@router.post("/login")
+async def authentication(form_data: Request):
+    '''
+    Making simple extraction way with request object form
+    '''
+    data = await form_data.json()
+    email = data.get("email")
+    password = data.get("password")
+    info = {"email":email, "password": password}
 
+    return Login(info)

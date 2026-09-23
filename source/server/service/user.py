@@ -4,10 +4,6 @@ from sqlmodel import select
 import bcrypt
 from server.exceptions import UserExists
 from server.dev_log import *
-
-# Cant import Userregistration schema due to circular error flow
-
-# Warning : with simple module import with wild card may lead to non-required code clash - Needs to be cleaned to insure this wont create problem
     
 def hash_password(plain_password: str) -> str:
     password_bytes = plain_password.encode('utf-8')
@@ -15,13 +11,11 @@ def hash_password(plain_password: str) -> str:
     hashed_bytes = bcrypt.hashpw(password_bytes, salt)
     return hashed_bytes.decode('utf-8')
 
-
 def verify_password(plain_password: str, stored_hash: str) -> bool:
     password_bytes = plain_password.encode('utf-8')
     hash_bytes = stored_hash.encode('utf-8')
     
     return bcrypt.checkpw(password_bytes, hash_bytes)
-
 
 def admin_creation():
     admin = User(
@@ -86,4 +80,5 @@ def verify_user(information:dict):
             verification = verify_password(password, hashed_password)
             if verification:
                 return True, user.role
-        return False
+        else:
+            return False
