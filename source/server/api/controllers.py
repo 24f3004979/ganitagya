@@ -14,10 +14,16 @@ used with routes directly for serving through front end part of the application
 '''
 
 # Simple registration end point
-def Registration(information):
+def Registration(information:UserRegisterInput):
     log.info(f'Registration Initiated : {information}')
     try:
-        if register_user(information:UserRegisterInput):
+        # converting information to dictionary format
+        info_load = {
+                "email": information.email,
+                "password": information.password,
+                "role" : "student"
+                }
+        if register_user(info_load):
             return {"message" : "Registration completed", "status": 200}
     except UserExists as e:
         return {"message" : "Registration Failed", "status" : 404}

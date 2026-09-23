@@ -11,6 +11,6 @@ def  health():
 # Adding status code injected response for other routers
 @router.post("/register")
 def register(user_information:UserRegisterInput):
-    return Registration(user_information:UserRegisterInput)
+    return Registration(user_information)
 
 
