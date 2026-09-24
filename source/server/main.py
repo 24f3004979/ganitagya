@@ -18,7 +18,6 @@ from server.api.v1.routes import router as v1_router
 
 app = FastAPI(title='server')
 
-
 # cross origin request
 app.add_middleware(
     CORSMiddleware,

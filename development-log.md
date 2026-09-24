@@ -83,3 +83,13 @@ Exams and other operations ran along with interface design spent time post exam 
     log into through connecting to that db through above postgresql terminal cli
 
 + Made working data base connection setup, Now we can wrap around with flow of making the storage for information through whole trip
+
+[24-09-2026]
++ Working registration full round trip
+    Made working registration round-trip from front end to DB connection routing
+    Just frontEnd wrapper required
+
++ Login System is Completly broken
+    Needs modificaiton about approaches for making login system work accross the application
+    refactoring the way OAuthentication ways are approached
+

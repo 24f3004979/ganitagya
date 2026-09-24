@@ -1,4 +1,4 @@
-# PROJECT_CONTEXT.md
+# PROJECT.md
 
 > Last updated: 2026-09-21. Status: **pre-v1 prototype**. Components exist separately; nothing is wired end to end yet.
 
