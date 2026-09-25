@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # Custom Module import
 from server.database import *
+from server.dev_log import *
 from server.api.v1.routes import router as v1_router
 
 
@@ -30,12 +31,16 @@ app.include_router(v1_router, prefix="/api/v1")
 # Root routing
 @app.get("/")
 def root():
+    log.info('serving Root page')
     return "Hello fast api"
 
 # Server Made with Uvicorn
 def main():
     import uvicorn
-    uvicorn.run("server.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("server.main:app",
+                host="0.0.0.0",
+                port=8000, reload=True,
+                reload_excludes=["db/","app.log"])
 
 if __name__ == "__main__":
     main()

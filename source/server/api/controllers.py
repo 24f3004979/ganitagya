@@ -11,7 +11,7 @@ from server.utils.authorization_utils import *
 Controller Functions
 Front end facing layer for backend service functions
 
-Targeted Elements
+Targeted Elementis
 1. Registration [Working]
 2. Login [Broken]
 3. Siddhi - Dedicated Controllers required [ abstract wrapper functions]
@@ -38,10 +38,13 @@ def Login(form_data: Input):
     check if user exist with its parameter -> proceed to call with verification
 
     Use the verify function for authorizing access into application with protection of routes
+
+    pydantic class Not fully defined Error Being traced
     '''
     log.info("Login Function initiating")
     try:
         email = form_data.email
+        print(f"Executing Login Controller function with email : {email}")
         unit = UserManger(email)
         if unit.existance:
             if unit.verify_credentials(form_data.password):
