@@ -1,6 +1,14 @@
 from pydantic import BaseModel, EmailStr
 
-class UserRegisterInput(BaseModel):
-    '''Defaulting for making only student from registration routes'''
+'''
+Using one universal schema for data flow for registration and login both interfaces
+'''
+
+class Input(BaseModel):
+    '''Input Base Model
+    Used for
+    1. Authentication
+    2. Registration
+    '''
     email: EmailStr
     password: str

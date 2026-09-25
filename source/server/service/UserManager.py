@@ -50,6 +50,7 @@ class UserManager:
         credentials : password text
         verification with verify_password from bcripting library
 
+        way to use with login interface - just initiate with username -> extract -> verify
         verification utility dependency
         '''
         if self.existance == False:
@@ -106,4 +107,4 @@ class UserManager:
                 session.commit()
                 log.info(f"User deleted with email : {self.email}")
             except Exception as e:
-                riase Exception(f"Deletion Failed with exception : {e}")
+                raise Exception(f"Deletion Failed with exception : {e}")

@@ -1,7 +1,6 @@
-from typing import Annotated
-from fastapi import APIRouter, status, Depends, Request
+from fastapi import APIRouter, status, Request
 from server.api.controllers import Registration
-from server.schema.user_endpoint import UserRegisterInput
+from server.schema.user_endpoint import Input
 
 
 router = APIRouter()
@@ -15,10 +14,14 @@ def  health():
 def register(user_information:UserRegisterInput):
     return Registration(user_information)
 
-@router.post("/login")  # FIX: Not working with this application
+
+@router.post("/login")  # FIX Iteration 1st with simple data flow -> swagger not working now :)
 async def authentication(form_data: Request):
     '''
+    how does really the request thing would be working with Input Based schema
     Making simple extraction way with request object form
+
+    Swagger is no longer working to load itself
     '''
     data = await form_data.json()
     email = data.get("email")

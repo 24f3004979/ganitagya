@@ -4,3 +4,6 @@ class DependencyClash(Exception):
 
 class UserExists(Exception):
     pass # Modify for reasoning inside the application
+
+class UserDoesNotExist(Exception):
+    pass # Raised for login proceeding example with non-existing user

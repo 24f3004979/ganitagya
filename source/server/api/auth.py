@@ -1,16 +1,13 @@
-
 from datetime import datetime, timedelta, timezone
 from typing import Annotated
 import jwt
 from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import OAuth2PasswordBearer  # OAuth makes the way through which we can format the input shcema for the login purpose right ? 
 
-SECRET_KEY = "my_super_secret_key"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+# Authentication pipeline is whole broken due to miss configuration and lack of understanding about things i am using to make it , I need to read the docs to create the auth unit
 
+# Have to lock in for wiring up the application with endpoints and front end component to wrap project first version launch
 # This tells FastAPI where to look for the token (the /login endpoint)
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/login")
 
 # New Access Token Generation
 def create_access_token(username: str) -> str:
@@ -18,7 +15,7 @@ def create_access_token(username: str) -> str:
     token_data = {"sub": username, "exp": expire}
     return jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
 
-# Routes Protection Function for fetching current user information
+# Routes Protection Function for fetching current user information | what really the Depends thing does in fast api i am unknown to this thing
 async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]) -> str:
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])

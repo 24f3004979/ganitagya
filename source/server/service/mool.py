@@ -3,6 +3,8 @@ Root Information repository instance
 
     + topic traversal
     + building root node tree
+
+Student Reference Unit has to be made which would sync with Mool graph to keep its state persistent in Db flow
 '''
 from networkx import DiGraph
 import networkx as nx
