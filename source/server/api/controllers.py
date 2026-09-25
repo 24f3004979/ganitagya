@@ -17,22 +17,20 @@ Targeted Elementis
 3. Siddhi - Dedicated Controllers required [ abstract wrapper functions]
 '''
 
-def Registration(information:Input):
+def Registration(information:Input):  # Working tested
     log.info(f'Registration Initiated : {information}')
     try:
-        # converting information to dictionary format
-        info_load = {
-                "email": information.email,
-                "password": information.password,
-                "role" : "student"
-                }
-        register_user(info_load)
+        unit = UserManager('')
+        unit.create(information)
         return {"message" : "Registration completed", "status": 200}
-    except UserExists as e:
+    except UserExists:
+        return {"message" : "User Exist", "status" : 200}
+    except Exception as e:
         return {"message" : "Registration Failed", "status" : 404}
 
 
-def Login(form_data: Input):
+
+def Login(form_data: Input):  # Working tested
     '''
     Fetch UserManger from form data
     check if user exist with its parameter -> proceed to call with verification
@@ -45,7 +43,7 @@ def Login(form_data: Input):
     try:
         email = form_data.email
         print(f"Executing Login Controller function with email : {email}")
-        unit = UserManger(email)
+        unit = UserManager(email)
         if unit.existance:
             if unit.verify_credentials(form_data.password):
                 return create_access_token(email)  # Access Token generated with signed

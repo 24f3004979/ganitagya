@@ -13,4 +13,4 @@ logging.basicConfig(
 )
 
 log = logging.getLogger(__name__)
-log.info(f"App started! Logs are safely hidden at: {log_path}")
+log.info(f"Application Bootup")
