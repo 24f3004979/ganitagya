@@ -1,7 +1,8 @@
 from server.models.user import *
 from server.database import engine
+from server.schema.user_endpoint import *
 from sqlmodel import select, Session 
-from server.exceptions import UserExists
+from server.exceptions import UserExists, UserDoesNotExist
 from server.dev_log import *
 from server.utils.auth_utils import *
 
@@ -19,7 +20,9 @@ class UserManager:
     Abstract Class working with base database model
     '''
 
-    def __init__(self, email):
+    def __init__(self, email:str=''):
+        if email == '':
+            self.existance = False  # Simple tweaks
         self.email = email
         self.user_object = None
         self.existance = True
@@ -62,7 +65,7 @@ class UserManager:
         else:
             return False
 
-    def create(self, information:dict):
+    def create(self, information:Input):
         '''
         Creating new user with Base Model
         Initiating its object into class object handle
@@ -70,16 +73,23 @@ class UserManager:
         storing password
         and changing existence status
         '''
-        email = information["email"]
-        password = information["password"]
+        email = information.email
+        password = information.password
 
-        strong = hashed_password(password) # Hashed password
+        strong = hash_password(password) # Hashed password
         new_user = User(
                 email=email, 
-                password=strong
+                password=strong,
+                role="student"
                 )
         with Session(engine) as session:
             try:
+                statement = select(User).where(User.email == email)
+                result = session.exec(statement).first()
+                if result is not None:
+                    log.warning(f"User Exist with email : {email}")
+                    raise UserExists
+                log.info(f"User Creation Initiated with email : {email}")
                 session.add(new_user)
                 session.commit()
 
@@ -89,7 +99,9 @@ class UserManager:
 
                 self.existence = True
                 self.user_object = created_user  # user created object
-                self.email = user_object.email # Email update for extraction sync
+                self.email = self.user_object.email # Email update for extraction sync
+            except UserExists:
+                raise UserExists
 
             except Exception as e:
                 session.rollback()

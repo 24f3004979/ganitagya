@@ -11,11 +11,11 @@ def  health():
 
 # Adding status code injected response for other routers
 @router.post("/register")
-def register(user_information:UserRegisterInput):
+def register(user_information:Input):
     return Registration(user_information)
 
 
-@router.post("/login")  # FIX Iteration 1st with simple data flow -> swagger not working now :)
+@router.post("/login")
 async def authentication(form_data: Input):
     '''
     how does really the request thing would be working with Input Based schema
