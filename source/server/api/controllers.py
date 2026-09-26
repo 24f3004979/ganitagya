@@ -1,7 +1,7 @@
 from server.dev_log import *
 from fastapi.responses import JSONResponse
 # from fastapi import status # Status code response to front end endpoint
-from server.exceptions import UserExists
+from server.exceptions import UserExists, UserDoesNotExist
 from server.service.UserManager import *
 from server.schema.user_endpoint import Input
 from server.utils.authorization_utils import *
@@ -30,7 +30,7 @@ def Registration(information:Input):  # Working tested
 
 
 
-def Login(form_data: Input):  # Working tested
+async def Login(form_data: Input):  # Working tested
     '''
     Fetch UserManger from form data
     check if user exist with its parameter -> proceed to call with verification
@@ -46,8 +46,21 @@ def Login(form_data: Input):  # Working tested
         unit = UserManager(email)
         if unit.existance:
             if unit.verify_credentials(form_data.password):
-                return create_access_token(email)  # Access Token generated with signed
+                token = create_access_token(email)  # Access Token generated with signed
+                return token
             return {"message":" Either Username or password is wrong", "status":404}
         return {"message": "User Does Not Exist, Register your self first", "status":200}
     except Exception as e:
         raise Exception(f"Login failed Exception with Problem trace of {e}")
+
+def get_role(username:str):
+    try:
+        unit = UserManager(username)
+        if (unit.existance == True):
+            return {unit.user_object.role}
+        else:
+            return {"message":"No Existance"}
+    except UserDoesNotExist:
+        return {"message" : "Role fetch failed | User Does not exist"}
+    except Exception as e:
+        raise Exception(f"Role fetch failed with problem : {e}")

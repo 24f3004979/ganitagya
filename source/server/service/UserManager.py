@@ -25,7 +25,7 @@ class UserManager:
             self.existance = False  # Simple tweaks
         self.email = email
         self.user_object = None
-        self.existance = True
+        self.existance = False
 
         self.extract() # Sync with Db for extraction of user information
 
@@ -42,6 +42,7 @@ class UserManager:
                     raise UserDoesNotExist
 
                 self.user_object = user_object
+                self.existance = True
 
             except UserDoesNotExist as e:
                 self.existance = False
