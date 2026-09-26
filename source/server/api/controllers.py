@@ -24,7 +24,7 @@ def Registration(information:Input):  # Working tested
         unit.create(information)
         return {"message" : "Registration completed", "status": 200}
     except UserExists:
-        return {"message" : "User Exist", "status" : 200}
+        return {"message" : "User Exist", "status" : 300}
     except Exception as e:
         return {"message" : "Registration Failed", "status" : 404}
 

@@ -1,15 +1,17 @@
 # TODO
++ User -> Student Table connection into core data base system
++ vidhyarthi module foundations with simple graph referals and siddhi statistics connection
+> simple vidhyarthi primitive module for modeling student into simple way, knowledge modeling along with simple statistical plugin from siddhi module
 
-+ Blocks based arithmatic process visualization
- Very simple block based visualization for positive numbers fundamental arithmatic operation.
-    With adjusting blocks based representation for given arithmatic sequencin
+----- 
+**Priority Listing**
+1. Vidhyarthi Modeling for student management
+2. Siddhi final abstract controller unit
+3. Wrapping siddhi with vidhyarthi-mool into one phase for final wrap up
 
-+ Designing first version route system for existing code base of services
-+ Crafting abstract units to manage the user data flow
-+ Simple Data base setup connected with existing services for persistent sync
+----- 
+*Refactor Ideas*
++ Make use of get_session in future references of db based transactions its easy and safe to use with
+    reffer dev_log for more information
 
----- 
-**Current Peak debug Priority refactor decissions**
-+ RegisterInput data base model is changed as name Input | need to refactor dependent units
-+ Config file is being loade with global configurations need to make refactor in units depended on it
-
++ Using of tightly used fast api ecosystem elements for defining different component of the application aspects for simplification of code base

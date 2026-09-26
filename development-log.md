@@ -93,3 +93,24 @@ Exams and other operations ran along with interface design spent time post exam 
     Needs modificaiton about approaches for making login system work accross the application
     refactoring the way OAuthentication ways are approached
 
+[26-09-2026]
++ Registration and login system both working with tested expected failiour routing along with working token based authorization of roles with full round trip.
+
++ We can now proceed to abstract out the user management to student level and direct towards making orchistration of all units to work together.
+
+---- 
+Long term vision with Mool and graph references ways for student progress updating thing,
+
++ we have to refine the design for scalling up to big spectrum of topics to reach for making things work for more good stuff and give children the ultimate joy of learning
+
+
+Vidhyarthi Foundational Modeling steps
+
+1. Index existing topics
+2. Refer indexed root topic list for student topic reference storage
+3. Build graph with root graph merged with reference information of student
+
+---- 
++ using Enum for defining immutable options is a way to make sure we dont have problem with defining a perticular feild out of indended options with given class defining the objects with Enum feat of python
+
++ we can also use get_session function from data base setup file to call with sesssion the yeild is automatically executed with the import and request hits, we would need to use session:Session = Depends(get_session) <-- Calling the function with hit of request, prevents connection pool leak in crash situation

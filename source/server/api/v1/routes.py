@@ -18,19 +18,23 @@ def register(user_information:Input):
 
 @router.get("/me")
 async def fetch_me(token:str):
+    '''
+    Fetches current name with provided token
+    used for protecting routing and front end handles
+    '''
     current_user = await get_current_user(token)
     return current_user
 
 
 @router.get("/role")
 def fetch_role(username:str):
+    '''Fetch current user role for authorization for certain routs'''
     return get_role(username)  # role fetch
 
 @router.post("/login")
 async def authentication(form_data: Input):
     '''
-    Authentication routing,
-    User credentials verification and returning signed token string
+    Login routing for verification of credentials along with token generation with user name
     '''
     print(f"login route authentication function running")
     # Refraining with direct passing through the Input strucuture for authorization case
