@@ -66,7 +66,7 @@ class UserManager:
         else:
             return False
 
-    def create(self, information:Input):
+    def create(self, information:Input, role='student'):
         '''
         Creating new user with Base Model
         Initiating its object into class object handle
@@ -81,7 +81,7 @@ class UserManager:
         new_user = User(
                 email=email, 
                 password=strong,
-                role="student"
+                role=role
                 )
         with Session(engine) as session:
             try:

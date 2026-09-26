@@ -29,7 +29,7 @@ class Vidhyarthi:
 
         with next(get_session()) as session:
             try:
-                student_unit = session.exec(statement)
+                student_unit = session.exec(statement).first()
                 if student_unit is None:
                     raise UserDoesNotExist
                 return student_unit  # referencing from db object fetch

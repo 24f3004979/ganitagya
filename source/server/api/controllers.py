@@ -18,6 +18,9 @@ Targeted Elementis
 '''
 
 def Registration(information:Input):  # Working tested
+    '''
+    Need to initiate Student Table entries too along with student entry
+    '''
     log.info(f'Registration Initiated : {information}')
     try:
         unit = UserManager('')

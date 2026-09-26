@@ -114,3 +114,13 @@ Vidhyarthi Foundational Modeling steps
 + using Enum for defining immutable options is a way to make sure we dont have problem with defining a perticular feild out of indended options with given class defining the objects with Enum feat of python
 
 + we can also use get_session function from data base setup file to call with sesssion the yeild is automatically executed with the import and request hits, we would need to use session:Session = Depends(get_session) <-- Calling the function with hit of request, prevents connection pool leak in crash situation
+
+----- 
+New Project Updates for today last dev session
++ registration, log in along with token based authentication system working all round trip now with tested endpoints with working swagger loads along with documentation about endpoints build
++ Wrapping with basic foundations for student graph modeling thing, we need to create student object entry at DB to initiate the working of student storage of its own reference design in updated to refer the core graph and build for rendering the graph at front end unit.
+
++ We need to wrap with siddhi abstract layer working for managing questions and work with student graph reference to update student profile in whole round trip
+
++ Stitch with the UI for siddhi module to wrapp up with first launch of ganitagya with its most primitive features to work into and expand in later launch plan which is left for after launch thinking and brainstorming session.
+
