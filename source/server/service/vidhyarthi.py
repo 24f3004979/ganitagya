@@ -6,11 +6,12 @@ Functions
 '''
 from fastapi import Depends
 
-from server.models.student import Student, status 
+from server.models.student import Student
 from sqlmodel import select
 from server.database import get_session
 from server.exceptions import UserDoesNotExist
 from sqlalchemy.orm.attributes import flag_modified
+from server.dev_log import *
 
 class Vidhyarthi:
     '''
@@ -24,11 +25,22 @@ class Vidhyarthi:
         self.student_id = student_id  # we can fetch student object form DB with geting function
 
     def get_student_object(self):
+        '''
+        Need to initiate a student object first into DB with given student id fetched from user table, to initiate the student object -> Vidhyarthi moudle failing core problem
+        '''
+        student_unit = Student(student_id=self.student_id)
 
         statement = select(Student).where(Student.student_id == self.student_id)
 
         with next(get_session()) as session:
             try:
+                session.add(student_unit)
+                session.commit()
+                session.refresh(student_unit)
+
+                # Loading Student Object from DB
+                log.info(f"Student Object initiated into student table")
+
                 student_unit = session.exec(statement).first()
                 if student_unit is None:
                     raise UserDoesNotExist
@@ -45,7 +57,7 @@ class Vidhyarthi:
         make sure to handle missing topic problem if wrong topic passed different from global level
         '''
         student_object = self.get_student_object()
-        student_object.knowledge_graph[topic_id] = status.STARTED  # FIX: Add enum object at status with student
+        student_object.knowledge_graph[topic_id] = 'started'  # FIX: Add enum object at status with student
 
         flag_modified(student_object, "knowledge_graph")
         try:
