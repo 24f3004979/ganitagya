@@ -123,6 +123,7 @@ class Vidhyarthi:
 
         topic_reference = {}
         for topic_id, level in topics.items():
+            topic_id = int(topic_id)
             topic_name = decode(topic_id)
             if topic_name is None:
                 continue

@@ -3,6 +3,7 @@ from server.api.controllers import Registration
 from server.main import *
 from server.service.UserManager import *
 from server.schema.user_endpoint import Input
+from server.dev_log import *
 
 # Making a student Profile
 unit = Input(
@@ -27,4 +28,6 @@ def test_vidhyarthi_loading():
 def test_updating():
     v = Vidhyarthi(student_id=fetch_id)
     topic_update = v.update_topic(0, 1)
+    graph = v.build_graph()
+    log.info(f"Student Graph Response : {graph}")
     assert topic_update == True
