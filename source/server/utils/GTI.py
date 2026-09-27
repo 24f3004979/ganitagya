@@ -30,4 +30,5 @@ def decode(i:int):
     Simple index fetch from topic list
     '''
     if (i <= len(topics) - 1):
-        return topics[i] # Simple index fetch
+        return topics[i] # Simple index fetch 
+    return None

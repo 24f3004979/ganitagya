@@ -23,3 +23,8 @@ def test_vidhyarthi_loading():
     topic_addition = v.add_topic(0)
     # check weather db gets updated with this thing
     assert topic_addition == True
+
+def test_updating():
+    v = Vidhyarthi(student_id=fetch_id)
+    topic_update = v.update_topic(0, 1)
+    assert topic_update == True
