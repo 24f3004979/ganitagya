@@ -8,10 +8,11 @@ Then with final api of siddhi modules we can wrap a front end interface and make
 
 Wraping whole application into simple flow with user to knowledge graphing view
 
+## Current Focus targets
++ Making siddhi orchistration unit ->  Student quiz engine wrapper
++ Layering final interfaces for application wrap
++ Production tests suits and integration plans
 
-1. Login working with authentication and token managers
-2. Siddhi orchistrating functions for final routing services of siddhi module
-3. Mool graph path creation - student graph update and persistent storage
 
 --- 
 

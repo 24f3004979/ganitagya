@@ -1,7 +1,7 @@
 import logging
 
 # Temporary Loging File
-log_path = "/home/madhav/workspace/projects/ganitagya/app.log"
+log_path = "/home/madhav/workstation/projects/ganitagya/app.log"
 
 logging.basicConfig(
     filename=log_path,

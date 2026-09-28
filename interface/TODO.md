@@ -5,7 +5,7 @@
 
 ----- 
 **Priority Listing**
-1. Vidhyarthi Modeling for student management
+1. Vidhyarthi Moeling for student management
 2. Siddhi final abstract controller unit
 3. Wrapping siddhi with vidhyarthi-mool into one phase for final wrap up
 

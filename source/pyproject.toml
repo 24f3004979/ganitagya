@@ -19,6 +19,7 @@ dependencies = [
     "python-dotenv>=1.2.3",
     "python-multipart>=0.0.32",
     "sqlmodel>=0.0.42",
+    "sympy>=1.14.0",
     "uvicorn[standard]>=0.52.4",
 ]
 
