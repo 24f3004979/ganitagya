@@ -16,7 +16,11 @@ Students struggle with math, lack of numerical understanding, Abstract ideas wit
 
 ## Usage 🚀
 
-*works in linux 🐧* - Http way :)
+Fundamental requirements
++ You may should have postgresql
++ configure your db with link in .env file :)
+
+*works in linux 🐧*
 ```bash
 git clone https://github.com/24f3004979/ganitagya.git
 cd ganitagya
