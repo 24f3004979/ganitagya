@@ -45,7 +45,11 @@ class SiddhiEngine:
         }
         quantity : questions to produce
 
-        requests node_traversal for upgrade or downgrade with fallback for same level, saves the changes for final evaluation matrices
+        Encodes for packaging questions with prev-response
+        1: both right +2 level increment
+        0: one right one wrong same level
+        -1: topic down grades for generating questions
+
         '''
         if prev_response == 1:
             self.level += 2
@@ -93,7 +97,7 @@ class SiddhiEngine:
 
     def bulk_generate(self, quantity:int, level:int) -> list[str]:
         questions = []
-        for i in range(quantity):
+        for i in range(0, quantity):
             elem = self.generate(level)
             questions.append(elem)
         return questions
