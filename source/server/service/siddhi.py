@@ -2,10 +2,27 @@
 SiddhiEngine
 Generates questions based on users previous responses
 '''
+from sympy import parse_expr
+import math
+import copy
+
+from server.exceptions import NotValidQuestion
 from server.service.prashna import *  # Load for prashna module
 from server.service.mool import *
 from server.service.prashna_template import TEMPLATES
 from server.service import RootConceptGraph as rcg
+
+def evalutate(expression):
+    '''
+    fails => None
+    '''
+    try:
+        result = parse_expr(expression)
+        return result
+    except Exception as e:
+        log.info(f'Evaluation failed with : {e}')
+        return None
+
 
 class SiddhiEngine:
     '''
@@ -65,7 +82,7 @@ class SiddhiEngine:
 
 
     # Generate question with same level
-    def generate(self, level=1):
+    def generate(self):
         '''
         Just Makes the question with given level details
         with using target_topic at class level
@@ -81,24 +98,42 @@ class SiddhiEngine:
         spin instance for prashna
         generate
         '''
+        level = self.level
         target = self.target_topic
-        template = TEMPLATES[target]  # question template
+        # Making deep copy from gloabal variable to not change it on the go 
+        template = copy.deepcopy(TEMPLATES[target])
         hyper_parameter = 2  # Must be int
 
         length = level * hyper_parameter
-        # range edit
-        template.lower_bound -= 10 * level * hyper_parameter
-        template.upper_bound += 10 * level * hyper_parameter
+        #INFO : It makes too harsh questions for simple levels | Need a refactor for designed tuned generation sequence
+        if level > 3: # only after level 3
+            template.lower_bound -= 10 * level * hyper_parameter # Required for simple basic arithmatic guardrailing
+        template.upper_bound += 2 * level * hyper_parameter  # Downgrading a bit for simple generations
         grouping = level
 
         question_unit = Prashna(template)
         question_generated = question_unit.generate(grouping, length=length)
+        
+        #INFO: Basic Guard rail for not generating non-existent questions also negetives for small levels
+
+        try:
+            result = evalutate(question_generated)
+            if result < 0:
+                raise NotValidQuestion
+        except NotValidQuestion: 
+            log.info(f'Recursive call for generation due to incorrect question : {question_generated}')
+            return self.generate(level=level)
+
+        except Exception as e:
+            log.info(f'May be Non-solvable question : {e}')
+            log.info(f'Recursive call for generation due to incorrect question : {question_generated}')
+            return self.generate(level=level)
         return question_generated
 
-    def bulk_generate(self, quantity:int, level:int) -> list[str]:
+    def bulk_generate(self, quantity:int) -> list[str]:
         questions = []
         for i in range(0, quantity):
-            elem = self.generate(level)
+            elem = self.generate()
             questions.append(elem)
         return questions
 

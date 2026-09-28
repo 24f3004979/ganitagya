@@ -18,31 +18,41 @@ START_LEVEL = 1
 
 
 class Vidhyarthi:
+    #TODO: Need one function to check if given topic code is in students dictionary or not
     def __init__(self, student_id: int):
         self.student_id = student_id
 
-    def get_student_object(self, session):
+    def have_topic(self,topic):
+        with get_session() as session:
+            unit = self.get_student_object(session)
+            topics = list(unit.knowledge_graph.keys())
+            if topic in topics:
+                return unit.knowledge_graph[topic]  # current level
+            return False # topic does not contains
+
+    def get_student_object(self):
         '''
         get or create sequence,
         we search for existing student with given information
         or create one new student object with given id information and initiate graph
         '''
-        statement = select(Student).where(Student.student_id == self.student_id)
-        student_unit = session.exec(statement).first()
+        with get_session() as session:
+            statement = select(Student).where(Student.student_id == self.student_id)
+            student_unit = session.exec(statement).first()
 
-        if student_unit is not None:
-            return student_unit
+            if student_unit is not None:
+                return student_unit
 
-        student_unit = Student(student_id=self.student_id, knowledge_graph={})
-        try:
-            session.add(student_unit)
-            session.commit()
-            session.refresh(student_unit)
-            log.info(f"Student Object initiated into student table")
-            return student_unit
-        except Exception as e:
-            session.rollback()
-            raise Exception(f"Exception in Student initiation sequence with : {e}")
+            student_unit = Student(student_id=self.student_id, knowledge_graph={})
+            try:
+                session.add(student_unit)
+                session.commit()
+                session.refresh(student_unit)
+                log.info(f"Student Object initiated into student table")
+                return student_unit
+            except Exception as e:
+                session.rollback()
+                raise Exception(f"Exception in Student initiation sequence with : {e}")
 
     def db_handle(self, session, unit, modification=None):
         if modification is not None:
@@ -81,7 +91,7 @@ class Vidhyarthi:
             if topic_key in student_object.knowledge_graph:
                 return None
 
-            student_object.knowledge_graph[topic_key] = START_LEVEL
+            student_object.knowledge_graph[topic_key] = 1
             self.db_handle(session, student_object, "knowledge_graph")
             return True
 
@@ -101,7 +111,7 @@ class Vidhyarthi:
                 log.warning(f"Topic {topic_id} not present in student knowledge graph")
                 return None
 
-            current_level = student_object.knowledge_graph[topic_key]
+            current_level = int(student_object.knowledge_graph[topic_key]) # fetch level
             result = current_level + update_modification
 
             if (result < MIN_LEVEL) or (result > MAX_LEVEL):

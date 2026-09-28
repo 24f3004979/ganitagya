@@ -7,3 +7,7 @@ class UserExists(Exception):
 
 class UserDoesNotExist(Exception):
     pass # Raised for login proceeding example with non-existing user
+
+class NotValidQuestion(Exception):
+    pass # Not Valid questions
+

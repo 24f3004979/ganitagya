@@ -11,5 +11,3 @@ def test_generation():
 def test_evaluation():
     resp =  unit.evaluation([80,90])
     assert type(resp) == int
-
-    

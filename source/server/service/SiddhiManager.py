@@ -1,11 +1,15 @@
-from sympy import parse_expr
 import math
 
 # from server.database import get_session
+from server.utils.GTI import *
 from server.models.student import Student 
+from server.service.vidhyarthi import Vidhyarthi
+
 from server.utils import *
-from server.service.siddhi import SiddhiEngine
+from server.service.siddhi import SiddhiEngine, evalutate
 from server.dev_log import *
+from server.database import get_session
+
 
 '''
 Quiz Manager wrapper
@@ -14,13 +18,13 @@ No DB connection for now needs setup for DB connection setup
 documentation : docs/QuizFlow.md
 '''
 
-#TODO: Need to tweak the question generation unit to not go into negetive number for foundational arithmatics :)
-
 class SiddhiUnit:
     def __init__(self, student_id:int, starting_topic:str, number_of_questions:int=10, batch_size=2):
         self.student_id = student_id
         self.batch_size = batch_size
         self.starting_topic = starting_topic
+
+        self.vidhyarthi_unit = Vidhyarthi(student_id=student_id)
 
         # Generation Sequence Numbers
         self.to_generate = number_of_questions
@@ -47,16 +51,19 @@ class SiddhiUnit:
         previous response handle would take by evluation sequence
         removing generation count rails
         '''
-        # Evaluation Unit would seed prev_response tag for given question
-        print(f"Batch size for question generation : {self.batch_size}")
-        
+        if self.generated_count > self.to_generate:
+            return None # Over fow Need to be taken care with handler about generation stoping limmit
+
         # Using Package question end point for generating questions
         generated_questions = self.Engine.package_question(prev_response=prev_response, quantity=self.batch_size) # List of expressions
         log.info(f"Using Package questions endpoint for generation sequence : {generated_questions}")
         questions = []
         for _ in generated_questions:
             questions.append(_) # Internal questions listing
+
+        log.info(f"Questions generated : {questions}")
         self.question_index = questions # Indexing local questions list
+        self.generated_count += self.batch_size # updating questions output
         return questions
     
     def evaluation(self, user_response:list[int]):
@@ -79,7 +86,7 @@ class SiddhiUnit:
         for expression_string in self.question_index:
             solution = None # unusual error
             try:
-                result = parse_expr(expression_string)
+                result = evalutate(expression_string)
             except Exception as e:
                 raise Exception(f"Sympy problem with given question : {e}")
             solution_list.append(result)  # Solution listing
@@ -91,18 +98,53 @@ class SiddhiUnit:
 
             if user_soln == solution_list[i]:
                 validation_list.append(1)
+                i+=1
             else:
                 validation_list.append(0)
+                i+=1
 
         # simple ratio based encoding logic
         log.info(f"question list : \n {self.question_index} solution list : \n {solution_list} user_solution : \n {user_response}")
         ratio = int(math.floor((sum(validation_list) / len(validation_list)) * 100))
+
+        #TODO: Upgrade a down grade this quiz generator internal & student DB through StudentManger Object handle
+        '''
+        with vidhyarthi_unit we can tweak student object
+        fetch current topic from engine variable
+        with self engine we can tweak the question level
+        tweaking topic change call -> Note transaction in current object module
+
+        Dedicated Student handle for this case is required for gearing up student DB round
+        '''
+        current_topic = self.Engine.target_topic
+
         if ratio > 70:
-            print(f"Upgrading question level")
-            return 1 # upgrades level
+            log.info("Gearig Up")
+            self.StrongTopics.append(current_topic)
+            self.gear(+1, topic=current_topic)
+            return 1
         elif ratio < 50:
-            print(f"Keeping the same level")
-            return 0  # Same level
-        else:
-            print(f'Down grading topic switch')
+            log.info("Gearing Down")
+            self.gear(-1, topic=current_topic)
             return -1
+        else:
+            log.info("Keeping Same Level")
+            return 0
+
+    def gear(self, gear:int, topic:str):
+        fetch = self.vidhyarthi_unit.have_topic(topic)
+        if not(fetch):
+            topic_id = encode(topic)
+            self.vidhyarthi_unit.add_topic(topic_id)
+            gear = 1 # ignition
+        current_level = int(fetch)
+        switch = current_level + gear 
+        if (current_level > 1)and((current_level + gear) >= 1):
+            self.vidhyarthi_unit.update_topic(topic_id, gear) # only update with cap
+            self.Engine.level += gear
+        if not(current_level + gear > 3):
+            self.vidhyarthi_unit.update_topic(topic_id, gear) 
+            self.Engine.level += gear
+        if switch < 1:
+            self.WeakTopics.append(topic) # Gloabal Update
+            self.Engine.topic_switch() # Downgrading Topic
