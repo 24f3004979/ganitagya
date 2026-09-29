@@ -70,10 +70,10 @@ class SiddhiEngine:
         '''
         if prev_response == 1:
             self.level += 2
-            return self.bulk_generate(quantity, self.level)
+            return self.bulk_generate(quantity)
 
         elif prev_response == 0:
-            return self.bulk_generate(quantity, self.level)
+            return self.bulk_generate(quantity)
 
         # Down grading current topic level
         self.topic_switch()
@@ -122,12 +122,12 @@ class SiddhiEngine:
                 raise NotValidQuestion
         except NotValidQuestion: 
             log.info(f'Recursive call for generation due to incorrect question : {question_generated}')
-            return self.generate(level=level)
+            return self.generate()
 
         except Exception as e:
             log.info(f'May be Non-solvable question : {e}')
             log.info(f'Recursive call for generation due to incorrect question : {question_generated}')
-            return self.generate(level=level)
+            return self.generate()
         return question_generated
 
     def bulk_generate(self, quantity:int) -> list[str]:

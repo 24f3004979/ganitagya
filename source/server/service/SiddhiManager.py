@@ -2,7 +2,6 @@ import math
 
 # from server.database import get_session
 from server.utils.GTI import *
-from server.models.student import Student 
 from server.service.vidhyarthi import Vidhyarthi
 
 from server.utils import *
@@ -91,17 +90,14 @@ class SiddhiUnit:
                 raise Exception(f"Sympy problem with given question : {e}")
             solution_list.append(result)  # Solution listing
 
-        # Simple iteration and verification
-        i = 0
         validation_list = [] # 1 for correct and 0 for wrong
-        for user_soln in user_response:
+        log.info(f'Validation and solution listing : {user_response} with solution list : {solution_list}')
 
-            if user_soln == solution_list[i]:
+        for user_solution, actual_answer in zip(user_response, solution_list):
+            if user_solution == actual_answer:
                 validation_list.append(1)
-                i+=1
             else:
                 validation_list.append(0)
-                i+=1
 
         # simple ratio based encoding logic
         log.info(f"question list : \n {self.question_index} solution list : \n {solution_list} user_solution : \n {user_response}")
@@ -131,20 +127,24 @@ class SiddhiUnit:
             log.info("Keeping Same Level")
             return 0
 
-    def gear(self, gear:int, topic:str):
-        fetch = self.vidhyarthi_unit.have_topic(topic)
-        if not(fetch):
+    def gear(self, gear: int, topic: str):
+        with get_session() as session:
+            self.vidhyarthi_unit.session = session
+            self.vidhyarthi_unit.get_student_object()
+
             topic_id = encode(topic)
-            self.vidhyarthi_unit.add_topic(topic_id)
-            gear = 1 # ignition
-        current_level = int(fetch)
-        switch = current_level + gear 
-        if (current_level > 1)and((current_level + gear) >= 1):
-            self.vidhyarthi_unit.update_topic(topic_id, gear) # only update with cap
+            level = self.vidhyarthi_unit.have_topic(str(topic_id))
+            if not level:
+                self.vidhyarthi_unit.add_topic(topic_id)
+                level = '1'
+
+            new_level = int(level) + gear
+            if new_level < 1:
+                self.WeakTopics.append(topic)
+                self.Engine.topic_switch()
+                return
+            if new_level > 3:
+                return
+
+            self.vidhyarthi_unit.update_topic(topic_id, gear)
             self.Engine.level += gear
-        if not(current_level + gear > 3):
-            self.vidhyarthi_unit.update_topic(topic_id, gear) 
-            self.Engine.level += gear
-        if switch < 1:
-            self.WeakTopics.append(topic) # Gloabal Update
-            self.Engine.topic_switch() # Downgrading Topic
