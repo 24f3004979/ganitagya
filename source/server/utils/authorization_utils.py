@@ -3,6 +3,10 @@ import jwt
 from fastapi import HTTPException, status
 from server.config import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY, ALGORITHM
 from server.dev_log import *
+from server.database import get_session
+
+from server.models.user import *
+from sqlmodel import select
 
 # Internal Moudle dependency
 from server.schema.user_endpoint import Input
@@ -41,3 +45,15 @@ async def get_current_user(token)->str:  # working tested
                 headers={"WWW-Authenticate":"Bearer"}
 
                 )
+
+def get_id(username:str)->int|None:
+    try:
+        with (get_session()) as session:
+            stm = select(User).where(User.email == username)
+            obj = session.exec(stm)
+            if obj is not None:
+                return obj.id
+
+    except Exception as e:
+        log.info(f"Generic Exception handle : {e}")
+        return None
