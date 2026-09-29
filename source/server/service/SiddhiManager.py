@@ -118,13 +118,15 @@ class SiddhiUnit:
             log.info("Gearig Up")
             self.StrongTopics.append(current_topic)
             self.gear(+1, topic=current_topic)
+            log.info('Gearing Up Engine and student map')
             return 1
         elif ratio < 50:
             log.info("Gearing Down")
             self.gear(-1, topic=current_topic)
+            log.info("Gearing Down Engine and student map")
             return -1
         else:
-            log.info("Keeping Same Level")
+            log.info("No changes to Levels and engine")
             return 0
 
     def gear(self, gear: int, topic: str):
