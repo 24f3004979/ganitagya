@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from server.database import *
 from server.dev_log import *
 from server.api.v1.routes import router as v1_router
+from server.api.v1.siddhi_routes import router
 
 
 app = FastAPI(title='server')
@@ -27,6 +28,7 @@ SQLModel.metadata.drop_all(engine)  # reset data base
 Initiate_database() # Initiates all required models
 
 app.include_router(v1_router, prefix="/api/v1")
+app.include_router(router)
 
 # Root routing
 @app.get("/")

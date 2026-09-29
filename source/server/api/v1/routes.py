@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status, Request
-from server.api.controllers import Registration, Login, get_role
+from server.api.controllers import Registration, Login, get_role, get_id
 from server.schema.user_endpoint import *
 from server.utils.authorization_utils import *
 
@@ -27,7 +27,7 @@ async def fetch_me(token:str):
     return current_user
 
 @router.get("/fetch-id")
-async def fetch_id(user_name:str):
+def fetch_id(user_name:str):
     return get_id(user_name)
 
 @router.get("/role")

@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
 from server.dev_log import *
-from server.controller import start_quiz, answer_quiz, abandon_quiz  # adjust to your controller module path
+from server.api.controllers import start_quiz, answer_quiz, abandon_quiz  # adjust to your controller module path
 
 router = APIRouter(prefix="/quiz", tags=["quiz"])
 

@@ -2,9 +2,9 @@
 export const BASE_URL: string = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 
 export const ENDPOINTS = {
-  register: '/register',            // TODO: match your user router prefix
-  login: '/login',                  // TODO: match your user router prefix
-  studentId: '/student/id',         // TODO: your "username -> student id" route (called with ?username=)
+  register: '/api/v1/register',            // TODO: match your user router prefix
+  login: '/api/v1/login',                  // TODO: match your user router prefix
+  studentId: '/api/v1/fetch-id',         // TODO: your "username -> student id" route (called with ?username=)
   quizStart: '/quiz/start',
   quizAnswer: '/quiz/answer',
   quizAbandon: (studentId: number) => `/quiz/abandon/${studentId}`

@@ -67,6 +67,19 @@ def get_role(username:str):
     except Exception as e:
         raise Exception(f"Role fetch failed with problem : {e}")
 
+def get_id(username:str):
+    try:
+        unit = UserManager(username)
+        if (unit.existance == True):
+            return {unit.user_object.id}
+        else:
+            return {"message":"Id Fetch failed"}
+    except UserDoesNotExist:
+        return {"message" : "Role fetch failed | User Does not exist"}
+    except Exception as e:
+        raise Exception(f"Role fetch failed with problem : {e}")
+
+
 # ------------------ Controller Wrappers for Siddhi web interface Units ---------------------------
 
 '''
@@ -112,6 +125,7 @@ class Mulyankan:
         }
         return info  # Final Result
 
+# Memory based quiz management system
 import time, threading
 
 _QUIZZES: dict[int, tuple[Mulyankan, float]] = {}
