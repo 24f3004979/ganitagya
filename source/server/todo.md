@@ -9,14 +9,7 @@ Then with final api of siddhi modules we can wrap a front end interface and make
 Wraping whole application into simple flow with user to knowledge graphing view
 
 ## Current Focus targets
-+ Making siddhi orchistration unit ->  Student quiz engine wrapper
-  With memory layer evaluation utilities are working 
-  connection to student modules is required with DB connection
-- Final connection with DB of student required with central looping logic for quiz generation layer
-wrap with api end point and siddhi module completes
-+ Layering final interfaces for application wrap
-+ Production tests suits and integration plans
-
++ wrapping api end points required
 
 --- 
 

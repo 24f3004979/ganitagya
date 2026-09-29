@@ -1,3 +1,5 @@
+from contextlib import contextmanager
+
 from sqlmodel import SQLModel, create_engine, Session
 from dotenv import load_dotenv
 import os
@@ -18,6 +20,7 @@ engine = create_engine(database_url, echo=True)
 def Initiate_database():
     SQLModel.metadata.create_all(engine)
 
+@contextmanager
 def get_session():
     with Session(engine) as session:
         yield session

@@ -4,7 +4,6 @@ from fastapi import Depends
 
 from server.models.student import Student
 from sqlmodel import select
-from server.database import get_session
 from server.exceptions import UserDoesNotExist
 from sqlalchemy.orm.attributes import flag_modified
 from server.dev_log import *
@@ -19,16 +18,18 @@ START_LEVEL = 1
 
 class Vidhyarthi:
     #TODO: Need one function to check if given topic code is in students dictionary or not
-    def __init__(self, student_id: int):
+    def __init__(self, student_id: int, session=None):
         self.student_id = student_id
+        self.session = session
 
     def have_topic(self,topic):
-        with get_session() as session:
-            unit = self.get_student_object(session)
-            topics = list(unit.knowledge_graph.keys())
-            if topic in topics:
-                return unit.knowledge_graph[topic]  # current level
-            return False # topic does not contains
+        session = self.session
+
+        unit = self.get_student_object()
+        topics = list(unit.knowledge_graph.keys())
+        if topic in topics:
+            return unit.knowledge_graph[topic]  # current level
+        return False # topic does not contains
 
     def get_student_object(self):
         '''
@@ -36,23 +37,25 @@ class Vidhyarthi:
         we search for existing student with given information
         or create one new student object with given id information and initiate graph
         '''
-        with get_session() as session:
-            statement = select(Student).where(Student.student_id == self.student_id)
-            student_unit = session.exec(statement).first()
+        session = self.session
 
-            if student_unit is not None:
-                return student_unit
+        statement = select(Student).where(Student.student_id == self.student_id)
+        student_unit = session.exec(statement).first()
+        log.info(f"student fetch output : {student_unit}")
 
-            student_unit = Student(student_id=self.student_id, knowledge_graph={})
-            try:
-                session.add(student_unit)
-                session.commit()
-                session.refresh(student_unit)
-                log.info(f"Student Object initiated into student table")
-                return student_unit
-            except Exception as e:
-                session.rollback()
-                raise Exception(f"Exception in Student initiation sequence with : {e}")
+        if student_unit is not None:
+            return student_unit
+
+        student_unit = Student(student_id=self.student_id, knowledge_graph={})
+        try:
+            session.add(student_unit)
+            session.commit()
+            session.refresh(student_unit)
+            log.info(f"Student Object initiated into student table")
+            return student_unit
+        except Exception as e:
+            session.rollback()
+            raise Exception(f"Exception in Student initiation sequence with : {e}")
 
     def db_handle(self, session, unit, modification=None):
         if modification is not None:
@@ -85,15 +88,15 @@ class Vidhyarthi:
             log.warning(f"Attempt to add unknown topic_id: {topic_id}")
             return None
 
-        with next(get_session()) as session:
-            student_object = self.get_student_object(session)
+        session = self.session
+        student_object = self.get_student_object()
 
-            if topic_key in student_object.knowledge_graph:
-                return None
+        if topic_key in student_object.knowledge_graph:
+            return None
 
-            student_object.knowledge_graph[topic_key] = 1
-            self.db_handle(session, student_object, "knowledge_graph")
-            return True
+        student_object.knowledge_graph[topic_key] = '1'
+        self.db_handle(session, student_object, "knowledge_graph")
+        return True
 
     def update_topic(self, topic_id: int, update_modification: int):
         '''
@@ -104,32 +107,34 @@ class Vidhyarthi:
         '''
         topic_key = str(topic_id)
 
-        with next(get_session()) as session:
-            student_object = self.get_student_object(session)
+        session = self.session
+        student_object = self.get_student_object()
 
-            if topic_key not in student_object.knowledge_graph:
-                log.warning(f"Topic {topic_id} not present in student knowledge graph")
-                return None
+        if topic_key not in student_object.knowledge_graph:
+            log.warning(f"Topic {topic_id} not present in student knowledge graph")
+            return None
 
-            current_level = int(student_object.knowledge_graph[topic_key]) # fetch level
-            result = current_level + update_modification
+        current_level = int(student_object.knowledge_graph[topic_key]) # fetch level
+        result = current_level + update_modification
 
-            if (result < MIN_LEVEL) or (result > MAX_LEVEL):
-                log.warning(f"Wrong Update Request recieved exceeding limits of current cap and scope")
-                return None
+        if (result < MIN_LEVEL) or (result > MAX_LEVEL):
+            log.warning(f"Wrong Update Request recieved exceeding limits of current cap and scope")
+            return None
 
-            student_object.knowledge_graph[topic_key] = result
-            self.db_handle(session, student_object, "knowledge_graph")
-            return True
+        result = str(result)
+
+        student_object.knowledge_graph[topic_key] = result
+        self.db_handle(session, student_object, "knowledge_graph")
+        return True
 
     def build_graph(self):
         '''
         Final Graph construction for front end units to build graph for
         Making graphical represenation of vidhyarthi current levels
         '''
-        with next(get_session()) as session:
-            student_object = self.get_student_object(session)
-            topics = dict(student_object.knowledge_graph)
+        session = self.session
+        student_object = self.get_student_object()
+        topics = dict(student_object.knowledge_graph)
 
         topic_reference = {}
         for topic_id, level in topics.items():
