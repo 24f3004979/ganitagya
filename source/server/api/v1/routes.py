@@ -4,6 +4,7 @@ from server.schema.user_endpoint import *
 from server.utils.authorization_utils import *
 
 
+
 router = APIRouter()
 
 @router.get("/health")
@@ -25,6 +26,9 @@ async def fetch_me(token:str):
     current_user = await get_current_user(token)
     return current_user
 
+@router.get("/fetch-id")
+async def fetch_id(user_name:str):
+    return get_id(user_name)
 
 @router.get("/role")
 def fetch_role(username:str):
