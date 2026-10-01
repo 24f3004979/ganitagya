@@ -1,0 +1,15 @@
+[project]
+name = "ganitagya-waitlist"
+version = "0.1.0"
+description = "Waitlist API for Ganitagya"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic[email]>=2.8",
+    "pydantic-settings>=2.4",
+    "google-cloud-firestore>=2.19",
+]
+
+[dependency-groups]
+dev = ["httpx>=0.27"]

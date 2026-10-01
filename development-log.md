@@ -145,3 +145,23 @@ use tmux inside nvim setup
 Learnings about vue core concept
     We can craf components and views to build our application, where views work as above component using
 base components to render into page, We can compose with the help of underlying components.
+
+Git Branching based development
+- Branching out for feature/auth | To push changes | git push origin feature/auth
+
+------
+
+
+Mock up for production grade with launching end to end waitlisting website for user
+
+Production deployment final command for google cloud
+```bash
+# Final deploy of waitlisting production system
+gcloud run deploy ganitagya-waitlist \
+  --source . \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --service-account waitlist-api@YOUR_PROJECT_ID.iam.gserviceaccount.com \
+  --max-instances 2 \
+  --set-env-vars "^@^ALLOWED_ORIGINS=http://localhost:5173,https://yourdomain.com"
+  ```

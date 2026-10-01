@@ -1,7 +1,8 @@
 # TODO
-+ User -> Student Table connection into core data base system
-+ vidhyarthi module foundations with simple graph referals and siddhi statistics connection
-> simple vidhyarthi primitive module for modeling student into simple way, knowledge modeling along with simple statistical plugin from siddhi module
+Final wrapper required for the application for final launch
+
++ Learn to deploy end to end for waitlisting work for ganitagya beta version
+
 
 ----- 
 **Priority Listing**
