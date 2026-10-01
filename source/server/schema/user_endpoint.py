@@ -15,3 +15,4 @@ class Input(BaseModel):
     '''
     email: str
     password: str
+

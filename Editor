@@ -17,7 +17,6 @@ No DB connection for now needs setup for DB connection setup
 documentation : docs/QuizFlow.md
 """
 
-
 class SiddhiUnit:
     def __init__(
         self,

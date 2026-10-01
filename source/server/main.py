@@ -1,7 +1,8 @@
-'''
+"""
 MAIN FILE
 Central script for building the application up
-'''
+"""
+
 # External dependency
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -13,7 +14,7 @@ from server.api.v1.routes import router as v1_router
 from server.api.v1.siddhi_routes import router
 
 
-app = FastAPI(title='server')
+app = FastAPI(title="server")
 
 # cross origin request
 app.add_middleware(
@@ -25,24 +26,31 @@ app.add_middleware(
 )
 
 SQLModel.metadata.drop_all(engine)  # reset data base
-Initiate_database() # Initiates all required models
+Initiate_database()  # Initiates all required models
 
 app.include_router(v1_router, prefix="/api/v1")
 app.include_router(router)
 
+
 # Root routing
 @app.get("/")
 def root():
-    log.info('serving Root page')
+    log.info("serving Root page")
     return "Hello fast api"
+
 
 # Server Made with Uvicorn
 def main():
     import uvicorn
-    uvicorn.run("server.main:app",
-                host="0.0.0.0",
-                port=8000, reload=True,
-                reload_excludes=["db/","app.log"])
+
+    uvicorn.run(
+        "server.main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+        reload_excludes=["db/", "app.log"],
+    )
+
 
 if __name__ == "__main__":
     main()

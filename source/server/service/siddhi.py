@@ -35,7 +35,7 @@ class SiddhiEngine:
     '''
     def __init__(self, target_topic):
         self.target_topic = target_topic
-        self.template = TEMPLATES[target_topic]
+        self.template = TEMPLTES[target_topic]
         # Loading topic template for question generation instance
             
         # Internal functions would manage these transactions

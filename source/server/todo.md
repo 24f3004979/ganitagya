@@ -9,7 +9,10 @@ Then with final api of siddhi modules we can wrap a front end interface and make
 Wraping whole application into simple flow with user to knowledge graphing view
 
 ## Current Focus targets
-+ wrapping api end points required
+
++ Test out final api end points
++ Make signup and registration page working
++ Quiz page to work with other components
 
 --- 
 

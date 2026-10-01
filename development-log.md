@@ -124,3 +124,24 @@ New Project Updates for today last dev session
 
 + Stitch with the UI for siddhi module to wrapp up with first launch of ganitagya with its most primitive features to work into and expand in later launch plan which is left for after launch thinking and brainstorming session.
 
+-----
+
+[29/09/2026]
++ api wrapper for siddhi module
++ Foundational Interface units for the project
++ With dedicated component for syncing with quiz object through backend unit
+
+[30/09/2026]
++ Made nvim setup for working
++ Api End point for user creatioon is not working with current setup
+    Need to refactor the current front end facing unit
++ Wire up the working data base end point wrapper documentation with working front end units    
+
+use :file Name the buffer
+use tmux inside nvim setup
+
+------
+
+Learnings about vue core concept
+    We can craf components and views to build our application, where views work as above component using
+base components to render into page, We can compose with the help of underlying components.
