@@ -64,7 +64,7 @@ def rate_limit(request: Request):
 
 class JoinRequest(BaseModel):
     email: EmailStr = Field(max_length=254)
-    website: str = ""  # honeypot: real users never fill this
+    website: str = ""
 
 
 @app.get("/health")
@@ -80,8 +80,9 @@ def join_waitlist(body: JoinRequest, request: Request):
     email = str(body.email).strip().lower()
     try:
         request.app.state.storage.add(email)
-    except Exception:
+    except Exception as e:  # Awesome suggestions are being produced through the ruff thing to support python
         raise HTTPException(500, "Something went wrong. Please try again.")
 
     # Same response whether new or already on the list, so nobody can probe who has joined
     return {"ok": True}
+

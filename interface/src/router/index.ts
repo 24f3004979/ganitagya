@@ -1,11 +1,9 @@
-import { createWebHistory, createRouter} from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import WaitList from '../views/WaitList.vue';
+import { createWebHistory, createRouter } from 'vue-router';
+import Auth from '../views/Auth.vue';
 
 // Added explicit TypeScript typing for routes
 export const routes = [
-  { path: '/', component: HomeView },
-  { path: '/login', component: WaitList },
+  { path: '/auth', component: Auth },
 ];
 
 export const router = createRouter({

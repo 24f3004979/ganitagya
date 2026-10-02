@@ -5,8 +5,10 @@ from server.schema.user_endpoint import Input
 from server.utils.authorization_utils import *
 from server.service.SiddhiManager import *
 
+from fastapi import HTTPException, status
 
-'''
+
+"""
 Controller Functions
 Front end facing layer for backend service functions
 
@@ -14,33 +16,36 @@ Targeted Elementis
 1. Registration [Working]
 2. Login [Broken]
 3. Siddhi - Dedicated Controllers required [ abstract wrapper functions]
-'''
+"""
 
-def Registration(information:Input):  # Working tested
-    '''
-    Need to initiate Student Table entries too along with student entry
-    '''
-    log.info(f'Registration Initiated : {information}')
+
+def Registration(information: Input):
+    log.info(
+        "Registration Initiated"
+    )  # avoid logging the full input, it contains the password
     try:
-        unit = UserManager('')
+        unit = UserManager("")
         unit.create(information)
-        return {"message" : "Registration completed", "status": 200}
+        return {"message": "Registration successful"}
     except UserExists:
-        return {"message" : "User Exist", "status" : 300}
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT, detail="User already exists"
+        )
     except Exception as e:
-        return {"message" : "Registration Failed", "status" : 404}
-
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail=f"Registration failed: {e}"
+        )
 
 
 async def Login(form_data: Input):  # Working tested
-    '''
+    """
     Fetch UserManger from form data
     check if user exist with its parameter -> proceed to call with verification
 
     Use the verify function for authorizing access into application with protection of routes
 
     pydantic class Not fully defined Error Being traced
-    '''
+    """
     log.info("Login Function initiating")
     try:
         email = form_data.email
@@ -50,80 +55,85 @@ async def Login(form_data: Input):  # Working tested
             if unit.verify_credentials(form_data.password):
                 token = create_access_token(email)  # Access Token generated with signed
                 return token
-            return {"message":" Either Username or password is wrong", "status":404}
-        return {"message": "User Does Not Exist, Register your self first", "status":200}
+            return {"message": " Either Username or password is wrong", "status": 404}
+        return {
+            "message": "User Does Not Exist, Register your self first",
+            "status": 200,
+        }
     except Exception as e:
         raise Exception(f"Login failed Exception with Problem trace of {e}")
 
-def get_role(username:str):
+
+def get_role(username: str):
     try:
         unit = UserManager(username)
-        if (unit.existance == True):
+        if unit.existance == True:
             return {unit.user_object.role}
         else:
-            return {"message":"No Existance"}
+            return {"message": "No Existance"}
     except UserDoesNotExist:
-        return {"message" : "Role fetch failed | User Does not exist"}
+        return {"message": "Role fetch failed | User Does not exist"}
     except Exception as e:
         raise Exception(f"Role fetch failed with problem : {e}")
 
-def get_id(username:str):
+
+def get_id(username: str):
     try:
         unit = UserManager(username)
-        if (unit.existance == True):
+        if unit.existance == True:
             return {unit.user_object.id}
         else:
-            return {"message":"Id Fetch failed"}
+            return {"message": "Id Fetch failed"}
     except UserDoesNotExist:
-        return {"message" : "Role fetch failed | User Does not exist"}
+        return {"message": "Role fetch failed | User Does not exist"}
     except Exception as e:
         raise Exception(f"Role fetch failed with problem : {e}")
 
 
 # ------------------ Controller Wrappers for Siddhi web interface Units ---------------------------
 
-'''
+"""
 Controller wrapper for Siddhi Engine endpoint creation
 featuring
 Quiz Managing functions at temporary memory level
 Db-connection for syncing questions to survive reload is into next refactor targets
-'''
+"""
+
 
 class Mulyankan:
-    '''
+    """
     Fancy Naming for final Quiz mentainer controller wrapper
     Final Layer for the endpoint for given functions of siddhi module
-    '''
-    def __init__(self, student_id:int, starting_topic:str):
+    """
+
+    def __init__(self, student_id: int, starting_topic: str):
         self.id = student_id
         self.starting_topic = starting_topic
         self.Manager = SiddhiUnit(student_id, starting_topic)
 
     def start(self):
-        '''
+        """
         Initiating root starting point
-        '''
+        """
         return self.Manager.generation(0)
 
     def next_question(self, previous_response):
-        '''
+        """
         Ends with None returning or end of quiz signal
         prev_resp [
             0: answer,
             1: answer
         ]
-        '''
+        """
         eval_code = self.Manager.evaluation(previous_response)
         return self.Manager.generation(eval_code)
 
     def get_report_information(self):
-        '''fetch report information with given quiz'''
+        """fetch report information with given quiz"""
         strong_topic, weak_topic = self.Manager.StrongTopics, self.Manager.WeakTopics
-        info = {
-            "strong topics" : strong_topic,
-            "weak topics" : weak_topic
-        }
+        info = {"strong topics": strong_topic, "weak topics": weak_topic}
         return info  # Final Result
+
 
 # Memory based quiz management system
 import time, threading
@@ -132,10 +142,12 @@ _QUIZZES: dict[int, tuple[Mulyankan, float]] = {}
 _LOCK = threading.Lock()
 TTL = 60 * 30  # 30 min idle
 
+
 def _cleanup():
     now = time.time()
     for sid in [k for k, (_, t) in _QUIZZES.items() if now - t > TTL]:
         del _QUIZZES[sid]
+
 
 def start_quiz(student_id: int, topic: str):
     with _LOCK:
@@ -143,6 +155,7 @@ def start_quiz(student_id: int, topic: str):
         quiz = Mulyankan(student_id, topic)
         _QUIZZES[student_id] = (quiz, time.time())
     return quiz.start()
+
 
 def answer_quiz(student_id: int, answers: list[int]):
     with _LOCK:
@@ -157,6 +170,7 @@ def answer_quiz(student_id: int, answers: list[int]):
             _QUIZZES.pop(student_id, None)
         return {"message": "Quiz complete", "report": quiz.get_report_information()}
     return result
+
 
 def abandon_quiz(student_id: int):
     with _LOCK:
