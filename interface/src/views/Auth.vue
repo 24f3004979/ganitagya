@@ -7,7 +7,7 @@ const mode = ref('register'); // 'register' | 'login'
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col items-center justify-center gap-4 bg-black p-4">
+  <div class="flex min-h-screen flex-col items-center justify-center gap-2 bg-black p-4">
     <!-- Tabs -->
     <div class="flex gap-1 rounded-md bg-white p-1 shadow-md">
       <button type="button" @click="mode = 'register'" :class="[

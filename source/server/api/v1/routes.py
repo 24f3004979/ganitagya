@@ -1,7 +1,8 @@
-from fastapi import APIRouter, status, HTTPException
+from fastapi import APIRouter, status, HTTPException, Depends
 from server.api.controllers import Registration, Login, get_role, get_id
 from server.schema.user_endpoint import *
 from server.utils.authorization_utils import *
+from fastapi.security import OAuth2PasswordBearer
 
 
 router = APIRouter()
@@ -18,13 +19,21 @@ async def register(data: Input):
     return Registration(data)
 
 
+# Authentication bearer token injection
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+
 @router.get("/me")
-async def fetch_me(token: str):
+async def fetch_me(token: str = Depends(oauth2_scheme)):
     """
-    Fetches current name with provided token
-    used for protecting routing and front end handles
+    Fetches current name with provided token from the Authorization header.
     """
     current_user = await get_current_user(token)
+    log.warning(f"Me end point user information fetch response : {current_user}")
+    if not current_user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid or expired token"
+        )
     return current_user
 
 

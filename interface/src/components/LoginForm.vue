@@ -46,6 +46,8 @@ const Login = async () => {
   <div class="flex min-h-screen items-center justify-center bg-transparent p-4">
     <form @submit.prevent="Login" class="w-full max-w-sm space-y-4 rounded-md bg-white p-6 shadow-md">
 
+      Welcome Back
+
       <!-- Error message -->
       <div v-if="error" role="alert" class="rounded-md border border-red-300 bg-red-50 px-3 py-2 text-sm text-red-800">
         {{ error }}
