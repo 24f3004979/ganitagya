@@ -7,7 +7,11 @@ const router = useRouter();
 const user = ref('');
 const fall = ref('');
 
+const username = ref(''); // Nav pill
+
 const logged_in = ref('');
+
+const emit = defineEmits(['user-fetched'])
 
 const logout = () => {
   localStorage.clear();
@@ -23,8 +27,12 @@ const login_routing = () => {
 onMounted(async () => {
   try {
     // TODO: Back end needs to protect its routes and also have unified request handler for token verification
-    user.value = await api.get<string>('/api/v1/me');
+    user.value = await api.get<string>('/api/v1/auth/me');
     logged_in.value = "loged in";
+    // Emiting information to User
+    username.value = user.value;
+    emit('user-fetched', { name: user.value })
+
   } catch (error) {
     fall.value = "Something went wrong";
     router.push('/auth');
@@ -71,23 +79,27 @@ onMounted(async () => {
       </ul>
     </div>
 
-    <div class="p-3">
-      <div v-if="logged_in" @click="logout" class="h-6 w-6 cursor-pointer shadow-md">
-        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div
+      class="p-3 w-fit min-w-[5rem] h-10 shadow-md flex flex-row justify-center items-center gap-3 rounded-md bg-white">
+      <!-- Logged In State -->
+      <div v-if="logged_in" @click="logout"
+        class="flex items-center gap-2 cursor-pointer hover:text-red-500 transition-colors">
+        <span class="text-sm font-medium whitespace-nowrap">{{ username }}</span>
+        <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M18 8L22 12M22 12L18 16M22 12H9M15 4.20404C13.7252 3.43827 12.2452 3 10.6667 3C5.8802 3 2 7.02944 2 12C2 16.9706 5.8802 21 10.6667 21C12.2452 21 13.7252 20.5617 15 19.796"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </div>
 
-      <div v-else @click="login_routing" class="h-6 w-6 cursor-pointer shadow-md p1">
-        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Logged Out State -->
+      <div v-else @click="login_routing" class="flex items-center cursor-pointer hover:text-blue-500 transition-colors">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M12 8L16 12M16 12L12 16M16 12H3M3.33782 7C5.06687 4.01099 8.29859 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C8.29859 22 5.06687 19.989 3.33782 17"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </div>
     </div>
-
   </div>
 </template>

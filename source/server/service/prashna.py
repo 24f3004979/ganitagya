@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 import random as rnd
-from server.dev_log import log
+from server.utils.watch_util import log
 
 # Central Siddhi question listing topic list
 topics = [

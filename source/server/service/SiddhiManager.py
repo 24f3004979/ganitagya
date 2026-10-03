@@ -6,8 +6,8 @@ from server.service.vidhyarthi import Vidhyarthi
 
 from server.utils import *
 from server.service.siddhi import SiddhiEngine, evalutate
-from server.dev_log import *
-from server.database import get_session
+from server.utils.watch_util import *
+from server.database.setup import get_session
 
 
 """

@@ -2,12 +2,12 @@ from datetime import datetime, timedelta, timezone
 import jwt
 from fastapi import HTTPException, status
 from server.config import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY, ALGORITHM
-from server.dev_log import *
+from server.utils.watch_util import *
 
 from server.models.user import *
 
 # Internal Moudle dependency
-from server.schema.user_endpoint import Input
+from server.schema.structure import Input
 
 def create_access_token(username:str) -> str:  # working tested
     expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -43,3 +43,45 @@ async def get_current_user(token)->str:  # working tested
                 headers={"WWW-Authenticate":"Bearer"}
 
                 )
+
+# fetch currrent user information
+
+
+from server.utils.exceptions import UserDoesNotExist
+from server.service.UserManager import UserManager
+
+
+def get_role(username: str):
+    """
+    Input : str
+    If input is given empty -> returns None
+    If user does not exist -> Exception raised for non-Existence
+    """
+    try:
+        if username == "":
+            return None
+        unit = UserManager(username)
+        if unit.existance == True:
+            return {unit.user_object.role}
+        else:
+            return {"message": "No Existance"}
+    except UserDoesNotExist:
+        return {"message": "Role fetch failed | User Does not exist"}
+
+
+def get_id(username: str):
+    """
+    Make One universal User information fetching unit for fetching information about user into one go
+
+    """
+    try:
+        if username == "":
+            return None
+        unit = UserManager(username)
+        if unit.existance == True:
+            return {unit.user_object.id}
+        else:
+            return {"message": "Id Fetch failed"}
+    except UserDoesNotExist:
+        return {"message": "Role fetch failed | User Does not exist"}
+

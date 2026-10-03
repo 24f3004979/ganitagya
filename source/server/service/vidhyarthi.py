@@ -4,9 +4,9 @@ from fastapi import Depends
 
 from server.models.student import Student
 from sqlmodel import select
-from server.exceptions import UserDoesNotExist
+from server.utils.exceptions import UserDoesNotExist
 from sqlalchemy.orm.attributes import flag_modified
-from server.dev_log import *
+from server.utils.watch_util import *
 from server.utils.GTI import *
 
 from server.service import RootConceptGraph

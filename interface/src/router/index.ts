@@ -7,9 +7,11 @@ import Logout from '../views/Logout.vue'
 // Added explicit TypeScript typing for routes
 export const routes = [
   { path: '/auth', component: Auth },
+  { path: '/login', component: Auth },
   { path: '/', component: Home },
   { path: '/dashboard', component: Dashboard },
-  { path: '/logout', component: Logout }
+  { path: '/logout', component: Logout },
+  { path: '/register', component: Auth }
 ];
 
 export const router = createRouter({

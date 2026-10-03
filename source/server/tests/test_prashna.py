@@ -1,4 +1,4 @@
-from server.dev_log import *
+from server.utils.watch_util import *
 from server.service.prashna import *
 from .templates.siddhi_template import *
 import random 

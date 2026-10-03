@@ -1,22 +1,32 @@
 """
 MAIN FILE
-Central script for building the application up
+
+Load requirements
+1. routes
+2. global configs
+3. DB Models
+4. Middlewares [ to make ]
+5. CORS enabled
 """
 
 # External dependency
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 # Custom Module import
-from server.database import *
-from server.dev_log import *
-from server.api.v1.routes import router as v1_router
-from server.api.v1.siddhi_routes import router
+from server.database.setup import Initiate_database
+from server.utils.watch_util import log
 
+# Routers
+from server.api.routers.auth_endpoint import auth_router
+from server.api.routers.fetch_endpoint import fetch_router
+
+# Global Configs
+from server.config import *
 
 app = FastAPI(title="server")
 
-# cross origin request
+# CORS configuration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],
@@ -27,8 +37,8 @@ app.add_middleware(
 
 Initiate_database()
 
-app.include_router(v1_router, prefix="/api/v1")
-app.include_router(router)
+app.include_router(auth_router, prefix="/api/v1/auth")
+app.include_router(fetch_router, prefix="/api/v1/fetch")
 
 
 # Root routing

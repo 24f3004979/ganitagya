@@ -10,8 +10,8 @@ from networkx import DiGraph
 import networkx as nx
 import matplotlib.pyplot as plt
 
-from server.exceptions import DependencyClash
-from server.dev_log import log
+from server.utils.exceptions import DependencyClash
+from server.utils.watch_util import log
 
 class ConceptGraph(DiGraph):
     '''

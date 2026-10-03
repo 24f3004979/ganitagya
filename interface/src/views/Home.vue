@@ -1,80 +1,98 @@
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { RouterLink } from 'vue-router'
 
-const router = useRouter();
-const topic = ref('');
-
-// Sends the student to the quiz page with the chosen starting topic.
-// Adjust the route name/path to match your router.
-const startQuiz = () => {
-  router.push({ path: '/quiz', query: { topic: topic.value.trim() } });
-};
-
-const steps = [
-  { title: 'Pick a topic', text: 'Tell Ganitagya where you want to start.' },
-  { title: 'Answer questions', text: 'Each answer decides which question comes next.' },
-  { title: 'See your report', text: 'Get a list of your strong and weak topics.' },
-];
+const components = [
+  {
+    name: 'Siddhi',
+    role: 'Adaptive quiz generator',
+    text: 'Builds quizzes from ready-made templates and adjusts the questions to how you answer.',
+  },
+  {
+    name: 'Chintan',
+    role: 'Numerical and visual dissection tool',
+    text: 'Break numbers apart and see how they work, so you can think with numbers instead of memorising them.',
+  },
+  {
+    name: 'Mool',
+    role: 'Root graph for topics',
+    text: 'A simple graph for moving between topics. It is also the reference map of what you know and what to learn next.',
+  },
+]
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100">
-    <!-- Top bar -->
-    <header class="bg-white shadow-md">
-      <nav class="mx-auto flex max-w-4xl items-center justify-between px-4 py-3">
-        <RouterLink to="/" class="text-xl font-semibold text-gray-800">Ganitagya</RouterLink>
-        <div class="flex items-center gap-2">
-          <RouterLink to="/auth" class="rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100">
-            Log in
-          </RouterLink>
-          <RouterLink to="/auth"
-            class="rounded-md bg-green-700 px-4 py-2 text-sm font-medium text-white hover:bg-green-800">
-            Create account
-          </RouterLink>
-        </div>
+  <div class="min-h-screen bg-white text-slate-900 antialiased">
+    <!-- Header -->
+    <header class="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
+      <RouterLink to="/"
+        class="text-lg font-semibold tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-900">
+        Ganitagya
+      </RouterLink>
+      <nav class="flex items-center gap-6 text-sm">
+        <a href="#component" class="text-slate-600 hover:text-slate-900">Components</a>
+        <RouterLink to="/auth"
+          class="rounded-md border border-slate-300 px-4 py-2 font-medium hover:border-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900">
+          Log in
+        </RouterLink>
       </nav>
     </header>
 
-    <main class="mx-auto max-w-4xl space-y-6 p-4">
-      <!-- Hero: the main action is starting a quiz -->
-      <section class="rounded-md bg-white p-6 shadow-md">
-        <h1 class="text-3xl font-semibold text-gray-800">Find out what you know</h1>
-        <p class="mt-2 max-w-prose text-gray-600">
-          Take a quiz that adapts to your answers, then see which topics you are strong
-          in and which ones need more practice.
-        </p>
-
-        <form @submit.prevent="startQuiz" class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <div class="flex-1">
-            <label for="topic" class="mb-1 block text-sm font-medium text-gray-700">
-              Starting topic
-            </label>
-            <input id="topic" v-model="topic" type="text" required placeholder="For example: Algebra"
-              class="w-full rounded-md border border-gray-300 px-3 py-2 text-xl focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600" />
+    <main>
+      <!-- Hero -->
+      <section class="mx-auto max-w-5xl px-6 pb-24 pt-16 md:pt-24">
+        <div>
+          <h1 class="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+            A platform to learn, discover and grow
+          </h1>
+          <p class="mt-6 max-w-md text-lg leading-relaxed text-slate-600">
+            Ganitagya helps students build a real feel for numbers, one clear idea at a time.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <RouterLink to="/auth"
+              class="rounded-md bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900">
+              Create account
+            </RouterLink>
+            <a href="#components"
+              class="rounded-md border border-slate-300 px-5 py-2.5 text-sm font-medium hover:border-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900">
+              See how it works
+            </a>
           </div>
-          <button type="submit"
-            class="rounded-md bg-green-700 px-6 py-2 font-medium text-white hover:bg-green-800 sm:self-end">
-            Start quiz
-          </button>
-        </form>
-        <p class="mt-3 text-sm text-gray-500">You need to log in before the quiz begins.</p>
+        </div>
       </section>
 
-      <!-- How it works: a real sequence, so numbering is meaningful -->
-      <section class="rounded-md bg-white p-6 shadow-md">
-        <h2 class="text-xl font-semibold text-gray-800">How it works</h2>
-        <ol class="mt-4 grid gap-4 sm:grid-cols-3">
-          <li v-for="(step, i) in steps" :key="step.title" class="rounded-md border border-gray-200 p-4">
-            <span class="text-sm font-medium text-green-700">Step {{ i + 1 }}</span>
-            <h3 class="mt-1 font-medium text-gray-800">{{ step.title }}</h3>
-            <p class="mt-1 text-sm text-gray-600">{{ step.text }}</p>
-          </li>
-        </ol>
+      <!-- Problem -->
+      <section class="border-t border-slate-200">
+        <div class="mx-auto max-w-5xl px-6 py-20 md:grid md:grid-cols-2 md:gap-12">
+          <h2 class="text-2xl font-semibold tracking-tight">Why math feels hard</h2>
+          <p class="mt-4 max-w-md text-lg leading-relaxed text-slate-600 md:mt-0">
+            Many students struggle with math. They never develop a feel for numbers, and abstract
+            ideas end up resting on a weak foundation.
+          </p>
+        </div>
       </section>
 
+      <!-- Components -->
+      <section id="components" class="border-t border-slate-200">
+        <div class="mx-auto max-w-5xl px-6 py-20">
+          <h2 class="text-2xl font-semibold tracking-tight">What is inside</h2>
+
+          <ul class="mt-10 divide-y divide-slate-200 border-y border-slate-200">
+            <li v-for="item in components" :key="item.name" class="grid gap-2 py-8 md:grid-cols-[12rem_1fr] md:gap-12">
+              <div>
+                <h3 class="text-xl font-semibold">{{ item.name }}</h3>
+                <p class="mt-1 text-sm text-slate-500">{{ item.role }}</p>
+              </div>
+              <p class="max-w-lg leading-relaxed text-slate-600">{{ item.text }}</p>
+            </li>
+          </ul>
+        </div>
+      </section>
     </main>
 
-    <footer class="py-6 text-center text-sm text-gray-500">Ganitagya</footer>
+    <footer class="border-t border-slate-200">
+      <div class="mx-auto max-w-5xl px-6 py-8 text-sm text-slate-500">
+        Ganitagya. Learn, discover and grow.
+      </div>
+    </footer>
   </div>
 </template>

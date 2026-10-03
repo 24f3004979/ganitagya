@@ -1,79 +1,90 @@
 <script setup>
-import { ref } from 'vue' // reactive variables
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-// Required variables
-const form = ref({ username: '', password: '' });
-const error = ref('');
-const success = ref('');
+const emit = defineEmits(['switch'])
+const router = useRouter()
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
+
+const form = ref({ username: '', password: '' })
+const error = ref('')
+const loading = ref(false)
 
 const Login = async () => {
-  error.value = '';
-  success.value = '';
+  error.value = ''
+  loading.value = true
 
   try {
-    const response = await fetch(
-      'http://localhost:8000/api/v1/login', {
+    const response = await fetch(`${API_URL}/api/v1/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form.value)
-    }
-    );
-    const data = await response.json();
+      body: JSON.stringify(form.value),
+    })
 
     if (response.ok) {
-      success.value = data.message;
-      localStorage.setItem("access_token", data.token) // Token stored into local storage
-
-      // routing to dashboard
-      window.location.href = "http://localhost:5173/dashboard";
-
-      form.value = { username: '', password: '' };
-    } else {
-      error.value =
-        typeof data.detail === 'string'
-          ? data.detail
-          : 'Please check your input annd try again';
+      const data = await response.json()
+      localStorage.setItem('access_token', data.token)
+      router.push('/dashboard')
+      return
     }
+
+    if (response.status === 400) {
+      error.value = 'User does not exist. Create an account first.'
+      return
+    }
+
+    if (response.status === 401) {
+      error.value = 'Wrong username or password.'
+      return
+    }
+
+    const errorData = await response.json().catch(() => null)
+    error.value =
+      typeof errorData?.detail === 'string'
+        ? errorData.detail
+        : 'Please check your input and try again.'
   } catch (e) {
-    console.error('Login request failed', e);
-    error.value = "Could not reach the server, please try again later";
+    console.error('Login request failed', e)
+    error.value = 'Could not reach the server. Please try again later.'
+  } finally {
+    loading.value = false
   }
-};
+}
 </script>
 
-
 <template>
-  <div class="flex min-h-screen items-center justify-center bg-transparent p-4">
-    <form @submit.prevent="Login" class="w-full max-w-sm space-y-4 rounded-md bg-white p-6 shadow-md">
+  <form @submit.prevent="Login" class="w-full max-w-sm space-y-5 rounded-lg border border-slate-200 p-8">
+    <div>
+      <h1 class="text-2xl font-semibold tracking-tight">Welcome back</h1>
+      <p class="mt-1 text-sm text-slate-500">Log in to continue learning.</p>
+    </div>
 
-      Welcome Back
+    <div v-if="error" role="alert" class="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800">
+      {{ error }}
+    </div>
 
-      <!-- Error message -->
-      <div v-if="error" role="alert" class="rounded-md border border-red-300 bg-red-50 px-3 py-2 text-sm text-red-800">
-        {{ error }}
-      </div>
+    <div>
+      <label for="username" class="mb-1 block text-sm font-medium text-slate-700">Username</label>
+      <input id="username" v-model="form.username" type="text" autocomplete="username" required
+        class="w-full rounded-md border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900" />
+    </div>
 
-      <!-- Success message -->
-      <div v-if="success" role="status"
-        class="rounded-md border border-green-300 bg-green-50 px-3 py-2 text-sm text-green-800">
-        {{ success }}
-      </div>
+    <div>
+      <label for="password" class="mb-1 block text-sm font-medium text-slate-700">Password</label>
+      <input id="password" v-model="form.password" type="password" autocomplete="current-password" required
+        class="w-full rounded-md border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900" />
+    </div>
 
-      <div>
-        <label for="username" class="mb-1 block text-sm font-medium text-gray-700">Email</label>
-        <input type="username" id="username" v-model="form.username" required
-          class="w-full rounded-md border border-gray-300 px-3 py-2 text-xl focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600" />
-      </div>
+    <button type="submit" :disabled="loading"
+      class="w-full rounded-md bg-slate-900 py-2.5 text-sm font-medium text-white hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 disabled:cursor-not-allowed disabled:opacity-60">
+      {{ loading ? 'Logging in...' : 'Log in' }}
+    </button>
 
-      <div>
-        <label for="password" class="mb-1 block text-sm font-medium text-gray-700">Password</label>
-        <input type="password" id="password" v-model="form.password" required
-          class="w-full rounded-md border border-gray-300 px-3 py-2 text-xl focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600" />
-      </div>
-
-      <button type="submit" class="w-full rounded-md bg-green-700 py-2 font-medium text-white hover:bg-green-800">
-        Submit
+    <p class="text-center text-sm text-slate-500">
+      New here?
+      <button type="button" @click="emit('switch')" class="font-medium text-slate-900 underline underline-offset-4">
+        Create an account
       </button>
-    </form>
-  </div>
+    </p>
+  </form>
 </template>

@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import pytest
 
-from server.exceptions import *
-from server.dev_log import log
+from server.utils.exceptions import *
+from server.utils.watch_util import log
 
 # Global Single object for testing
 g = ConceptGraph()

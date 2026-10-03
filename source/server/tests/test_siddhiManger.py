@@ -1,8 +1,8 @@
 from server.service.SiddhiManager import SiddhiUnit
 from server.api.controllers import Registration 
-from server.schema.user_endpoint import Input
-from server.dev_log import *
-from server.database import * 
+from server.schema.structure import Input
+from server.utils.watch_util import *
+from server.database.setup import * 
 
 Initiate_database()
 

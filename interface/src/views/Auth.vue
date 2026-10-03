@@ -1,30 +1,19 @@
 <script setup>
-import { ref } from 'vue';
-import RegisterForm from '../components/RegisterForm.vue';
-import LoginForm from '../components/LoginForm.vue';
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import LoginForm from '../components/LoginForm.vue'
+import RegisterForm from '../components/RegisterForm.vue'
 
-const mode = ref('register'); // 'register' | 'login'
+const route = useRoute()
+const router = useRouter()
+
+// The URL decides which form shows, so /login and /register both work
+const isRegister = computed(() => route.path === '/register')
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col items-center justify-center gap-2 bg-black p-4">
-    <!-- Tabs -->
-    <div class="flex gap-1 rounded-md bg-white p-1 shadow-md">
-      <button type="button" @click="mode = 'register'" :class="[
-        'rounded-md px-4 py-2 text-sm font-medium',
-        mode === 'register' ? 'bg-green-700 text-white' : 'text-gray-700 hover:bg-gray-100',
-      ]">
-        Register
-      </button>
-      <button type="button" @click="mode = 'login'" :class="[
-        'rounded-md px-4 py-2 text-sm font-medium',
-        mode === 'login' ? 'bg-green-700 text-white' : 'text-gray-700 hover:bg-gray-100',
-      ]">
-        Log in
-      </button>
-    </div>
-
-    <RegisterForm v-if="mode === 'register'" />
-    <LoginForm v-else />
+  <div class="flex min-h-screen items-center justify-center bg-white p-4 text-slate-900 antialiased">
+    <RegisterForm v-if="isRegister" @switch="router.push('/login')" />
+    <LoginForm v-else @switch="router.push('/register')" />
   </div>
 </template>

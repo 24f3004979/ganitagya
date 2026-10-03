@@ -6,7 +6,7 @@ from sympy import parse_expr
 import math
 import copy
 
-from server.exceptions import NotValidQuestion
+from server.utils.exceptions import NotValidQuestion
 from server.service.prashna import *  # Load for prashna module
 from server.service.mool import *
 from server.service.prashna_template import TEMPLATES

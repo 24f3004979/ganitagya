@@ -1,0 +1,24 @@
+# Targets
+
+Life Cycle for tasks assignment
+task created --> worked into --> Status and final closing comment --> daily log journey documentation
+
+Targets needs to be completed along with targets should be clear and simple and straight forward enough to be completed within the day
+
+
+
+1. Protect routes exposing user information with fastapi
+2. Re-factor Exception handle with each endpoints to ensure proper requests to front-end is raised
+  With generic Exceptions loaded -> Leading whole server crash --> Most critical fix
+
+3. Wire up the front end with designed version for persistent test-storage system with back-end sync
+
+4. Final tweaks of reducing server side question generation level to downgrade question levels for starting levels.
+
+- To streamline development we need some foundational components across the front end environment.
+With dedicated design documentation and design build units to use across the webpage
++ Notification pill --> Dedicated notify component for alerts and information
++ Navigation Bar --> Unified navigation bar across the application
++ Dedicated Error pages fall backs
+
+

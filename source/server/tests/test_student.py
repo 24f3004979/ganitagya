@@ -2,8 +2,8 @@ from server.service.vidhyarthi import *
 from server.api.controllers import Registration
 from server.main import *
 from server.service.UserManager import *
-from server.schema.user_endpoint import Input
-from server.dev_log import *
+from server.schema.structure import Input
+from server.utils.watch_util import *
 
 # Making a student Profile
 unit = Input(
