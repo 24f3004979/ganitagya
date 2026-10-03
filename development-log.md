@@ -145,3 +145,67 @@ use tmux inside nvim setup
 Learnings about vue core concept
     We can craf components and views to build our application, where views work as above component using
 base components to render into page, We can compose with the help of underlying components.
+
+Git Branching based development
+- Branching out for feature/auth | To push changes | git push origin feature/auth
+
+------
+
+
+Mock up for production grade with launching end to end waitlisting website for user
+
+Production deployment final command for google cloud
+```bash
+# Final deploy of waitlisting production system
+gcloud run deploy ganitagya-waitlist \
+  --source . \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --service-account waitlist-api@YOUR_PROJECT_ID.iam.gserviceaccount.com \
+  --max-instances 2 \
+  --set-env-vars "^@^ALLOWED_ORIGINS=http://localhost:5173,https://yourdomain.com"
+  ```
+
+
+First version production Launched for waitlisting langing page with
+```bash
+vercel --prod  # For overwriting previous production launch
+```
+
+Stopped for production listing of waitlisting options for project
+Needs project refactor and google cloud setup with some payment options enabled to proceed with the project
+
+haulting current working with google cloud for production launch
+
++ Work into making login and registration working with new design
++ Simlpify design to the level i can understand learn the basics and make something working under my own knowledge control, such that it could be scalled with the buisness plannings of future
+
+
+--------------------
+
+## Important Decission and directions
+
+**Situation**
++ I am rushing to create the hype for the project to my network which sounds great and exiting at once, spent half a day into making such using claud to create hyper crisp design which would make more load and problem into production - reality check for prices spectrum which i saw today while trying to wire up with google api end point..
+
++ Project hype with crazy front end with no working backend or zero into actual value i would add wont mean good at long run and self fullfillment, chasing the dopamine of fast result would only work to make me more sad at long run
+
+**REAL HAPPYNESS**
++ Level wise steps towards making the project reality, since core idea is really big and needs some real research and craft to make out solid working core pillars would have to face many problems but the only way to make something big and help students learn math the most fun way
++ Thus following with pre-defiened and planned wissdom path, crafting the interfaces to ship the first primitive version with some days
++ Share about the project details and small announcement about first version would be great after that
+
++ Next cycle build proposal would be stronger and more powerfull with dedicated development timeline of 6 month with a team of contributors and friends to make the next build of the project
++ Researched stronger and more advanced component upgrade
++ Learning about production building fundamentals to get into phase for beta launch
++ Full blowen production grade launch of ganitagya to help school students ranging from kids to adults
+
+----- 
+
+With Another noise from seting up development environment with neovim setup eating a lot of time into learning to make the flow working -- I am cutting down the noise for making that mistake again into development completion for this project...
+
+Chintan module would be shipped with its flagship ts engine 🥲 into the first version launch of ganitagya along with other modules waiting for the next term development stretch along with core ideology modification for shipping into making it into company model.
+
+--- 
++ End to end working flow with defined data flow from python back end to front end required
+  Need to be clear about requests their flow into front end and back end with this new web dev setup for final full tour wiring
