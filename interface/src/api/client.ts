@@ -1,52 +1,58 @@
-// Single place for backend paths. Change these once and every view follows.
-export const BASE_URL: string = 'http://localhost:8000'
+import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios';
 
-export const ENDPOINTS = {
-  register: '/api/v1/register',
-  login: '/api/v1/login',
-  studentId: '/api/v1/fetch-id',
-  quizStart: '/quiz/start',
-  quizAnswer: '/quiz/answer',
-  quizAbandon: (studentId: number) => `/quiz/abandon/${studentId}`
+// TODO: have to sync backend responses with same interface
+interface ApiResponse<T = any> {
+  data: T,
+  message: string,
+  success: boolean
 }
 
-export const TOKEN_KEY = 'chintan_token'
-
-export class ApiError extends Error {
-  status: number
-  constructor(message: string, status: number) {
-    super(message)
-    this.status = status
+const client: AxiosInstance = axios.create({
+  baseURL: 'http://localhost:8000',
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
   }
-}
+});
 
-interface Options {
-  method?: 'GET' | 'POST' | 'DELETE'
-  body?: unknown
-}
+// Request Interceptor 
+client.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('access_token');
+    if (token && config.headers) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
-export async function request<T = any>(path: string, opts: Options = {}): Promise<T> {
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  const token = localStorage.getItem(TOKEN_KEY)
-  if (token) headers.Authorization = `Bearer ${token}`
-
-  let res: Response
-  try {
-    res = await fetch(BASE_URL + path, {
-      method: opts.method ?? 'GET',
-      headers,
-      body: opts.body === undefined ? undefined : JSON.stringify(opts.body)
-    })
-  } catch {
-    throw new ApiError("Can't reach the server. Check that the backend is running.", 0)
+// Response Interceptor
+client.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    // Standardized Python backend error handling (FastAPI/Flask/Django detail field)
+    const backendError = error.response?.data?.detail || error.message || 'Unknown API Error';
+    console.error('[API Error]:', backendError);
+    return Promise.reject(new Error(backendError));
   }
+);
 
-  const data = await res.json().catch(() => null)
-  if (!res.ok) {
-    // FastAPI puts messages in `detail`; validation errors send a list there.
-    const detail = data?.detail
-    const msg = typeof detail === 'string' ? detail : data?.message ?? `Request failed (${res.status})`
-    throw new ApiError(msg, res.status)
-  }
-  return data as T
-}
+// Reusable, strongly-typed HTTP wrappers
+export const api = {
+  get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    return client.get(url, config);
+  },
+  post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+    return client.post(url, data, config);
+  },
+  put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+    return client.put(url, data, config);
+  },
+  delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    return client.delete(url, config);
+  },
+};
+
+export default client;
