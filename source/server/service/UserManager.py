@@ -48,7 +48,9 @@ class UserManager:
                 self.existance = True
 
             except UserDoesNotExist:
-                self.existance = False # Dont touch this untill you are sure to refactor
+                self.existance = (
+                    False  # Dont touch this untill you are sure to refactor
+                )
             except Exception as e:
                 log.info(f"Exception Raised as {e} at User Exttraction")
 

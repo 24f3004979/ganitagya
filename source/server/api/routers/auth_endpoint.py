@@ -14,7 +14,6 @@ from server.utils.authorization_utils import get_current_user
 from server.utils.watch_util import log
 
 
-
 auth_router = APIRouter()
 
 

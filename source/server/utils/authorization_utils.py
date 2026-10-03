@@ -1,36 +1,30 @@
 from datetime import datetime, timedelta, timezone
+
+from fastapi import HTTPException, status, Depends
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 import jwt
-from fastapi import HTTPException, status
-from server.config import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY, ALGORITHM
-from server.utils.watch_util import *
 
-from server.models.user import *
+from server.config import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY
+from server.service.UserManager import UserManager
+from server.utils.exceptions import UserDoesNotExist
+from server.utils.watch_util import log
 
-# Internal Moudle dependency
-from server.schema.structure import Input
 
-def create_access_token(username:str) -> str:  # working tested
+def create_access_token(username: str) -> str:  # working tested
     expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
 
-    token_data = {
-            "sub":username, 
-            "exp":expire
-            }
+    token_data = {"sub": username, "exp": expire}
     log.info(f"Token Data for inspection : {token_data}")
     # JWT token with signed expiration timeline
-    token = jwt.encode(
-            token_data, SECRET_KEY,
-            algorithm=ALGORITHM
-            )
+    token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
     return token
 
-async def get_current_user(token)->str:  # working tested
+
+async def get_current_user(token) -> str:  # working tested
     try:
-        log.info(f'config load for payload : {SECRET_KEY} along with {SECRET_KEY}')
-        payload = jwt.decode(
-                token, SECRET_KEY, algorithms=[ALGORITHM]
-                )
-        username:str = payload.get("sub")
+        log.info(f"config load for payload : {SECRET_KEY} along with {SECRET_KEY}")
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
         log.info("Not able to fetch user name with this token")
         if username is None:
             raise jwt.PyJWTError
@@ -38,17 +32,13 @@ async def get_current_user(token)->str:  # working tested
     except jwt.PyJWTError:
         # Raising exception without authentication token being expired
         raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Your Authorization token expired you can try to re-login",
-                headers={"WWW-Authenticate":"Bearer"}
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Your Authorization token expired you can try to re-login",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
 
-                )
 
 # fetch currrent user information
-
-
-from server.utils.exceptions import UserDoesNotExist
-from server.service.UserManager import UserManager
 
 
 def get_role(username: str):
@@ -85,3 +75,33 @@ def get_id(username: str):
     except UserDoesNotExist:
         return {"message": "Role fetch failed | User Does not exist"}
 
+
+# ----------------------- Unified Token verification utility -----------------------
+
+security = HTTPBearer()
+
+
+def verify_access_token(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+):
+    """
+    Unified interface to receive requests, extract, and verify the access_token.
+    Raises 401 HTTPException if the token is invalid or expired.
+    """
+    token = credentials.credentials
+    try:
+        # Decode and verify the JWT payload
+        payload = get_current_user(token)  # Using another utility for verification
+        return payload  # Contains user identity/claims (e.g., sub, role)
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token has expired",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    except jwt.InvalidTokenError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid authentication credentials",
+            headers={"WWW-Authenticate": "Bearer"},
+        )

@@ -17,26 +17,25 @@ START_LEVEL = 1
 
 
 class Vidhyarthi:
-    #TODO: Need one function to check if given topic code is in students dictionary or not
+    # TODO: Need one function to check if given topic code is in students dictionary or not
     def __init__(self, student_id: int, session=None):
         self.student_id = student_id
         self.session = session
 
-    def have_topic(self,topic):
-        session = self.session
+    def have_topic(self, topic):
 
         unit = self.get_student_object()
         topics = list(unit.knowledge_graph.keys())
         if topic in topics:
             return unit.knowledge_graph[topic]  # current level
-        return False # topic does not contains
+        return False  # topic does not contains
 
     def get_student_object(self):
-        '''
+        """
         get or create sequence,
         we search for existing student with given information
         or create one new student object with given id information and initiate graph
-        '''
+        """
         session = self.session
 
         statement = select(Student).where(Student.student_id == self.student_id)
@@ -77,11 +76,11 @@ class Vidhyarthi:
             return False
 
     def add_topic(self, topic_id):
-        '''
+        """
         Adding topic to student graph
         1. check for topic existence
         2. db change with given information to initiate a new topic into graph
-        '''
+        """
         topic_key = str(topic_id)
 
         if not self.topic_exists(topic_id):
@@ -94,17 +93,17 @@ class Vidhyarthi:
         if topic_key in student_object.knowledge_graph:
             return None
 
-        student_object.knowledge_graph[topic_key] = '1'
+        student_object.knowledge_graph[topic_key] = "1"
         self.db_handle(session, student_object, "knowledge_graph")
         return True
 
     def update_topic(self, topic_id: int, update_modification: int):
-        '''
+        """
         Simple Numerical ecoding of topics
 
         Fallback with breaking changes for topic udpate into student graph
         making changes to student json fetch -> type conversions required
-        '''
+        """
         topic_key = str(topic_id)
 
         session = self.session
@@ -114,11 +113,13 @@ class Vidhyarthi:
             log.warning(f"Topic {topic_id} not present in student knowledge graph")
             return None
 
-        current_level = int(student_object.knowledge_graph[topic_key]) # fetch level
+        current_level = int(student_object.knowledge_graph[topic_key])  # fetch level
         result = current_level + update_modification
 
         if (result < MIN_LEVEL) or (result > MAX_LEVEL):
-            log.warning(f"Wrong Update Request recieved exceeding limits of current cap and scope")
+            log.warning(
+                f"Wrong Update Request recieved exceeding limits of current cap and scope"
+            )
             return None
 
         result = str(result)
@@ -128,10 +129,10 @@ class Vidhyarthi:
         return True
 
     def build_graph(self):
-        '''
+        """
         Final Graph construction for front end units to build graph for
         Making graphical represenation of vidhyarthi current levels
-        '''
+        """
         session = self.session
         student_object = self.get_student_object()
         topics = dict(student_object.knowledge_graph)
@@ -149,7 +150,7 @@ class Vidhyarthi:
         student_graph = RootConceptGraph.subgraph(topic_lists).copy()
 
         for topic in student_graph.nodes:
-            student_graph.nodes[topic]['level'] = topic_reference[topic]
+            student_graph.nodes[topic]["level"] = topic_reference[topic]
 
         graph_data = nx.node_link_data(student_graph, edges="links")
         json_response = json.dumps(graph_data)

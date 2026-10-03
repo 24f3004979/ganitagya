@@ -1,8 +1,9 @@
-'''
+"""
 Information fetching endpoints
 
 Endpoints for fetching information about user and their roles
-'''
+"""
+
 from fastapi import APIRouter, status, HTTPException, Depends
 
 # Required imports for fetch endpoints
