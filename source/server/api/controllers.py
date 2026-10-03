@@ -37,29 +37,22 @@ def Registration(information: Input):
         )
 
 
-async def Login(form_data: Input):  # Working tested
-    """
-    Fetch UserManger from form data
-    check if user exist with its parameter -> proceed to call with verification
-
-    Use the verify function for authorizing access into application with protection of routes
-
-    pydantic class Not fully defined Error Being traced
-    """
-    log.info("Login Function initiating")
+async def Login(information: Input):  # Working tested
+    log.info("Initiating LOGIN")
     try:
-        email = form_data.email
-        print(f"Executing Login Controller function with email : {email}")
+        email = information.email
         unit = UserManager(email)
         if unit.existance:
-            if unit.verify_credentials(form_data.password):
+            if unit.verify_credentials(information.password):
                 token = create_access_token(email)  # Access Token generated with signed
-                return token
-            return {"message": " Either Username or password is wrong", "status": 404}
-        return {
-            "message": "User Does Not Exist, Register your self first",
-            "status": 200,
-        }
+                return {"message": "Loging in", "token": token}
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail="Wrong username or password",
+            )
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail=f"User Does Not exist"
+        )
     except Exception as e:
         raise Exception(f"Login failed Exception with Problem trace of {e}")
 

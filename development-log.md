@@ -209,3 +209,5 @@ Chintan module would be shipped with its flagship ts engine 🥲 into the first 
 --- 
 + End to end working flow with defined data flow from python back end to front end required
   Need to be clear about requests their flow into front end and back end with this new web dev setup for final full tour wiring
+
++ Made working end to end flow with registration flow now we would work into making the login flow and implement those learning to create the quiz interface for siddhi

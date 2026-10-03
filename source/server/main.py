@@ -25,8 +25,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-SQLModel.metadata.drop_all(engine)  # reset data base
-Initiate_database()  # Initiates all required models
+Initiate_database()
 
 app.include_router(v1_router, prefix="/api/v1")
 app.include_router(router)
