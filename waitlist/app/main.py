@@ -37,7 +37,7 @@ app.add_middleware(
 # --- Errors use {"error": "..."} so the Vue form can show them directly ---
 @app.exception_handler(RequestValidationError)
 async def validation_error(_: Request, __: RequestValidationError):
-    return JSONResponse({"error": "Enter a valid email address."}, status_code=400)
+    return JSONResponse({"error": "Enter a valid username address."}, status_code=400)
 
 
 @app.exception_handler(StarletteHTTPException)
@@ -63,7 +63,7 @@ def rate_limit(request: Request):
 
 
 class JoinRequest(BaseModel):
-    email: EmailStr = Field(max_length=254)
+    username: EmailStr = Field(max_length=254)
     website: str = ""
 
 
@@ -77,9 +77,9 @@ def join_waitlist(body: JoinRequest, request: Request):
     if body.website:  # bot filled the hidden field; pretend it worked
         return {"ok": True}
 
-    email = str(body.email).strip().lower()
+    username = str(body.username).strip().lower()
     try:
-        request.app.state.storage.add(email)
+        request.app.state.storage.add(username)
     except Exception as e:  # Awesome suggestions are being produced through the ruff thing to support python
         raise HTTPException(500, "Something went wrong. Please try again.")
 

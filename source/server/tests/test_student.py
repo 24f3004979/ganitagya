@@ -7,12 +7,12 @@ from server.dev_log import *
 
 # Making a student Profile
 unit = Input(
-    email='madhav@gmail.com',
+    username='madhav@gmail.com',
     password='1234'
 )
 
 resp = Registration(unit)
-new_unit = UserManager(unit.email)
+new_unit = UserManager(unit.username)
 
 # Need to create student update in table due to which non-existance error is raised
 # FIX : Create trigger with user creation to update stuudent table to manual insertion for student storage system

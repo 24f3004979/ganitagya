@@ -7,7 +7,7 @@ from server.database import *
 Initiate_database()
 
 unit = SiddhiUnit(1, 'Basic Arithmetic')
-info =  Input(email='student@gmail.com', password='1234')
+info =  Input(username='student@gmail.com', password='1234')
 resp = Registration(info) # Student registered with id 1
 log.info(f'Testing initiated with registration unit initiation sequence : {resp}')
 

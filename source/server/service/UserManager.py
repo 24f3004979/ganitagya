@@ -20,10 +20,10 @@ class UserManager:
     Abstract Class working with base database model
     '''
 
-    def __init__(self, email:str=''):
-        if email == '':
+    def __init__(self, username:str=''):
+        if username == '':
             self.existance = False  # Simple tweaks
-        self.email = email
+        self.username = username
         self.user_object = None
         self.existance = False
 
@@ -34,7 +34,7 @@ class UserManager:
         Takes out if this name exists in DB
         falls with UserDoesNotExist Error
         '''
-        statement = select(User).where(User.email == self.email)
+        statement = select(User).where(User.username == self.username)
         with Session(engine) as session:
             try:
                 user_object = session.exec(statement).first()
@@ -74,33 +74,33 @@ class UserManager:
         storing password
         and changing existence status
         '''
-        email = information.email
+        username = information.username
         password = information.password
 
         strong = hash_password(password) # Hashed password
         new_user = User(
-                email=email, 
+                username=username, 
                 password=strong,
                 role=role
                 )
         with Session(engine) as session:
             try:
-                statement = select(User).where(User.email == email)
+                statement = select(User).where(User.username == username)
                 result = session.exec(statement).first()
                 if result is not None:
-                    log.warning(f"User Exist with email : {email}")
+                    log.warning(f"User Exist with username : {username}")
                     raise UserExists
-                log.info(f"User Creation Initiated with email : {email}")
+                log.info(f"User Creation Initiated with username : {username}")
                 session.add(new_user)
                 session.commit()
 
-                statement = select(User).where(User.email == email)
+                statement = select(User).where(User.username == username)
                 created_user = session.exec(statement).first()
                 id = created_user.id  # user Id fetch
 
                 self.existence = True
                 self.user_object = created_user  # user created object
-                self.email = self.user_object.email # Email update for extraction sync
+                self.username = self.user_object.username # Email update for extraction sync
             except UserExists:
                 raise UserExists
 
@@ -109,7 +109,7 @@ class UserManager:
                 raise Exception(f"Raised a problem with user creation : {e}")
 
     def distroy(self):
-        statement = select(User).where(User.email == self.email)
+        statement = select(User).where(User.username == self.username)
         with Session(engine) as session:
             try:
                 unit = session.exec(statement).first() # Due to iterator object
@@ -118,6 +118,6 @@ class UserManager:
                     raise UserDoesNotExist
                 session.delete(unit)
                 session.commit()
-                log.info(f"User deleted with email : {self.email}")
+                log.info(f"User deleted with username : {self.username}")
             except Exception as e:
                 raise Exception(f"Deletion Failed with exception : {e}")

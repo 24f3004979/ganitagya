@@ -40,11 +40,11 @@ def Registration(information: Input):
 async def Login(information: Input):  # Working tested
     log.info("Initiating LOGIN")
     try:
-        email = information.email
-        unit = UserManager(email)
+        username = information.username
+        unit = UserManager(username)
         if unit.existance:
             if unit.verify_credentials(information.password):
-                token = create_access_token(email)  # Access Token generated with signed
+                token = create_access_token(username)  # Access Token generated with signed
                 return {"message": "Loging in", "token": token}
             raise HTTPException(
                 status_code=status.HTTP_409_CONFLICT,

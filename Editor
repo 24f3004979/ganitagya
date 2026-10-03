@@ -18,18 +18,18 @@ async def register(request:Request):
     log.warning(f"Registration End point Hits with {request}")
     log.warning(f"registration object inspection : {type(request)}")
     body = await request.json()
-    log.info(f"Json parsed data form :  {body["Input"]["email"]}")
+    log.info(f"Json parsed data form :  {body["Input"]["username"]}")
 
     # Input Inspections
     info = body["Input"]
 
-    email = info["email"]
+    username = info["username"]
     password = info["password"]
 
-    log.warning(f"Extracted email and password : {email} along with {password}")
+    log.warning(f"Extracted username and password : {username} along with {password}")
 
     user_information = Input(
-            email=email,
+            username=username,
             password=password)
 
     return Registration(user_information)

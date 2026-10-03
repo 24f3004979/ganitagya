@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const form = ref({ email: '', password: '' });
+const form = ref({ username: '', password: '' });
 const repass = ref('');
 const error = ref('');
 const success = ref('');
@@ -27,7 +27,7 @@ const Register = async () => {
 
     if (response.ok) {
       success.value = data.message;
-      form.value = { email: '', password: '' };
+      form.value = { username: '', password: '' };
       repass.value = '';
     } else {
       // FastAPI: 'detail' is a string for HTTPException, an array for 422 validation errors
@@ -59,8 +59,8 @@ const Register = async () => {
       </div>
 
       <div>
-        <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Email</label>
-        <input type="email" id="email" v-model="form.email" required
+        <label for="username" class="mb-1 block text-sm font-medium text-gray-700">Email</label>
+        <input type="username" id="username" v-model="form.username" required
           class="w-full rounded-md border border-gray-300 px-3 py-2 text-xl focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600" />
       </div>
 

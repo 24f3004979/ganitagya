@@ -85,7 +85,7 @@ class Role(str, Enum):
 class User(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)   # incremental
     name: str
-    email: str = Field(unique=True, index=True)              # future mailing
+    username: str = Field(unique=True, index=True)              # future mailing
     password_hash: str                                       # argon2 or bcrypt, never returned by any API
     role: Role = Role.student
 

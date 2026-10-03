@@ -10,7 +10,7 @@ curl -X 'POST' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
-  "email": "string",
+  "username": "string",
   "password": "string"
 }'
 
@@ -20,7 +20,7 @@ curl -X 'POST' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
-  "email": "string",
+  "username": "string",
   "password": "string"
 }'
 

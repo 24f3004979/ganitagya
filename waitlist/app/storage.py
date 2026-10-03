@@ -1,4 +1,4 @@
-"""Two interchangeable backends. Both expose add(email) -> True if newly added."""
+"""Two interchangeable backends. Both expose add(username) -> True if newly added."""
 import hashlib
 import sqlite3
 from contextlib import closing
@@ -13,16 +13,16 @@ class SqliteStorage:
         with closing(sqlite3.connect(self._path)) as c:
             c.execute(
                 "CREATE TABLE IF NOT EXISTS waitlist ("
-                "email TEXT PRIMARY KEY, created_at TEXT NOT NULL)"
+                "username TEXT PRIMARY KEY, created_at TEXT NOT NULL)"
             )
             c.commit()
 
-    def add(self, email: str) -> bool:
+    def add(self, username: str) -> bool:
         now = datetime.now(timezone.utc).isoformat()
         with closing(sqlite3.connect(self._path)) as c:
             cur = c.execute(
-                "INSERT OR IGNORE INTO waitlist (email, created_at) VALUES (?, ?)",
-                (email, now),
+                "INSERT OR IGNORE INTO waitlist (username, created_at) VALUES (?, ?)",
+                (username, now),
             )
             c.commit()
             return cur.rowcount == 1
@@ -37,14 +37,14 @@ class FirestoreStorage:
         self._server_ts = firestore.SERVER_TIMESTAMP
         self._col = firestore.Client().collection(collection)
 
-    def add(self, email: str) -> bool:
+    def add(self, username: str) -> bool:
         from google.api_core.exceptions import AlreadyExists
 
-        # Hash of the email as document ID = built-in de-duplication
-        doc_id = hashlib.sha256(email.encode()).hexdigest()
+        # Hash of the username as document ID = built-in de-duplication
+        doc_id = hashlib.sha256(username.encode()).hexdigest()
         try:
             self._col.document(doc_id).create(
-                {"email": email, "created_at": self._server_ts, "source": "landing"}
+                {"username": username, "created_at": self._server_ts, "source": "landing"}
             )
             return True
         except AlreadyExists:

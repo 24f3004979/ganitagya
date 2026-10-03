@@ -2,7 +2,7 @@
 import { ref } from 'vue' // reactive variables
 
 // Required variables
-const form = ref({ email: '', password: '' });
+const form = ref({ username: '', password: '' });
 const error = ref('');
 const success = ref('');
 
@@ -27,7 +27,7 @@ const Login = async () => {
       // routing to dashboard
       window.location.href = "http://localhost:5173/dashboard";
 
-      form.value = { email: '', password: '' };
+      form.value = { username: '', password: '' };
     } else {
       error.value =
         typeof data.detail === 'string'
@@ -60,8 +60,8 @@ const Login = async () => {
       </div>
 
       <div>
-        <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Email</label>
-        <input type="email" id="email" v-model="form.email" required
+        <label for="username" class="mb-1 block text-sm font-medium text-gray-700">Email</label>
+        <input type="username" id="username" v-model="form.username" required
           class="w-full rounded-md border border-gray-300 px-3 py-2 text-xl focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600" />
       </div>
 

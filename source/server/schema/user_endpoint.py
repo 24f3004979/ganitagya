@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 '''
 Using one universal schema for data flow for registration and login both interfaces
-Removed using email str explicitly into the main Input data structure
+Removed using username str explicitly into the main Input data structure
 
 Swagger UI is broken with class not defined error
 '''
@@ -13,6 +13,6 @@ class Input(BaseModel):
     1. Authentication
     2. Registration
     '''
-    email: str
+    username: str
     password: str
 

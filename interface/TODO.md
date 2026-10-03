@@ -1,18 +1,9 @@
-# TODO
-Final wrapper required for the application for final launch
+# Targets to complete
 
-+ Learn to deploy end to end for waitlisting work for ganitagya beta version
+- To streamline development we need some foundational components across the front end environment.
+With dedicated design documentation and design build units to use across the webpage
++ Notification pill --> Dedicated notify component for alerts and information
++ Navigation Bar --> Unified navigation bar across the application
++ Dedicated Error pages fall backs
 
 
------ 
-**Priority Listing**
-1. Vidhyarthi Moeling for student management
-2. Siddhi final abstract controller unit
-3. Wrapping siddhi with vidhyarthi-mool into one phase for final wrap up
-
------ 
-*Refactor Ideas*
-+ Make use of get_session in future references of db based transactions its easy and safe to use with
-    reffer dev_log for more information
-
-+ Using of tightly used fast api ecosystem elements for defining different component of the application aspects for simplification of code base
