@@ -1,3 +1,4 @@
+# Patch Update 4th october -----
 """
 Siddhi quiz endpoints (all protected, identity from token)
 
@@ -9,19 +10,23 @@ Mount with a prefix, e.g.
     app.include_router(siddhi_router, prefix="/api/v1/siddhi")
 """
 
+
+
+
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
-
-# adjust these import paths to where the files live in your project
 from server.api.controllers.mulyankan_controller import (
-    QuizNotActive,
-    answer_quiz,
-    end_quiz,
-    start_quiz,
-)
-from server.api.routers.student_endpoint import get_current_student
+        QuizNotActive,
+        answer_quiz,
+        end_quiz,
+        start_quiz,)
+
 from server.service.vidhyarthi import Vidhyarthi
 from server.utils.GTI import decode
+from server.api.routers.student_endpoint import get_current_student
+from typing import Union
+
 
 siddhi_router = APIRouter()
 
@@ -31,7 +36,8 @@ class StartQuizRequest(BaseModel):
 
 
 class AnswerRequest(BaseModel):
-    answers: list[int]
+    # text like "5", "7/2", "x - 3", "2x + 1"; plain numbers are accepted too
+    answers: list[Union[str, int, float]]
 
 
 @siddhi_router.post("/quiz/start")
@@ -55,7 +61,7 @@ def quiz_start(
 @siddhi_router.post("/quiz/next")
 def quiz_next(body: AnswerRequest, student: Vidhyarthi = Depends(get_current_student)):
     try:
-        return answer_quiz(student.student_id, body.answers)
+        return answer_quiz(student.student_id, [str(a) for a in body.answers])
     except QuizNotActive:
         raise HTTPException(status_code=404, detail="No active quiz")
     except ValueError as e:

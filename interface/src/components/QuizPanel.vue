@@ -27,14 +27,13 @@ const report = ref(null);
 
 const isActive = computed(() => questions.value.length > 0 && !finished.value);
 
-function isWholeNumber(value) {
-  if (value === null || value === undefined) return false;
-  if (String(value).trim() === '') return false;
-  return Number.isInteger(Number(value));
+function isFilled(value) {
+  return value !== null && value !== undefined && String(value).trim() !== '';
 }
 
+// Answers are text now: "5", "7/2", "x - 3", "2x + 1". The server does the checking.
 const canSubmit = computed(
-  () => isActive.value && !loading.value && answers.value.every(isWholeNumber)
+  () => isActive.value && !loading.value && answers.value.every(isFilled)
 );
 
 const firstNumber = computed(() => progress.value.generated - questions.value.length + 1);
@@ -70,7 +69,7 @@ async function submit() {
   error.value = '';
   try {
     const res = await api.post(`${BASE}/next`, {
-      answers: answers.value.map((a) => Number(a)),
+      answers: answers.value.map((a) => String(a).trim()),
     });
     lastResult.value = res.previous_result;
 
@@ -151,9 +150,10 @@ onMounted(start);
           <span class="eq">=</span>
           <input
             v-model="answers[i]"
-            type="number"
-            step="1"
-            inputmode="numeric"
+            type="text"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
             placeholder="?"
             :disabled="loading"
             @keyup.enter="submit"
@@ -167,7 +167,10 @@ onMounted(start);
         </button>
         <button class="btn-secondary" :disabled="loading" @click="endQuiz">End quiz</button>
       </div>
-      <p class="hint">Answers must be whole numbers.</p>
+      <p class="hint">
+        Give the simplest form. Numbers can be whole, decimal or a fraction like 7/2;
+        with letters, write for example x - 3 or 2x + 1.
+      </p>
     </div>
 
     <!-- report -->
@@ -216,7 +219,7 @@ onMounted(start);
 .questions li { display: flex; align-items: center; gap: 0.6rem; }
 .expr { font-size: 1.1rem; flex: 1; overflow-x: auto; white-space: nowrap; }
 .eq { opacity: 0.6; }
-.questions input { width: 110px; padding: 0.4rem 0.6rem; border: 1px solid #8886; border-radius: 8px; font-size: 1rem; background: transparent; color: inherit; }
+.questions input { width: 150px; padding: 0.4rem 0.6rem; border: 1px solid #8886; border-radius: 8px; font-size: 1rem; background: transparent; color: inherit; }
 
 .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .btn, .btn-secondary { padding: 0.55rem 1rem; border-radius: 8px; font-size: 0.95rem; cursor: pointer; border: 1px solid transparent; }

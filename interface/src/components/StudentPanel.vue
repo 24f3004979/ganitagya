@@ -47,7 +47,7 @@ onMounted(loadDashboard);
   <QuizPanel v-if="activeTopic" :topic="activeTopic" @close="closeQuiz" />
 
   <section v-else class="dashboard">
-    <h1>Your learning dashboard</h1>
+    <h1><strong>VIDHYARTHI DASHBOARD</strong></h1>
 
     <p v-if="loading" class="muted">Loading your topics…</p>
 

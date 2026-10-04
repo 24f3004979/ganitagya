@@ -211,3 +211,12 @@ Chintan module would be shipped with its flagship ts engine 🥲 into the first 
   Need to be clear about requests their flow into front end and back end with this new web dev setup for final full tour wiring
 
 + Made working end to end flow with registration flow now we would work into making the login flow and implement those learning to create the quiz interface for siddhi
+
+---
++ Deploy in chunk information
+When ever the first version is ready for deployment face up we can can configure these elements for final deployment
+
+    1. Supabase -> Data Base deploy
+    2. Render -> Backend hosting
+    3. Vercel -> Front End handle
+

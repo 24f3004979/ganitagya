@@ -5,6 +5,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 import jwt
 
 from server.config import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY
+
 from server.service.UserManager import UserManager
 from server.utils.exceptions import UserDoesNotExist
 from server.utils.watch_util import log

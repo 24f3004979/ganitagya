@@ -30,3 +30,16 @@ With dedicated design documentation and design build units to use across the web
 []: starting quiz 
 []: next question [response checking inbetween]
 []: end quiz [ report generation ]
+
+
+------ 
+Working quiz endpoint with all wrappers connected
++ Siddhi generation making intermediate negetive numbers answer which should be filtered in basic arithmatic all levels
++ Tweak the level of question generation at siddhi
++ Variable based question generation failed with sympy issue
+  resolve with having ways to handle and validate the variables based questions for other levels
+
+----- 
+
+Critical problem
++ siddhi_endpoint having circular error problem with -- Needs urgent fixing

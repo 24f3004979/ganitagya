@@ -1,6 +1,7 @@
 import math
 
-from server.service.siddhi import SiddhiEngine, evalutate
+from server.service.siddhi import SiddhiEngine
+from server.service.siddhi_algebra import answer_is_correct
 from server.service.vidhyarthi import Vidhyarthi
 from server.utils.GTI import encode
 from server.utils.watch_util import log
@@ -62,11 +63,12 @@ class SiddhiUnit:
         self.generated_count += self.batch_size
         return questions
 
-    def evaluation(self, user_response: list[int]):
+    def evaluation(self, user_response: list):
         """
-        user_response : answers in the same order as the last batch of questions
+        user_response : answers (text or numbers) in the same order as the last
+        batch of questions
 
-        Solve with sympy, compare, then gear the student map.
+        Grade with siddhi_algebra, then gear the student map.
         Returns 1 (gear up), -1 (gear down) or 0 (no change); the value feeds
         straight into generation() as prev_response.
         """
@@ -77,17 +79,18 @@ class SiddhiUnit:
                 f"Expected {len(self.question_index)} answers, got {len(user_response)}"
             )
 
-        solution_list = [evalutate(expr) for expr in self.question_index]
+        # Variables the current topic may use. The engine's target topic only
+        # changes after this method (in package_question), so it is still the
+        # topic these questions were generated for.
+        symbols = self.Engine.current_symbols()
 
         validation_list = []  # 1 for correct and 0 for wrong
-        for user_solution, actual_answer in zip(user_response, solution_list):
-            validation_list.append(1 if user_solution == actual_answer else 0)
+        for question, answer in zip(self.question_index, user_response):
+            # answers can be "5", "7/2", "x - 3", "2x + 1"; never goes through eval
+            correct, reason = answer_is_correct(question, str(answer), symbols)
+            log.info(f"Graded '{question}' | answer '{answer}' | {correct} {reason}")
+            validation_list.append(1 if correct else 0)
         self.last_validation = validation_list
-
-        log.info(
-            f"question list : {self.question_index} | solution list : {solution_list} "
-            f"| user_solution : {user_response}"
-        )
 
         ratio = int(math.floor((sum(validation_list) / len(validation_list)) * 100))
         current_topic = self.Engine.target_topic
@@ -107,7 +110,22 @@ class SiddhiUnit:
 
     def gear(self, gear_number: int, topic: str):
         """
-        Updates the STUDENT map only.
+        Updates the STUDENT map only. This is the ONLY place in the quiz chain
+        that writes to the student DB.
+
+        WHEN A TOPIC IS ADDED to the student's knowledge_graph:
+          - evaluation() calls gear() only for a decisive batch
+            (ratio > 70 -> +1, ratio < 50 -> -1). A 50-70% batch never gets
+            here, so nothing is written, even for a brand new topic.
+          - The topic is the engine's CURRENT target topic, which can differ
+            from the starting topic after a topic switch.
+          - If the student doesn't have that topic yet, it is added at
+            START_LEVEL ("1") first, then the level change is applied:
+                +1 -> ends at level 2
+                -1 -> stays at level 1 (MIN_LEVEL) and the topic is recorded
+                      in WeakTopics
+          - Starting, ending or abandoning a quiz never adds a topic.
+        See docs/QuizFlow.md ("When a topic is added to the student DB").
 
         Engine difficulty and topic switching are done by
         Engine.package_question(prev_response), which generation() calls right

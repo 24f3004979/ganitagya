@@ -1,7 +1,7 @@
 <script setup>
 import Navigation from '../components/Navigation.vue';
 import StudentPanel from '../components/StudentPanel.vue';
-import CourseBlock from '../components/CourseBlock.vue';
+import StudenttGraph from '../components/StudentGraph.vue';
 
 import { ref } from 'vue';
 
@@ -15,9 +15,10 @@ const handleUserFetched = (userData) => {
 </script>
 
 <template>
-  <div>
+  <div class='h-screen w-screen'>
     <Navigation />
-    <CourseBlock/>
-    <StudentPanel/>
+    <div class="h-full flex justify-center items-center">
+      <StudentPanel/>
+    </div>
   </div>
 </template>
