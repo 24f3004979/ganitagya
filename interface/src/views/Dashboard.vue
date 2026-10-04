@@ -1,5 +1,8 @@
 <script setup>
 import Navigation from '../components/Navigation.vue';
+import StudentPanel from '../components/StudentPanel.vue';
+import CourseBlock from '../components/CourseBlock.vue';
+
 import { ref } from 'vue';
 
 const userInfo = ref({ name: '' })
@@ -14,5 +17,7 @@ const handleUserFetched = (userData) => {
 <template>
   <div>
     <Navigation />
+    <CourseBlock/>
+    <StudentPanel/>
   </div>
 </template>
