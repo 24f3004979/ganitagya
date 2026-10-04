@@ -35,7 +35,7 @@ class SiddhiEngine:
     '''
     def __init__(self, target_topic):
         self.target_topic = target_topic
-        self.template = TEMPLTES[target_topic]
+        self.template = TEMPLATES[target_topic]
         # Loading topic template for question generation instance
             
         # Internal functions would manage these transactions
@@ -78,7 +78,7 @@ class SiddhiEngine:
         # Down grading current topic level
         self.topic_switch()
         self.level = 1
-        return self.bulk_generate(quantity, self.level)
+        return self.bulk_generate(quantity)
 
 
     # Generate question with same level
@@ -97,6 +97,10 @@ class SiddhiEngine:
         tweak parameter with respect to level number
         spin instance for prashna
         generate
+
+        ------
+        Issue -> Raising max depth reached with variable questions
+        sympy variable solving service required
         '''
         level = self.level
         target = self.target_topic

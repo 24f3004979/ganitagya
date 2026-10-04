@@ -29,6 +29,7 @@ class UserManager:
             self.existance = False
         self.username = username
         self.existance = False
+        self.user_object = None
 
         self.extract()  # Sync with Db for extraction of user information
 

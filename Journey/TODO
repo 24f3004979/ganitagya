@@ -21,4 +21,12 @@ With dedicated design documentation and design build units to use across the web
 + Navigation Bar --> Unified navigation bar across the application
 + Dedicated Error pages fall backs
 
+1. student endpoint routes | Dashboard
+-- kep it simple
+[]: student information fetch
+[]: graph information
 
+2. Quiz endpoints
+[]: starting quiz 
+[]: next question [response checking inbetween]
+[]: end quiz [ report generation ]

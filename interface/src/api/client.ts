@@ -20,6 +20,7 @@ const client: AxiosInstance = axios.create({
 client.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('access_token');
+    console.log(`Adding token payload : ${token}`)
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }

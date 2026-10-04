@@ -22,12 +22,12 @@ def create_access_token(username: str) -> str:  # working tested
 
 async def get_current_user(token) -> str:  # working tested
     try:
-        log.info(f"config load for payload : {SECRET_KEY} along with {SECRET_KEY}")
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
-        log.info("Not able to fetch user name with this token")
         if username is None:
+            log.info(f"Token verification failed :{payload}")
             raise jwt.PyJWTError
+        log.info(f"Token verification successful : {payload}")
         return username
     except jwt.PyJWTError:
         # Raising exception without authentication token being expired
@@ -81,7 +81,7 @@ def get_id(username: str):
 security = HTTPBearer()
 
 
-def verify_access_token(
+async def verify_access_token(
     credentials: HTTPAuthorizationCredentials = Depends(security),
 ):
     """
@@ -91,15 +91,18 @@ def verify_access_token(
     token = credentials.credentials
     try:
         # Decode and verify the JWT payload
-        payload = get_current_user(token)  # Using another utility for verification
-        return payload  # Contains user identity/claims (e.g., sub, role)
+        username = await get_current_user(token)  # Using another utility for verification
+        log.info(f"Token verification successful for user: {username}")
+        return username  # returning username with fetch success
     except jwt.ExpiredSignatureError:
+        log.warning(f"Token has expired with payload : {token}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token has expired",
             headers={"WWW-Authenticate": "Bearer"},
         )
     except jwt.InvalidTokenError:
+        log.warning(f"Invalid token with payload : {token}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid authentication credentials",

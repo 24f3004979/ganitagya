@@ -21,6 +21,7 @@ from server.utils.watch_util import log
 from server.api.routers.auth_endpoint import auth_router
 from server.api.routers.fetch_endpoint import fetch_router
 from server.api.routers.student_endpoint import student_router
+from server.api.routers.siddhi_endpoint import siddhi_router
 
 # Global Configs
 from server.config import *
@@ -41,6 +42,7 @@ Initiate_database()
 app.include_router(auth_router, prefix="/api/v1/auth")
 app.include_router(fetch_router, prefix="/api/v1/fetch")
 app.include_router(student_router, prefix="/api/v1/student")
+app.include_router(siddhi_router, prefix="/api/v1/siddhi")
 
 
 # Root routing

@@ -1,18 +1,20 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+import { api } from '../api/client.ts'
 
+const graph = ref(null);
 
-// 1. Fetch user information and his current graph information
-onMounted({
-  async()=>{
-  // TODO Fetch from back-end about user information about graph
-  console.log('Loading User graph information from mool endpoint');
-}
+onMounted(async () => {
+  try {
+    const response = await api.get("/api/v1/student/graph");
+    graph.value = response;
+    console.log(response);
+  } catch (err) {
+    console.error(err);
+  }
 });
-
-// 2. Show his current levels with ongoing course
-
-// 3. quick access buttons for siddhi and chintan pages
 </script>
+
 <template>
+  Student graph information : {{  graph  }}
 </template>

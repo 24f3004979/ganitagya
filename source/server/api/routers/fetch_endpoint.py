@@ -4,7 +4,7 @@ Information fetching endpoints
 Endpoints for fetching information about user and their roles
 """
 
-from fastapi import APIRouter, status, HTTPException, Depends
+from fastapi import APIRouter
 
 # Required imports for fetch endpoints
 from server.utils.authorization_utils import get_role, get_id
