@@ -220,3 +220,6 @@ When ever the first version is ready for deployment face up we can can configure
     2. Render -> Backend hosting
     3. Vercel -> Front End handle
 
+---
++ Final component required for development is that recovered chintan module for simple exploration part.
+
