@@ -51,7 +51,7 @@ def root():
     log.info("serving Root page")
     return "Hello fast api"
 
-
+''' Local development server
 # Server Made with Uvicorn
 def main():
     import uvicorn
@@ -67,3 +67,25 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+'''
+# Production server startup
+def main():
+    import os
+    import uvicorn
+
+    # Render provides the port dynamically via the PORT environment variable
+    # Locally, it falls back to 8000
+    port = int(os.getenv("PORT", 8000))
+
+    # Turn off reload in production to avoid performance and environment errors
+    is_production = os.getenv("RENDER") is not None
+    should_reload = not is_production
+
+    uvicorn.run(
+        "server.main:app",
+        host="0.0.0.0",
+        port=port,
+        reload=should_reload,
+        reload_excludes=["db/", "app.log"],
+    )
