@@ -1,7 +1,5 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios';
 
-// Dynamically sets the API URL based on your build environment.
-// In development, it defaults to your local FastAPI server.
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const client: AxiosInstance = axios.create({
@@ -13,14 +11,13 @@ const client: AxiosInstance = axios.create({
   }
 });
 
-// Request Interceptor 
+// Request Interceptor
 client.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('access_token');
-    
-    // Only log tokens in development to protect user security in production logs
+
     if (import.meta.env.DEV) {
-      console.log(`Adding token payload : ${token}`);
+      console.log(`Token present: ${Boolean(token)}`);
     }
 
     if (token && config.headers) {
@@ -31,32 +28,34 @@ client.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Response Interceptor
+// Response Interceptor: only normalizes errors, no longer unwraps data
 client.interceptors.response.use(
-  (response) => response.data,
+  (response) => response,
   (error) => {
-    // Standardized Python backend error handling (FastAPI/Flask/Django detail field)
     const backendError = error.response?.data?.detail || error.message || 'Unknown API Error';
     console.error('[API Error]:', backendError);
     return Promise.reject(new Error(backendError));
   }
 );
 
-// Reusable, strongly-typed HTTP wrappers
+// Typed wrappers: unwrap .data here
 export const api = {
-  get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
-    return client.get(url, config);
+  async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    const res = await client.get<T>(url, config);
+    return res.data;
   },
-  post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
-    return client.post(url, data, config);
+  async post<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
+    const res = await client.post<T>(url, data, config);
+    return res.data;
   },
-  put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
-    return client.put(url, data, config);
+  async put<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
+    const res = await client.put<T>(url, data, config);
+    return res.data;
   },
-  delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
-    return client.delete(url, config);
+  async delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    const res = await client.delete<T>(url, config);
+    return res.data;
   },
 };
 
 export default client;
-
