@@ -35,3 +35,5 @@ After clonning and get into source folder , 🐍
 uv sync  # Python manager | download it first :)
 uv run server  # Starts  unicorn server at port 8000 if its free 
 ```
+
+deploying to production with render and supabase :)
