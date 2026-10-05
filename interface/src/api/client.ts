@@ -1,14 +1,11 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios';
 
-// TODO: have to sync backend responses with same interface
-interface ApiResponse<T = any> {
-  data: T,
-  message: string,
-  success: boolean
-}
+// Dynamically sets the API URL based on your build environment.
+// In development, it defaults to your local FastAPI server.
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const client: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: API_BASE_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -20,7 +17,12 @@ const client: AxiosInstance = axios.create({
 client.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('access_token');
-    console.log(`Adding token payload : ${token}`)
+    
+    // Only log tokens in development to protect user security in production logs
+    if (import.meta.env.DEV) {
+      console.log(`Adding token payload : ${token}`);
+    }
+
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -57,3 +59,4 @@ export const api = {
 };
 
 export default client;
+
