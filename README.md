@@ -1,11 +1,20 @@
-# Ganitagya 🧠
+# Ganitagya
 
 Platform to learn, discover and grow
-
-![Chintan](chintan.png)
+![ganitagya](ganitagya.png)
 
 # Problem 💌
 Students struggle with math, lack of numerical understanding, Abstract ideas with weak foundation
+
+🥳🎉
+**Official Launch Date : 04/10/2026**
+**Ganitagya is live at https://ganitagya-kznm.vercel.app/**
+
+## Release Note 📁
+1. Flagship siddhi primitive engine
+2. Siddhi -> Mool graphing core --> Student knowledge modeling sync
+3. End to end foundational student modeling system
+4. Simple user management over web
 
 ## Components and features
 
@@ -14,26 +23,3 @@ Students struggle with math, lack of numerical understanding, Abstract ideas wit
 3. Mool -> Simple root graph for topic switching and student knowledge graph core reference Unit
 
 
-## Usage 🚀
-
-Fundamental requirements
-+ You may should have postgresql
-+ configure your db with link in .env file :)
-
-*works in linux 🐧*
-```bash
-git clone https://github.com/24f3004979/ganitagya.git
-cd ganitagya
-cd interface # get into interface folder
-npm install # dependency installation command
-npm run dev # starts the interface to load chintan unit
-```
-
-*check backend units cli versions*
-After clonning and get into source folder , 🐍
-```bash
-uv sync  # Python manager | download it first :)
-uv run server  # Starts  unicorn server at port 8000 if its free 
-```
-
-deploying to production with render and supabase :)
