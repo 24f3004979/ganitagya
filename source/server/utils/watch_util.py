@@ -1,7 +1,12 @@
 import logging
+from pathlib import Path
 
-# Temporary Loging File
-log_path = "/home/madhav/workstation/projects/ganitagya/app.log"
+# Log relative path
+BASE_DIR = Path(__file__).resolve().parent
+LOG_FILE_PATH = BASE_DIR / "app.log"
+BASE_DIR = Path(__file__).resolve().parent.parent
+log_path= BASE_DIR / "app.log"
+
 
 logging.basicConfig(
     filename=log_path,
