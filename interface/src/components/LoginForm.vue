@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 
 const emit = defineEmits(['switch'])
 const router = useRouter()
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
+const API_URL = import.meta.env.VITE_API_URL ?? 'https://ganitagya.onrender.com'
 
 const form = ref({ username: '', password: '' })
 const error = ref('')

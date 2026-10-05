@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const emit = defineEmits(['switch'])
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
+const API_URL = import.meta.env.VITE_API_URL ?? 'https://ganitagya.onrender.com'
 
 const form = ref({ username: '', password: '' })
 const repass = ref('')
