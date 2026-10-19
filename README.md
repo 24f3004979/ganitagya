@@ -22,4 +22,5 @@ Students struggle with math, lack of numerical understanding, Abstract ideas wit
 2. Chintan -> simple numerical and visual disection tool for student to think with numbers
 3. Mool -> Simple root graph for topic switching and student knowledge graph core reference Unit
 
+Log Issues in github issues section and check conrtribution documentation for further details
 

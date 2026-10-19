@@ -52,7 +52,6 @@ class SiddhiEngine:
         self.target_topic = target_topic
         self.template = TEMPLATES[target_topic]
         # Loading topic template for question generation instance
-
         # Internal functions would manage these transactions
         self.level = 1
         self.trace = []
